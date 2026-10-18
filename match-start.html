@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English For IT™ — Find the right course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Roboto:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Rubik', sans-serif; background: #f5f7ff; color: #1c1c1c; }
+  .page { width: 1440px; margin: 0 auto; background: #f5f7ff; min-height: 890px; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 3px solid rgba(53, 81, 240, .45); outline-offset: 3px; }
+
+  /* ---------- Header (match style: px 48) ---------- */
+  .hdr { background: #3551f0; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 75px; }
+  .hdr-logo img { display: block; width: 209.64px; height: 40px; }
+  .hdr-nav { display: flex; align-items: center; }
+  .hdr-link { display: flex; align-items: center; gap: 10px; padding: 30px 20px; font-size: 14.025px; line-height: 15px; color: #ffffe1; transition: opacity .15s; }
+  .hdr-link.dd { padding-right: 15px; font-family: 'Roboto', sans-serif; }
+  .hdr-link img { width: 15px; height: 15px; }
+  .hdr-link:hover { opacity: .75; }
+  .hdr-offer { background: #ffffe1; display: flex; align-items: center; gap: 10px; padding: 10px 20px; color: #3551f0; font-size: 14.025px; line-height: 19.597px; transition: background .15s; }
+  .hdr-offer img { width: 18.713px; height: 18.713px; }
+  .hdr-offer b { font-weight: 500; display: block; }
+  .hdr-offer:hover { background: #fff; }
+
+  /* ---------- Body ---------- */
+  .body { display: flex; flex-direction: column; align-items: center; padding: 56px 0 120px; }
+  .card { width: 820px; background: #fff; border: 1.5px solid #e6e0a0; border-radius: 32px; padding: 48px; display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
+  .tag { background: #ebeefe; color: #3551f0; padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: .6px; line-height: 1.5; }
+  h1 { font-size: 48px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
+  .lead { font-size: 19px; line-height: 1.5; color: #3f3f4a; }
+  .steps { display: flex; gap: 16px; width: 100%; }
+  .step { flex: 1 0 0; background: #ffffe1; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 6px; line-height: 1.5; }
+  .step .num { width: 32px; height: 32px; border-radius: 100px; background: #3551f0; color: #fff; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .step b { font-size: 17px; font-weight: 700; }
+  .step span { font-size: 14px; color: #3f3f4a; }
+  .privacy { width: 100%; background: #ebeefe; border-radius: 20px; padding: 20px; display: flex; gap: 14px; align-items: flex-start; line-height: 1.5; }
+  .privacy-icon { width: 36px; height: 36px; border-radius: 100px; background: #3551f0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .privacy-icon img { width: 18px; height: 18px; }
+  .privacy b { display: block; width: 620px; font-size: 15px; font-weight: 600; }
+  .privacy span { display: block; width: 620px; margin-top: 2px; font-size: 14px; color: #3f3f4a; }
+  .actions { display: flex; align-items: center; gap: 24px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 18px 32px; border-radius: 100px; font-size: 17px; font-weight: 600; line-height: 1.5; white-space: nowrap; background: #3551f0; color: #fff; transition: background .15s; }
+  .btn:hover { background: #2a43d6; }
+  .text-link { font-size: 15px; font-weight: 600; line-height: 1.5; color: #3551f0; }
+  .text-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hdr">
+    <a class="hdr-logo" href="home.html"><img src="assets/logo.svg" alt="English For IT™"></a>
+    <nav class="hdr-nav">
+      <a class="hdr-link dd" href="#">Courses <img src="assets/chev.svg" alt=""></a>
+      <a class="hdr-link dd" href="#">E-books <img src="assets/chev.svg" alt=""></a>
+      <a class="hdr-link" href="#">Individual lessons</a>
+      <a class="hdr-link" href="#">Corporate Training</a>
+    </nav>
+    <a class="hdr-link dd" href="#">English 🇺🇸 <img src="assets/chev.svg" alt=""></a>
+    <a class="hdr-offer" href="#">
+      <img src="assets/stars.svg" alt="">
+      <span><b>Special offer.</b>English For Tech Lite course for $20 →</span>
+    </a>
+  </header>
+
+  <main class="body">
+    <div class="card">
+      <span class="tag">FREE · ABOUT 15 MINUTES</span>
+      <h1>Find the right course for you</h1>
+      <p class="lead">Tell us your goal, take a short level test — and get a course that fits your level and the way you like to learn.</p>
+      <div class="steps">
+        <div class="step"><span class="num">1</span><b>Your goal</b><span>2 quick questions</span></div>
+        <div class="step"><span class="num">2</span><b>Level test</b><span>30 questions · ~15 min</span></div>
+        <div class="step"><span class="num">3</span><b>Your result</b><span>Level, course and certificate</span></div>
+      </div>
+      <div class="privacy">
+        <div class="privacy-icon"><img src="assets/i-lock.svg" alt=""></div>
+        <div>
+          <b>Your result appears on screen right away — no sign-up needed.</b>
+          <span>Want a certificate? At the end you can get it by email — only if you choose to. No spam.</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="match-goal.html">Start →</a>
+        <a class="text-link" href="home.html#courses">Already know what you need? Browse all courses</a>
+      </div>
+    </div>
+  </main>
+
+</div>
+</body>
+</html>

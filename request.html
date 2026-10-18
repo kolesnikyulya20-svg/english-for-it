@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English For IT™ — Get help choosing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Roboto:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Rubik', sans-serif; background: #f5f7ff; color: #1c1c1c; }
+  .page { width: 1440px; margin: 0 auto; background: #f5f7ff; min-height: 890px; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 3px solid rgba(53, 81, 240, .45); outline-offset: 3px; }
+  [hidden] { display: none !important; }
+
+  /* ---------- Header (home style: px 120) ---------- */
+  .hdr { background: #3551f0; display: flex; align-items: center; justify-content: space-between; padding: 0 120px; height: 73.5px; }
+  .hdr-logo img { display: block; width: 204.4px; height: 39px; }
+  .hdr-nav { display: flex; align-items: center; }
+  .hdr-link { display: flex; align-items: center; gap: 9.6px; padding: 29.25px 19.5px; font-size: 13.674px; line-height: 14.625px; color: #ffffe1; transition: opacity .15s; }
+  .hdr-link.dd { padding-right: 14.4px; font-family: 'Roboto', sans-serif; }
+  .hdr-link img { width: 14.625px; height: 14.625px; }
+  .hdr-link:hover { opacity: .75; }
+  .hdr-offer { background: #ffffe1; display: flex; align-items: center; gap: 9.75px; padding: 9.75px 19.5px; color: #3551f0; font-size: 13.674px; line-height: 19.108px; transition: background .15s; }
+  .hdr-offer img { width: 18.245px; height: 18.245px; }
+  .hdr-offer b { font-weight: 500; display: block; }
+  .hdr-offer:hover { background: #fff; }
+
+  /* ---------- Body ---------- */
+  .body { padding: 48px 120px 80px; display: flex; flex-direction: column; gap: 24px; }
+  .back { align-self: flex-start; font-size: 15px; font-weight: 600; line-height: 1.5; color: #3551f0; }
+  .back:hover { text-decoration: underline; }
+  .columns { display: flex; gap: 24px; align-items: flex-start; }
+
+  /* What you get */
+  .info { flex: 1 0 0; background: #fff; border: 1.5px solid #e6e0a0; border-radius: 32px; padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .8px; line-height: 1.5; color: #3551f0; }
+  h1 { font-size: 44px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
+  .seg { width: 100%; background: #ebeefe; border-radius: 100px; padding: 4px; display: flex; gap: 4px; }
+  .seg button { flex: 1 0 0; border: 0; background: none; border-radius: 100px; padding: 12px 0; font: 500 15px/1.5 'Rubik', sans-serif; color: #3f3f4a; cursor: pointer; transition: background .15s, color .15s; }
+  .seg button:hover { color: #3551f0; }
+  .seg button[aria-pressed="true"] { background: #fff; color: #3551f0; font-weight: 700; }
+  .info h2 { font-size: 20px; font-weight: 700; line-height: 1.5; }
+  .gets { display: flex; gap: 16px; align-items: flex-start; line-height: 1.5; }
+  .gets-icon { width: 48px; height: 48px; border-radius: 16px; background: #ebeefe; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .gets-icon img { width: 22px; height: 22px; }
+  .gets b { display: block; font-size: 17px; font-weight: 700; }
+  .gets div span { display: block; margin-top: 2px; font-size: 15px; color: #3f3f4a; }
+  .known { background: #ffffe1; border: 1px solid #e6e0a0; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .known-head { display: flex; gap: 10px; align-items: center; font-size: 15px; font-weight: 700; line-height: 1.5; }
+  .known-head span { width: 28px; height: 28px; border-radius: 100px; background: #3551f0; display: flex; align-items: center; justify-content: center; }
+  .known-head img { width: 13px; height: 13px; }
+  .chips { display: flex; gap: 8px; }
+  .chips span { background: #fff; border-radius: 100px; padding: 6px 12px; font-size: 13px; font-weight: 500; line-height: 1.5; }
+  .known p { font-size: 13px; line-height: 1.5; color: #3f3f4a; }
+
+  /* Form */
+  .form { width: 460px; flex-shrink: 0; background: #fff; border: 2px solid #3551f0; border-radius: 32px; padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+  .form h2 { font-size: 24px; font-weight: 700; line-height: 1.5; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field > label, .field > .label { font-size: 14px; font-weight: 600; line-height: 1.5; color: #3f3f4a; }
+  .form .seg button { padding: 10px 0; }
+  .input { width: 100%; padding: 13.5px 14.5px; border: 1.5px solid #d6d6e0; border-radius: 14px; font: 400 16px/1.5 'Rubik', sans-serif; color: #1c1c1c; background: #fff; outline: none; transition: border-color .15s; }
+  .input::placeholder { color: #8a8a96; }
+  .input:hover { border-color: #b8b8c4; }
+  .input:focus { border-color: #3551f0; }
+  .field.invalid .input { border-color: #e5484d; }
+  .error { display: none; font-size: 13px; line-height: 1.5; color: #e5484d; }
+  .field.invalid .error { display: block; }
+  .times { display: flex; gap: 8px; }
+  .times label { cursor: pointer; }
+  .times input { position: absolute; opacity: 0; pointer-events: none; }
+  .times span { display: block; padding: 7.5px 12.5px; border: 1.5px solid #d6d6e0; border-radius: 100px; background: #fff; font-size: 14px; font-weight: 500; line-height: 1.5; transition: border-color .15s, background .15s, color .15s; }
+  .times label:hover span { border-color: #3551f0; }
+  .times input:checked + span { background: #3551f0; border-color: #3551f0; color: #fff; }
+  .times input:focus-visible + span { outline: 3px solid rgba(53, 81, 240, .45); outline-offset: 3px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 18px 32px; border: 0; border-radius: 100px; font: 600 17px/1.5 'Rubik', sans-serif; white-space: nowrap; cursor: pointer; background: #3551f0; color: #fff; width: 100%; transition: background .15s; }
+  .btn:hover { background: #2a43d6; }
+  .reply { display: flex; gap: 8px; align-items: center; font-size: 14px; font-weight: 500; line-height: 1.5; }
+  .reply img { width: 16px; height: 16px; }
+  .legal { font-size: 12px; line-height: 1.5; color: #3f3f4a; }
+  .legal a { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hdr">
+    <a class="hdr-logo" href="home.html"><img src="assets/logo-home.svg" alt="English For IT™"></a>
+    <nav class="hdr-nav">
+      <a class="hdr-link dd" href="#">Courses <img src="assets/chev-home.svg" alt=""></a>
+      <a class="hdr-link dd" href="#">E-books <img src="assets/chev-home.svg" alt=""></a>
+      <a class="hdr-link" href="#">Individual lessons</a>
+      <a class="hdr-link" href="#">Corporate Training</a>
+    </nav>
+    <a class="hdr-link dd" href="#">English 🇺🇸 <img src="assets/chev-home.svg" alt=""></a>
+    <a class="hdr-offer" href="#">
+      <img src="assets/stars-home.svg" alt="">
+      <span><b>Special offer.</b>English For Tech Lite course for $20 →</span>
+    </a>
+  </header>
+
+  <main class="body">
+    <a class="back" href="course.html">← Back to English For Tech</a>
+    <div class="columns">
+
+      <section class="info">
+        <p class="eyebrow">TALK TO US OR TRY A LESSON</p>
+        <h1>Get help choosing — free</h1>
+        <!-- Вміст вкладки «Free lesson» у макеті відсутній, тому вона не перемикається -->
+        <div class="seg" role="group" aria-label="Type">
+          <button type="button" aria-pressed="true">Free consultation</button>
+          <button type="button" aria-pressed="false">Free lesson</button>
+        </div>
+        <h2>15-minute call with our course advisor</h2>
+        <div class="gets">
+          <span class="gets-icon"><img src="assets/r-monitor.svg" alt=""></span>
+          <div><b>See the platform</b><span>We’ll show you how lessons, tasks and mentor feedback work from the inside.</span></div>
+        </div>
+        <div class="gets">
+          <span class="gets-icon"><img src="assets/r-chart.svg" alt=""></span>
+          <div><b>Check your level</b><span>We’ll go through your test result and what it means for you.</span></div>
+        </div>
+        <div class="gets">
+          <span class="gets-icon"><img src="assets/r-book.svg" alt=""></span>
+          <div><b>Choose the right course</b><span>Get a recommendation for your goal, level and schedule — and a summary in your messenger after the call.</span></div>
+        </div>
+        <div class="known">
+          <div class="known-head"><span><img src="assets/r-star.svg" alt=""></span>We’ll already know about you</div>
+          <div class="chips"><span>B1 Intermediate</span><span>Goal: talk to my team and clients</span><span>English For Tech</span></div>
+          <p>So you won’t need to explain everything again.</p>
+        </div>
+      </section>
+
+      <form class="form" id="form" novalidate>
+        <h2>Book your free consultation</h2>
+        <div class="field" id="name-field">
+          <label for="name">Your name</label>
+          <input class="input" id="name" type="text" value="Maria" autocomplete="given-name">
+          <span class="error">Please enter your name</span>
+        </div>
+        <div class="field" id="contact-field">
+          <span class="label">How should we contact you?</span>
+          <div class="seg" role="group" aria-label="Contact channel" id="channel">
+            <button type="button" data-ch="telegram" aria-pressed="true">Telegram</button>
+            <button type="button" data-ch="whatsapp" aria-pressed="false">WhatsApp</button>
+            <button type="button" data-ch="email" aria-pressed="false">Email</button>
+          </div>
+          <input class="input" id="contact" type="text" placeholder="@username" aria-label="Telegram username">
+          <span class="error" id="contact-error">Enter your Telegram username</span>
+        </div>
+        <div class="field">
+          <span class="label">When is good for a call?</span>
+          <div class="times">
+            <label><input type="radio" name="time" value="any" checked><span>Any time</span></label>
+            <label><input type="radio" name="time" value="morning"><span>Morning</span></label>
+            <label><input type="radio" name="time" value="afternoon"><span>Afternoon</span></label>
+            <label><input type="radio" name="time" value="evening"><span>Evening</span></label>
+          </div>
+        </div>
+        <button class="btn" type="submit">Book a consultation →</button>
+        <p class="reply"><img src="assets/r-check.svg" alt="">We’ll reply within 15 minutes during working hours.</p>
+        <p class="legal">No spam. By booking you agree to our <a href="#">Privacy policy</a>.</p>
+      </form>
+
+    </div>
+  </main>
+
+</div>
+<script>
+  // Канал зв'язку змінює підказку в полі та правило перевірки
+  const channels = {
+    telegram: { ph: '@username', label: 'Telegram username', err: 'Enter your Telegram username', ok: v => /^@?\w{4,}$/.test(v) },
+    whatsapp: { ph: '+380 50 123 4567', label: 'WhatsApp number', err: 'Enter your WhatsApp number', ok: v => v.replace(/\D/g, '').length >= 9 },
+    email:    { ph: 'you@email.com', label: 'Email', err: 'Enter an email like name@example.com', ok: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+  };
+  let channel = 'telegram';
+  const form = document.getElementById('form');
+  const contact = document.getElementById('contact');
+  const nameInput = document.getElementById('name');
+
+  document.querySelectorAll('#channel button').forEach(btn => btn.addEventListener('click', () => {
+    channel = btn.dataset.ch;
+    document.querySelectorAll('#channel button').forEach(b => b.setAttribute('aria-pressed', b === btn));
+    const c = channels[channel];
+    contact.placeholder = c.ph;
+    contact.setAttribute('aria-label', c.label);
+    contact.type = channel === 'email' ? 'email' : 'text';
+    contact.value = '';
+    document.getElementById('contact-error').textContent = c.err;
+    document.getElementById('contact-field').classList.remove('invalid');
+    contact.focus();
+  }));
+
+  [nameInput, contact].forEach(el => el.addEventListener('input', () => el.closest('.field').classList.remove('invalid')));
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const nameOk = nameInput.value.trim() !== '';
+    const contactOk = channels[channel].ok(contact.value.trim());
+    document.getElementById('name-field').classList.toggle('invalid', !nameOk);
+    document.getElementById('contact-field').classList.toggle('invalid', !contactOk);
+    if (!nameOk) return nameInput.focus();
+    if (!contactOk) return contact.focus();
+    try {
+      sessionStorage.setItem('requestName', nameInput.value.trim());
+      sessionStorage.setItem('requestChannel', channel);
+    } catch (e) {}
+    location.href = 'request-success.html';
+  });
+</script>
+</body>
+</html>

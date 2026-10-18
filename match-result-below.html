@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English For IT™ — Your result — level below goal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Roboto:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Rubik', sans-serif; background: #f5f7ff; color: #1c1c1c; }
+  .page { width: 1440px; margin: 0 auto; background: #f5f7ff; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 3px solid rgba(53, 81, 240, .45); outline-offset: 3px; }
+
+  /* ---------- Header (match style: px 48) ---------- */
+  .hdr { background: #3551f0; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 75px; }
+  .hdr-logo img { display: block; width: 209.64px; height: 40px; }
+  .hdr-nav { display: flex; align-items: center; }
+  .hdr-link { display: flex; align-items: center; gap: 10px; padding: 30px 20px; font-size: 14.025px; line-height: 15px; color: #ffffe1; transition: opacity .15s; }
+  .hdr-link.dd { padding-right: 15px; font-family: 'Roboto', sans-serif; }
+  .hdr-link img { width: 15px; height: 15px; }
+  .hdr-link:hover { opacity: .75; }
+  .hdr-offer { background: #ffffe1; display: flex; align-items: center; gap: 10px; padding: 10px 20px; color: #3551f0; font-size: 14.025px; line-height: 19.597px; transition: background .15s; }
+  .hdr-offer img { width: 18.713px; height: 18.713px; }
+  .hdr-offer b { font-weight: 500; display: block; }
+  .hdr-offer:hover { background: #fff; }
+
+  /* ---------- Body ---------- */
+  .body { height: 1855px; padding: 48px 120px 120px; display: flex; flex-direction: column; gap: 28px; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .6px; line-height: 1.5; color: #3551f0; }
+  .heading { display: flex; flex-direction: column; gap: 8px; }
+  .heading h1 { width: 900px; font-size: 44px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
+  .heading p:not(.eyebrow) { width: 900px; font-size: 17px; line-height: 1.5; color: #3f3f4a; }
+  .columns { display: flex; gap: 24px; align-items: flex-start; }
+  .main { flex: 1 0 0; display: flex; flex-direction: column; gap: 24px; }
+  .side { width: 380px; flex-shrink: 0; }
+  .box { background: #fff; border: 1.5px solid #e6e0a0; border-radius: 32px; padding: 36px; display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+
+  /* Your level */
+  .level-row { display: flex; align-items: center; gap: 16px; }
+  .level-row .level-code { font-size: 64px; font-weight: 800; line-height: 1.1; color: #3551f0; }
+  .level-row b { display: block; font-size: 24px; font-weight: 700; line-height: 1.5; }
+  .level-row div span { display: block; font-size: 15px; line-height: 1.5; color: #3f3f4a; }
+  .scale { width: 100%; display: flex; gap: 6px; }
+  .scale span { flex: 1 0 0; text-align: center; padding: 8px 0; border-radius: 100px; background: #ebeefe; color: #3551f0; font-size: 14px; font-weight: 700; line-height: 1.5; }
+  .scale span.on { background: #3551f0; color: #fff; }
+  .can-hard { width: 100%; display: flex; gap: 24px; }
+  .list { flex: 1 0 0; display: flex; flex-direction: column; gap: 10px; }
+  .list > b { font-size: 16px; font-weight: 700; line-height: 1.5; }
+  .item { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.5; }
+  .item p { width: 300px; }
+  .mark { width: 22px; height: 22px; border-radius: 100px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mark img { width: 13px; height: 13px; }
+  .mark.ok { background: #ddf8dd; }
+  .mark.hard { background: #ffe3d8; }
+
+  /* Best match */
+  .tag { background: #3551f0; color: #fff; padding: 6px 12px; border-radius: 100px; font-size: 13px; font-weight: 600; letter-spacing: .6px; line-height: 1.5; }
+  .course-title { font-size: 32px; font-weight: 800; line-height: 1.5; letter-spacing: -.5px; }
+  .course-meta { font-size: 15px; font-weight: 500; line-height: 1.5; color: #3f3f4a; }
+  .why { width: 100%; background: #ffffe1; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .why > b { font-size: 15px; font-weight: 700; line-height: 1.5; }
+  .why .item p { width: 560px; }
+  .next { width: 100%; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .next > p { font-size: 14px; line-height: 1.5; color: #3f3f4a; }
+  .secondary { display: flex; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 18px 32px; border: 0; border-radius: 100px; font: 600 17px/1.5 'Rubik', sans-serif; white-space: nowrap; cursor: pointer; transition: background .15s, color .15s; }
+  .btn-blue { background: #3551f0; color: #fff; }
+  .btn-blue:hover { background: #2a43d6; }
+  .btn-outline { background: #fff; color: #3551f0; border: 2px solid #3551f0; padding: 16px 30px; }
+  .btn-outline:hover { background: #ebeefe; }
+
+  /* Other courses */
+  .box h2 { font-size: 20px; font-weight: 700; line-height: 1.5; }
+  .box .sub { font-size: 14px; line-height: 1.5; color: #3f3f4a; }
+  .course-row { width: 100%; background: #fff; border: 1.5px solid #d9d28f; border-radius: 16px; padding: 12px 12px 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; transition: border-color .15s; }
+  .course-row .info { flex: 1 0 0; display: flex; flex-direction: column; gap: 2px; line-height: 1.5; }
+  .course-row .name { font-size: 16px; font-weight: 600; }
+  .course-row .meta { font-size: 13px; color: #5b5b66; }
+  .badge { align-self: flex-start; background: #3551f0; color: #fff; padding: 3px 8px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: .5px; line-height: 1.5; }
+  .arrow { width: 40px; height: 40px; flex-shrink: 0; border-radius: 100px; background: #ebeefe; color: #3551f0; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; transition: background .15s, color .15s; }
+  .course-row:hover { border-color: #3551f0; }
+  .course-row:hover .arrow { background: #3551f0; color: #fff; }
+
+  /* Certificate */
+  .cert { padding: 28px; gap: 16px; }
+  .cert-preview { width: 100%; background: #ebeefe; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 4px; line-height: 1.5; }
+  .cert-preview .t1 { font-size: 13px; font-weight: 600; letter-spacing: .6px; color: #3551f0; }
+  .cert-preview .t2 { font-size: 20px; font-weight: 800; color: #3551f0; }
+  .cert-preview .t3 { font-size: 12px; color: #3f3f4a; }
+  .cert h2 { font-size: 20px; font-weight: 700; line-height: 1.5; }
+  .cert .sub { font-size: 14px; }
+  .field { width: 100%; display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 13px; font-weight: 600; line-height: 1.5; color: #3f3f4a; }
+  .field input { width: 100%; padding: 12.5px 14.5px; border: 1.5px solid #d6d6e0; border-radius: 14px; font: 400 15px/1.5 'Rubik', sans-serif; color: #1c1c1c; background: #fff; outline: none; transition: border-color .15s; }
+  .field input::placeholder { color: #8a8a96; }
+  .field input:hover { border-color: #b8b8c4; }
+  .field input:focus { border-color: #3551f0; }
+  .field.invalid input { border-color: #e5484d; }
+  .error { display: none; font-size: 13px; line-height: 1.5; color: #e5484d; }
+  .field.invalid .error { display: block; }
+  .check { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; font-size: 14px; line-height: 1.5; color: #3f3f4a; }
+  .check input { appearance: none; width: 20px; height: 20px; flex-shrink: 0; margin: 0; border: 1.5px solid #b8b8c4; border-radius: 6px; background: #fff center / 12px no-repeat; cursor: pointer; transition: border-color .15s, background-color .15s; }
+  .check input:hover { border-color: #3551f0; }
+  .check input:checked { background-color: #3551f0; border-color: #3551f0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6.5l2.5 2.5L10 3.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+  .check span { width: 280px; }
+  .btn-full { width: 100%; }
+  .success-icon { width: 48px; height: 48px; border-radius: 100px; background: #ddf8dd; display: flex; align-items: center; justify-content: center; }
+  .success-icon img { width: 24px; height: 24px; }
+  .cert .sent-title { font-size: 22px; font-weight: 700; line-height: 1.5; }
+  .cert .sent-text { font-size: 15px; line-height: 1.5; color: #3f3f4a; }
+  .linkedin { font-size: 15px; font-weight: 600; line-height: 1.5; color: #3551f0; }
+  .linkedin:hover { text-decoration: underline; }
+  [hidden] { display: none !important; }
+  .notice { width: 100%; background: #ffe3d8; border-radius: 16px; padding: 16px; display: flex; gap: 12px; align-items: flex-start; line-height: 1.5; }
+  .notice img { width: 22px; height: 22px; flex-shrink: 0; }
+  .notice b { display: block; width: 580px; font-size: 15px; font-weight: 700; }
+  .notice span { display: block; width: 580px; margin-top: 2px; font-size: 14px; color: #3f3f4a; }
+  .note { font-size: 13px; line-height: 1.5; color: #3f3f4a; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hdr">
+    <a class="hdr-logo" href="home.html"><img src="assets/logo.svg" alt="English For IT™"></a>
+    <nav class="hdr-nav">
+      <a class="hdr-link dd" href="#">Courses <img src="assets/chev.svg" alt=""></a>
+      <a class="hdr-link dd" href="#">E-books <img src="assets/chev.svg" alt=""></a>
+      <a class="hdr-link" href="#">Individual lessons</a>
+      <a class="hdr-link" href="#">Corporate Training</a>
+    </nav>
+    <a class="hdr-link dd" href="#">English 🇺🇸 <img src="assets/chev.svg" alt=""></a>
+    <a class="hdr-offer" href="#">
+      <img src="assets/stars.svg" alt="">
+      <span><b>Special offer.</b>English For Tech Lite course for $20 →</span>
+    </a>
+  </header>
+
+  <main class="body">
+    <div class="heading">
+      <p class="eyebrow">STEP 3 OF 3 · YOUR RESULT</p>
+      <h1>Here’s your result, Maria</h1>
+      <p>Based on your goal “Pass a job interview in English”, your level and your format “On my own, any time”.</p>
+    </div>
+
+    <div class="columns">
+      <div class="main">
+
+        <section class="box">
+          <p class="eyebrow">YOUR LEVEL</p>
+          <div class="level-row">
+            <span class="level-code">A2</span>
+            <div><b>Elementary</b><span>A good base to build on</span></div>
+          </div>
+          <div class="scale"><span>A1</span><span class="on">A2</span><span>B1</span><span>B2</span><span>C1</span></div>
+          <div class="can-hard">
+            <div class="list">
+              <b>You can already</b>
+              <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Introduce yourself and your role</p></div>
+              <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Understand simple work messages</p></div>
+              <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Read short task descriptions</p></div>
+            </div>
+            <div class="list">
+              <b>Still hard for now</b>
+              <div class="item"><span class="mark hard"><img src="assets/i-arrow-orange.svg" alt=""></span><p>Answering interview questions in full sentences</p></div>
+              <div class="item"><span class="mark hard"><img src="assets/i-arrow-orange.svg" alt=""></span><p>Talking about your experience in detail</p></div>
+              <div class="item"><span class="mark hard"><img src="assets/i-arrow-orange.svg" alt=""></span><p>Understanding fast speech</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="box">
+          <div class="notice">
+            <img src="assets/i-warning.svg" alt="">
+            <div><b>Job Interview Crash Course starts from Pre-Intermediate</b><span>Start with a course for your level first — it builds the base you need for interviews. Or choose another option below.</span></div>
+          </div>
+          <span class="tag">BEST MATCH FOR YOU</span>
+          <p class="course-title">English For Work: Starter</p>
+          <p class="course-meta">2 months · Online course · Elementary – Pre-Intermediate</p>
+          <div class="why">
+            <b>Why this course</b>
+            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Fits your level: A2 is right at the start of this course</p></div>
+            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Prepares you for interviews: talking about your work and experience</p></div>
+            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Your format: online, study any time</p></div>
+          </div>
+          <div class="next">
+            <a class="btn btn-blue" href="#">View course →</a>
+            <p>Not ready to decide? Talk to us or try a lesson first:</p>
+            <div class="secondary">
+              <a class="btn btn-outline" href="request.html">Book a free consultation</a>
+              <a class="btn btn-outline" href="request.html">Try a free lesson</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="box">
+          <h2>Other options for your level</h2>
+          <p class="sub">Want to prepare for the interview sooner? Choose another way.</p>
+          <a class="course-row" href="request.html">
+            <div class="info"><span class="name">Individual lessons</span><span class="meta">A teacher builds a plan for your interview · flexible schedule</span></div>
+            <span class="arrow">→</span>
+          </a>
+          <a class="course-row" href="#">
+            <div class="info"><span class="badge">Next step</span><span class="name">Job Interview Crash Course</span><span class="meta">2 weeks · from Pre-Intermediate · your next step after Starter</span></div>
+            <span class="arrow">→</span>
+          </a>
+        </section>
+
+      </div>
+
+      <aside class="side">
+        <!-- CERT:START -->
+        <form class="box cert" id="cert" novalidate>
+          <div class="cert-preview">
+            <span class="t1">CERTIFICATE</span>
+            <span class="t2">English level A2</span>
+            <span class="t3">English For IT™ · Elementary</span>
+          </div>
+          <h2>Get your certificate by email</h2>
+          <p class="sub">Optional — your result is already here. Add the certificate to your LinkedIn profile.</p>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" placeholder="Maria" autocomplete="given-name">
+          </div>
+          <div class="field" id="email-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email">
+            <span class="error">Enter an email like name@example.com</span>
+          </div>
+          <label class="check"><input type="checkbox" name="tips"><span>Also send me learning tips and offers</span></label>
+          <button class="btn btn-blue btn-full" type="submit">Send certificate</button>
+          <p class="note">We’ll only send the certificate. No calls, no spam.</p>
+        </form>
+        <div class="box cert" id="cert-sent" hidden>
+          <div class="cert-preview">
+            <span class="t1">CERTIFICATE</span>
+            <span class="t2">English level A2</span>
+            <span class="t3">English For IT™ · Elementary</span>
+          </div>
+          <div class="success-icon"><img src="assets/i-success.svg" alt=""></div>
+          <p class="sent-title">Certificate sent!</p>
+          <p class="sent-text">We sent it to <span class="sent-email">maria.koval@gmail.com</span>. It usually arrives within a couple of minutes.</p>
+          <a class="linkedin" href="#">Add to LinkedIn →</a>
+        </div>
+        <!-- CERT:END -->
+      </aside>
+    </div>
+  </main>
+
+</div>
+<script>
+  // Сертифікат: перевіряємо лише email (ім'я необов'язкове), потім показуємо стан «надіслано»
+  const cert = document.getElementById('cert');
+  if (cert) {
+    const field = document.getElementById('email-field');
+    const email = cert.email;
+    email.addEventListener('input', () => field.classList.remove('invalid'));
+    cert.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+        field.classList.add('invalid');
+        email.focus();
+        return;
+      }
+      try { sessionStorage.setItem('certEmail', email.value.trim()); } catch (e) {}
+      const sent = document.getElementById('cert-sent');
+      if (!sent) { location.href = 'match-result-sent.html'; return; }
+      sent.querySelector('.sent-email').textContent = email.value.trim();
+      cert.hidden = true;
+      sent.hidden = false;
+    });
+  }
+</script>
+</body>
+</html>

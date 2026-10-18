@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English For IT™ — Level test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Roboto:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Rubik', sans-serif; background: #f5f7ff; color: #1c1c1c; }
+  .page { width: 1440px; margin: 0 auto; background: #f5f7ff; min-height: 840px; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 3px solid rgba(53, 81, 240, .45); outline-offset: 3px; }
+
+  /* ---------- Header (match style: px 48) ---------- */
+  .hdr { background: #3551f0; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 75px; }
+  .hdr-logo img { display: block; width: 209.64px; height: 40px; }
+  .hdr-nav { display: flex; align-items: center; }
+  .hdr-link { display: flex; align-items: center; gap: 10px; padding: 30px 20px; font-size: 14.025px; line-height: 15px; color: #ffffe1; transition: opacity .15s; }
+  .hdr-link.dd { padding-right: 15px; font-family: 'Roboto', sans-serif; }
+  .hdr-link img { width: 15px; height: 15px; }
+  .hdr-link:hover { opacity: .75; }
+  .hdr-offer { background: #ffffe1; display: flex; align-items: center; gap: 10px; padding: 10px 20px; color: #3551f0; font-size: 14.025px; line-height: 19.597px; transition: background .15s; }
+  .hdr-offer img { width: 18.713px; height: 18.713px; }
+  .hdr-offer b { font-weight: 500; display: block; }
+  .hdr-offer:hover { background: #fff; }
+
+  /* ---------- Quiz card ---------- */
+  .body { display: flex; flex-direction: column; align-items: center; padding: 56px 0 120px; }
+  .card { width: 760px; background: #fff; border: 1.5px solid #e6e0a0; border-radius: 32px; padding: 48px; display: flex; flex-direction: column; gap: 24px; }
+  .progress { display: flex; flex-direction: column; gap: 10px; }
+  .progress-labels { display: flex; justify-content: space-between; font-size: 13px; line-height: 1.5; }
+  .progress-labels .step { color: #3551f0; font-weight: 600; letter-spacing: .6px; }
+  .progress-labels .count { color: #3f3f4a; font-weight: 500; }
+  .track { width: 664px; height: 8px; border-radius: 8px; background: #ebeefe; overflow: hidden; }
+  .fill { height: 8px; border-radius: 8px; background: #3551f0; }
+  h1 { font-size: 32px; font-weight: 800; line-height: 1.5; }
+  .part { align-self: flex-start; background: #ebeefe; color: #3551f0; padding: 7px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: .6px; line-height: 1.5; }
+  h1.q { font-size: 26px; font-weight: 700; }
+  .opt-text b { font-size: 18px; }
+  .hint { font-size: 16px; line-height: 1.5; color: #3f3f4a; }
+
+  .options { display: flex; flex-direction: column; gap: 12px; border: 0; }
+  .option input { position: absolute; opacity: 0; pointer-events: none; }
+  .option { position: relative; display: flex; align-items: center; gap: 16px; padding: 16.5px 18.5px; background: #fff; border: 1.5px solid #e2e2ea; border-radius: 20px; cursor: pointer; transition: border-color .15s, background .15s; }
+  .option:hover { border-color: #9aa8f7; background: #fafbff; }
+  .opt-icon { width: 44px; height: 44px; border-radius: 100px; background: #ebeefe; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .opt-icon img { width: 22px; height: 22px; }
+  .opt-icon .w { display: none; }
+  .opt-text { flex: 1 0 0; display: flex; flex-direction: column; gap: 2px; line-height: 1.5; }
+  .opt-text b { font-size: 18px; font-weight: 700; }
+  .opt-text span { font-size: 15px; color: #3f3f4a; }
+  .radio { width: 22px; height: 22px; flex-shrink: 0; background: url(assets/radio-off.svg) center / contain no-repeat; }
+  .option:has(input:checked) { background: #f3f5ff; border: 2px solid #3551f0; padding: 16px 18px; }
+  .option:has(input:checked) .opt-icon { background: #3551f0; }
+  .option:has(input:checked) .opt-icon .b { display: none; }
+  .option:has(input:checked) .opt-icon .w { display: block; }
+  .option:has(input:checked) .radio { background-image: url(assets/radio-on.svg); }
+  .option:has(input:focus-visible) { outline: 3px solid rgba(53, 81, 240, .45); outline-offset: 3px; }
+
+  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .back { font-size: 16px; font-weight: 600; line-height: 1.5; color: #3f3f4a; }
+  .back:hover { color: #3551f0; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 18px 32px; border: 0; border-radius: 100px; font: 600 17px/1.5 'Rubik', sans-serif; white-space: nowrap; background: #3551f0; color: #fff; cursor: pointer; transition: background .15s; }
+  .btn:hover { background: #2a43d6; }
+  .btn:disabled { background: #b4bef8; cursor: not-allowed; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hdr">
+    <a class="hdr-logo" href="home.html"><img src="assets/logo.svg" alt="English For IT™"></a>
+    <nav class="hdr-nav">
+      <a class="hdr-link dd" href="#">Courses <img src="assets/chev.svg" alt=""></a>
+      <a class="hdr-link dd" href="#">E-books <img src="assets/chev.svg" alt=""></a>
+      <a class="hdr-link" href="#">Individual lessons</a>
+      <a class="hdr-link" href="#">Corporate Training</a>
+    </nav>
+    <a class="hdr-link dd" href="#">English 🇺🇸 <img src="assets/chev.svg" alt=""></a>
+    <a class="hdr-offer" href="#">
+      <img src="assets/stars.svg" alt="">
+      <span><b>Special offer.</b>English For Tech Lite course for $20 →</span>
+    </a>
+  </header>
+
+  <main class="body">
+    <form class="card" action="match-result.html" id="form">
+      <div class="progress">
+        <div class="progress-labels"><span class="step">STEP 2 OF 3 · LEVEL TEST</span><span class="count">Question 12 of 30</span></div>
+        <div class="track"><div class="fill" style="width: 299px"></div></div>
+      </div>
+      <span class="part">PART 1 OF 3 — GRAMMAR</span>
+      <h1 class="q">_______ this explanation _______ sense?</h1>
+
+      <fieldset class="options">
+        <label class="option">
+          <input type="radio" name="answer" value="a">
+          <span class="opt-text"><b>Does, make</b></span>
+          <span class="radio"></span>
+        </label>
+        <label class="option">
+          <input type="radio" name="answer" value="b">
+          <span class="opt-text"><b>Is, make</b></span>
+          <span class="radio"></span>
+        </label>
+        <label class="option">
+          <input type="radio" name="answer" value="c">
+          <span class="opt-text"><b>Does, has</b></span>
+          <span class="radio"></span>
+        </label>
+      </fieldset>
+
+      <div class="nav">
+        <a class="back" href="match-format.html">← Back</a>
+        <button class="btn" type="submit" disabled>Next →</button>
+      </div>
+    </form>
+  </main>
+
+</div>
+<script>
+  // ponytail: у макеті одне питання з 30 — «Next» одразу веде на результат.
+  // Варіант результату залежить від цілі з кроку 1: співбесіда → 06c (рівень нижчий за ціль).
+  document.getElementById('form').addEventListener('submit', e => {
+    e.preventDefault();
+    let goal = null;
+    try { goal = sessionStorage.getItem('goal'); } catch (e) {}
+    location.href = goal === 'interview' ? 'match-result-below.html' : 'match-result.html';
+  });
+  const next = document.querySelector('.btn');
+  const sync = () => { next.disabled = !document.querySelector('.options input:checked'); };
+  document.querySelector('.options').addEventListener('change', sync);
+  sync();
+</script>
+</body>
+</html>

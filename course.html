@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English For IT™ — English For Tech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&family=Roboto:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Rubik', sans-serif; background: #f5f7ff; color: #1c1c1c; }
+  .page { width: 1440px; margin: 0 auto; background: #f5f7ff; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 3px solid rgba(53, 81, 240, .45); outline-offset: 3px; }
+
+  /* ---------- Header (match style: px 48) ---------- */
+  .hdr { background: #3551f0; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 75px; }
+  .hdr-logo img { display: block; width: 209.64px; height: 40px; }
+  .hdr-nav { display: flex; align-items: center; }
+  .hdr-link { display: flex; align-items: center; gap: 10px; padding: 30px 20px; font-size: 14.025px; line-height: 15px; color: #ffffe1; transition: opacity .15s; }
+  .hdr-link.dd { padding-right: 15px; font-family: 'Roboto', sans-serif; }
+  .hdr-link img { width: 15px; height: 15px; }
+  .hdr-link:hover { opacity: .75; }
+  .hdr-offer { background: #ffffe1; display: flex; align-items: center; gap: 10px; padding: 10px 20px; color: #3551f0; font-size: 14.025px; line-height: 19.597px; transition: background .15s; }
+  .hdr-offer img { width: 18.713px; height: 18.713px; }
+  .hdr-offer b { font-weight: 500; display: block; }
+  .hdr-offer:hover { background: #fff; }
+
+  /* ---------- Buttons ---------- */
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 18px 32px; border: 0; border-radius: 100px; font: 600 17px/1.5 'Rubik', sans-serif; white-space: nowrap; cursor: pointer; transition: background .15s, color .15s; }
+  .btn-blue { background: #3551f0; color: #fff; }
+  .btn-blue:hover { background: #2a43d6; }
+  .btn-orange { background: #fe7e4f; color: #fff; }
+  .btn-orange:hover { background: #f06a39; }
+  .btn-white { background: #fff; color: #3551f0; }
+  .btn-white:hover { background: #ebeefe; }
+  .btn-outline { background: #fff; color: #3551f0; border: 2px solid #3551f0; padding: 16px 30px; }
+  .btn-outline:hover { background: #ebeefe; }
+
+  /* ---------- Shared section bits ---------- */
+  .section { padding: 64px 120px 0; }
+  .panel { border-radius: 40px; padding: 64px 56px; display: flex; flex-direction: column; gap: 40px; }
+  .heading { display: flex; flex-direction: column; gap: 12px; }
+  .eyebrow { font-size: 14px; font-weight: 600; letter-spacing: .8px; line-height: 1.5; color: #3551f0; }
+  .h2 { font-size: 48px; font-weight: 800; line-height: 1.1; letter-spacing: -1.2px; }
+  .lead { font-size: 19px; line-height: 1.5; color: #3f3f4a; }
+  .on-color .eyebrow, .on-color .h2, .on-color .lead { color: #fff; }
+  .icon-box { width: 56px; height: 56px; border-radius: 18px; background: #3551f0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .icon-box img { width: 26px; height: 26px; }
+
+  /* ---------- Hero (photo) ---------- */
+  .hero { position: relative; height: 821px; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(18,20,38,.82), rgba(18,20,38,.55) 55%, rgba(18,20,38,.15)); }
+  .rec { position: absolute; left: 56px; right: 56px; top: 64px; height: 60px; background: rgba(255,255,255,.92); border-radius: 20px; padding: 14px 24px; display: flex; align-items: center; gap: 14px; }
+  .rec-icon { width: 32px; height: 32px; border-radius: 100px; background: #3551f0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .rec-icon img { width: 16px; height: 16px; }
+  .rec p { flex: 1 0 0; font-size: 15px; font-weight: 600; line-height: 1.5; }
+  .rec a { font-size: 15px; font-weight: 600; line-height: 1.5; color: #3551f0; white-space: nowrap; }
+  .rec a:hover { text-decoration: underline; }
+  .hero-row { position: absolute; left: 56px; right: 56px; top: 148px; height: 772px; padding: 16px 0; display: flex; align-items: center; gap: 48px; }
+  .hero-text { width: 749px; background: #fff; border-radius: 32px; padding: 44px; display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
+  .tag { background: #3551f0; color: #fff; padding: 6px 12px; border-radius: 100px; font-size: 13px; font-weight: 600; letter-spacing: .6px; line-height: 1.5; }
+  .hero-text h1 { font-size: 60px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; }
+  .hero-text p { font-size: 20px; line-height: 1.5; color: #3f3f4a; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+  .glass { width: 420px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(17,20,42,.55); border: 1.5px solid rgba(255,255,255,.35); border-radius: 32px; padding: 32px; display: flex; flex-direction: column; gap: 18px; }
+  .glass > .label { font-size: 13px; font-weight: 600; letter-spacing: .8px; line-height: 1.5; color: rgba(255,255,255,.8); }
+  .fact { display: flex; gap: 14px; align-items: center; line-height: 1.5; }
+  .fact-icon { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.16); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .fact-icon img { width: 20px; height: 20px; }
+  .fact small { display: block; font-size: 12px; font-weight: 500; color: rgba(255,255,255,.7); }
+  .fact b { display: block; font-size: 15px; font-weight: 600; color: #fff; }
+  .hero-price { background: #fff; border-radius: 20px; padding: 16px 20px; display: flex; flex-direction: column; gap: 2px; line-height: 1.5; }
+  .hero-price .row { display: flex; gap: 8px; align-items: baseline; }
+  .hero-price .row span { font-size: 15px; font-weight: 500; color: #3f3f4a; }
+  .hero-price .row b { font-size: 30px; font-weight: 800; }
+  .hero-price p { font-size: 14px; font-weight: 500; color: #3551f0; }
+
+  /* ---------- How the course works ---------- */
+  .how { background: #fff; }
+  .how-content { display: flex; gap: 32px; align-items: center; }
+  .tiles { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; }
+  .tiles .row { display: flex; gap: 16px; }
+  .tile { flex: 1 0 0; background: #ffffe1; border: 1.5px solid #e6e0a0; border-radius: 24px; padding: 22px; display: flex; gap: 16px; align-items: center; }
+  .tile-text { flex: 1 0 0; display: flex; flex-direction: column; gap: 4px; align-items: flex-start; line-height: 1.5; }
+  .tile-text b { font-size: 18px; font-weight: 700; }
+  .tile-text span { font-size: 15px; color: #3f3f4a; }
+  .plan-tag { background: #ebeefe; color: #3551f0 !important; padding: 4px 10px; border-radius: 100px; font-size: 12px !important; font-weight: 600; }
+  .platform { width: 440px; height: 356px; border-radius: 28px; background: #ebeefe; object-fit: contain; flex-shrink: 0; }
+
+  /* ---------- After you pay ---------- */
+  .after { background: #3551f0; }
+  .after .eyebrow, .after .lead { opacity: .85; }
+  .after-steps { display: flex; gap: 20px; align-items: center; }
+  .after-step { flex: 1 0 0; align-self: stretch; background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.3); border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+  .after-step .top { display: flex; gap: 16px; align-items: center; }
+  .after-step .top .icon-box { background: #fff; }
+  .after-step .num { font-size: 40px; font-weight: 800; line-height: 1.1; color: rgba(255,255,255,.35); }
+  .after-step b { font-size: 22px; font-weight: 700; line-height: 1.5; color: #fff; }
+  .after-step p { font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.85); }
+  .after-arrow { width: 32px; height: 32px; flex-shrink: 0; }
+
+  /* ---------- Program ---------- */
+  .program { padding: 64px 120px 0; display: flex; flex-direction: column; gap: 40px; scroll-margin-top: 0; }
+  .modules { display: flex; gap: 20px; align-items: stretch; }
+  .module { flex: 1 0 0; background: #fff; border: 1.5px solid #e6e0a0; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .module .n { font-size: 48px; font-weight: 800; line-height: 1.1; color: #3551f0; }
+  .module .w { font-size: 14px; font-weight: 600; letter-spacing: .8px; line-height: 1.5; color: #3f3f4a; }
+  .module b { font-size: 19px; font-weight: 700; line-height: 1.5; }
+  .level-check { flex: 1 0 0; background: #3551f0; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .level-check b { font-size: 22px; font-weight: 700; line-height: 1.5; color: #fff; }
+  .level-check p { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.85); }
+
+  /* ---------- Who teaches you ---------- */
+  .who { background: #fff; }
+  .who-content { display: flex; gap: 64px; align-items: center; }
+  .anna { width: 400px; height: 440px; border-radius: 32px; object-fit: cover; flex-shrink: 0; }
+  .who-text { flex: 1 0 0; display: flex; flex-direction: column; gap: 20px; }
+  .author b { display: block; font-size: 26px; font-weight: 700; line-height: 1.5; }
+  .author span { display: block; margin-top: 4px; font-size: 16px; font-weight: 500; line-height: 1.5; color: #3551f0; }
+  .who-fact { display: flex; gap: 12px; align-items: center; font-size: 17px; line-height: 1.5; }
+  .check-circle { width: 28px; height: 28px; border-radius: 100px; background: #ddf8dd; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .check-circle img { width: 13px; height: 13px; }
+  .mentors { background: #ebeefe; border-radius: 24px; padding: 24px; display: flex; gap: 16px; align-items: center; line-height: 1.5; }
+  .mentors .icon-box { width: 52px; height: 52px; }
+  .mentors .icon-box img { width: 24px; height: 24px; }
+  .mentors b { display: block; font-size: 18px; font-weight: 700; }
+  .mentors div span { display: block; margin-top: 2px; font-size: 16px; color: #3f3f4a; }
+
+  /* ---------- Where you'll speak ---------- */
+  .speak { background: #fe7e4f; }
+  .speak-tiles { display: flex; gap: 20px; align-items: stretch; }
+  .speak-tile { flex: 1 0 0; background: #fff; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .speak-tag { background: #ffe3d8; color: #9a3412; padding: 4px 10px; border-radius: 100px; font-size: 12px; font-weight: 600; line-height: 1.5; }
+  .speak-tile b { font-size: 21px; font-weight: 700; line-height: 1.5; }
+  .speak-tile p { font-size: 16px; line-height: 1.5; color: #3f3f4a; }
+
+  /* ---------- Pricing ---------- */
+  .pricing { background: #3551f0; }
+  .pricing-content { display: flex; gap: 32px; align-items: flex-start; }
+  .plans { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; }
+  .plans .heading { margin-bottom: 8px; }
+  .plans .lead { color: rgba(255,255,255,.85); }
+  .plan { background: #fff; border-radius: 28px; padding: 28px; display: flex; gap: 24px; align-items: center; }
+  .plan.popular { border: 5px solid #fe7e4f; padding: 23px; }
+  .plan-name { width: 150px; flex-shrink: 0; display: flex; flex-direction: column; gap: 2px; align-items: flex-start; line-height: 1.5; }
+  .plan-name b { font-size: 24px; font-weight: 800; }
+  .plan-name span { font-size: 15px; font-weight: 600; color: #3551f0; }
+  .popular-badge { background: #fe7e4f; color: #fff !important; padding: 4px 10px; border-radius: 100px; font-size: 11px !important; font-weight: 700 !important; }
+  .incl-list { flex: 1 0 0; display: flex; flex-direction: column; gap: 6px; }
+  .incl { display: flex; gap: 8px; align-items: center; font-size: 15px; line-height: 1.5; }
+  .incl img { width: 16px; height: 16px; flex-shrink: 0; }
+  .plan-price { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.5; white-space: nowrap; }
+  .plan-price b { font-size: 34px; font-weight: 800; }
+  .plan-price span { font-size: 13px; font-weight: 500; color: #3f3f4a; }
+  .pay-note { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.8); }
+  .price-card { width: 352px; height: 705px; flex-shrink: 0; background: #fff; border-radius: 32px; padding: 32px; box-shadow: 0 20px 48px rgba(13,20,77,.3); display: flex; flex-direction: column; gap: 16px; }
+  .price-card > .title { font-size: 20px; font-weight: 700; line-height: 1.5; }
+  .switch { height: 51px; background: #ebeefe; border-radius: 100px; padding: 4px; display: flex; gap: 4px; }
+  .switch button { flex: 1 0 0; border: 0; background: none; border-radius: 100px; padding: 10px 0; font: 500 15px/1.5 'Rubik', sans-serif; color: #3f3f4a; cursor: pointer; transition: background .15s, color .15s; }
+  .switch button:hover { color: #3551f0; }
+  .switch button[aria-pressed="true"] { background: #fff; color: #3551f0; font-weight: 700; }
+  .big-price { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; }
+  .big-price b { font-size: 48px; font-weight: 800; line-height: 1.1; }
+  .big-price span { font-size: 15px; font-weight: 500; line-height: 1.5; color: #3f3f4a; }
+  .plan-label { font-size: 16px; font-weight: 600; line-height: 1.5; color: #3551f0; }
+  .price-card .incl { gap: 10px; }
+  .price-card .incl img { width: 18px; height: 18px; }
+  .push { flex: 1 0 0; }
+  .price-card .btn { width: 100%; }
+  .price-card .btn-blue { height: 62px; }
+  .price-card .btn-outline { height: 66px; }
+  .price-card .note { font-size: 13px; line-height: 1.5; color: #3f3f4a; }
+
+  /* ---------- FAQ ---------- */
+  .faq { padding: 64px 120px 0; display: flex; flex-direction: column; gap: 40px; }
+  .faq-grid { display: flex; gap: 20px; }
+  .faq-col { flex: 1 0 0; display: flex; flex-direction: column; gap: 12px; }
+  .q { background: #fff; border: 1.5px solid #e6e0a0; border-radius: 20px; padding: 22px 24px; display: flex; gap: 12px; align-items: center; cursor: pointer; transition: border-color .15s; }
+  .q p { flex: 1 0 0; font-size: 18px; font-weight: 600; line-height: 1.5; }
+  .q span { width: 36px; height: 36px; border-radius: 100px; background: #ebeefe; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .15s; }
+  .q span img { width: 17px; height: 17px; }
+  .q:hover { border-color: #3551f0; }
+  .q:hover span { background: #d9defd; }
+
+  /* ---------- Footer (original) ---------- */
+  .ftr { background: #f5f7ff; padding: 64px 120px 24px; display: flex; flex-direction: column; align-items: center; }
+  .contacts { width: 100%; background: #fff; border-radius: 24px; padding: 22px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .contact { display: flex; align-items: center; gap: 11.1px; font-size: 15.583px; line-height: 21.775px; color: #ff8533; }
+  .contact img { width: 33.3px; height: 33.3px; }
+  .contact:hover { text-decoration: underline; }
+  .ftr-section { width: 1200px; padding-top: 32px; display: flex; flex-direction: column; gap: 40px; }
+  .ftr-cols { display: flex; justify-content: space-between; align-items: flex-start; padding-top: 36.9px; }
+  .ftr-left { width: 369.5px; align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; }
+  .newsletter { background: #fff; border: .7px solid #ffd8ca; border-radius: 27.7px; padding: 27px 27.7px 27.7px; display: flex; flex-direction: column; gap: 18.45px; }
+  .newsletter b { font-weight: 400; font-size: 16.615px; line-height: 23.262px; color: #1b1b1b; }
+  .newsletter p { padding-right: 42.7px; font-weight: 300; font-size: 12.946px; line-height: 18.09px; color: #4e4e4e; }
+  .nl-form { display: flex; gap: 4.6px; }
+  .nl-form input { width: 193.7px; height: 39.87px; border: .7px solid #ffd8ca; border-radius: 1000px; padding: 0 18.46px; font: 400 12.946px 'Rubik', sans-serif; color: #1b1b1b; outline: none; transition: border-color .15s; }
+  .nl-form input::placeholder { color: #999; }
+  .nl-form input:focus { border-color: #3551f0; }
+  .nl-form button { border: 0; cursor: pointer; background: #3551f0; color: #ffffe1; border-radius: 1000px; padding: 11.08px 27.7px; font: 400 12.946px/18.09px 'Rubik', sans-serif; text-transform: uppercase; transition: background .15s; }
+  .nl-form button:hover { background: #2a43d6; }
+  .socials { display: flex; justify-content: space-between; }
+  .socials a { width: 46.15px; height: 46.15px; display: block; transition: transform .15s; }
+  .socials a img { width: 100%; height: 100%; display: block; }
+  .socials a:hover { transform: scale(1.08); }
+  .legal { display: flex; flex-direction: column; gap: 9.2px; font-weight: 300; font-size: 12.946px; line-height: 18.09px; color: #4e4e4e; }
+  .legal div { display: flex; justify-content: space-between; }
+  .ftr-col { display: flex; flex-direction: column; gap: 9.2px; font-weight: 300; font-size: 12.946px; line-height: 18.09px; color: #4e4e4e; }
+  .ftr-col h4 { height: 32.5px; font-weight: 500; font-size: 16.615px; line-height: 23.262px; color: #1b1b1b; text-transform: uppercase; }
+  .ftr-col a:hover, .legal a:hover { color: #3551f0; }
+  .ftr-col.lang { width: 91px; }
+  .ftr-col.company { min-width: 80.9px; }
+  .wordmark { width: 1200px; aspect-ratio: 1733.33 / 336.27; display: block; }
+  #pc-incl { display: flex; flex-direction: column; gap: 16px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hdr">
+    <a class="hdr-logo" href="home.html"><img src="assets/logo.svg" alt="English For IT™"></a>
+    <nav class="hdr-nav">
+      <a class="hdr-link dd" href="#">Courses <img src="assets/chev.svg" alt=""></a>
+      <a class="hdr-link dd" href="#">E-books <img src="assets/chev.svg" alt=""></a>
+      <a class="hdr-link" href="#">Individual lessons</a>
+      <a class="hdr-link" href="#">Corporate Training</a>
+    </nav>
+    <a class="hdr-link dd" href="#">English 🇺🇸 <img src="assets/chev.svg" alt=""></a>
+    <a class="hdr-offer" href="#">
+      <img src="assets/stars.svg" alt="">
+      <span><b>Special offer.</b>English For Tech Lite course for $20 →</span>
+    </a>
+  </header>
+
+  <!-- Hero (photo) -->
+  <section class="hero">
+    <img class="hero-bg" src="assets/hero-course.png" alt="">
+    <div class="rec">
+      <span class="rec-icon"><img src="assets/ch-star.svg" alt=""></span>
+      <p>Recommended for you · B1 Intermediate · Goal: talk to my team and clients</p>
+      <a href="match-result.html">← Back to your result</a>
+    </div>
+    <div class="hero-row">
+      <div class="hero-text">
+        <span class="tag">ONLINE COURSE · MOST POPULAR</span>
+        <h1>English For Tech</h1>
+        <p>Master tech vocabulary, business communication and real-world English skills — built specifically for people who work in tech.</p>
+        <div class="hero-actions">
+          <a class="btn btn-orange" href="#pricing">Choose a plan →</a>
+          <a class="btn btn-outline" href="request.html">Book a free consultation</a>
+        </div>
+      </div>
+      <div class="glass">
+        <p class="label">COURSE DETAILS</p>
+        <div class="fact"><span class="fact-icon"><img src="assets/ch-level.svg" alt=""></span><div><small>Level</small><b>Low Intermediate – Upper-Intermediate</b></div></div>
+        <div class="fact"><span class="fact-icon"><img src="assets/ch-calendar.svg" alt=""></span><div><small>Duration</small><b>7 weeks · bonus 1:1 if you finish within 9 weeks</b></div></div>
+        <div class="fact"><span class="fact-icon"><img src="assets/ch-laptop.svg" alt=""></span><div><small>Format</small><b>Online, any time, any device</b></div></div>
+        <div class="fact"><span class="fact-icon"><img src="assets/ch-clock.svg" alt=""></span><div><small>Time</small><b>~3 hours per week</b></div></div>
+        <div class="fact"><span class="fact-icon"><img src="assets/ch-play.svg" alt=""></span><div><small>Start</small><b>Today — access right after payment</b></div></div>
+        <div class="hero-price">
+          <div class="row"><span>from</span><b>$198</b></div>
+          <p>one-time payment for the whole course</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How the course works -->
+  <section class="section">
+    <div class="panel how">
+      <div class="heading">
+        <p class="eyebrow">HOW THE COURSE WORKS</p>
+        <h2 class="h2">What a week on the course looks like</h2>
+        <p class="lead">One module a week · ~3 hours · study whenever it suits you, on any device.</p>
+      </div>
+      <div class="how-content">
+        <div class="tiles">
+          <div class="row">
+            <div class="tile"><span class="icon-box"><img src="assets/w-video.svg" alt=""></span><div class="tile-text"><b>Video and audio lessons</b><span>50+ lessons with subtitles</span></div></div>
+            <div class="tile"><span class="icon-box"><img src="assets/w-task.svg" alt=""></span><div class="tile-text"><b>Practice on real situations</b><span>Slack, emails, docs, meetings</span></div></div>
+          </div>
+          <div class="row">
+            <div class="tile"><span class="icon-box"><img src="assets/w-mic.svg" alt=""></span><div class="tile-text"><b>Speaking in every lesson</b><span>Record answers to work situations</span></div></div>
+            <div class="tile"><span class="icon-box"><img src="assets/w-mentor.svg" alt=""></span><div class="tile-text"><b>Live mentor feedback</b><span>On speaking and pronunciation — not AI</span><span class="plan-tag">Middle · Senior</span></div></div>
+          </div>
+          <div class="row">
+            <div class="tile"><span class="icon-box"><img src="assets/w-group.svg" alt=""></span><div class="tile-text"><b>Live mini-group class</b><span>Weekly, with a certified teacher</span><span class="plan-tag">Senior</span></div></div>
+            <div class="tile"><span class="icon-box"><img src="assets/w-cert.svg" alt=""></span><div class="tile-text"><b>Certificate</b><span>Share it on LinkedIn when you finish</span></div></div>
+          </div>
+        </div>
+        <img class="platform" src="assets/platform.png" alt="English For IT learning platform on a laptop">
+      </div>
+    </div>
+  </section>
+
+  <!-- After you pay -->
+  <section class="section">
+    <div class="panel after on-color">
+      <div class="heading">
+        <p class="eyebrow">AFTER YOU PAY</p>
+        <h2 class="h2">Start learning today</h2>
+        <p class="lead">No waiting for a group to form — your access opens right away.</p>
+      </div>
+      <div class="after-steps">
+        <div class="after-step">
+          <div class="top"><span class="icon-box"><img src="assets/p-key.svg" alt=""></span><span class="num">01</span></div>
+          <b>Access today</b>
+          <p>Your personal account with all materials opens right after payment.</p>
+        </div>
+        <img class="after-arrow" src="assets/p-arrow.svg" alt="">
+        <div class="after-step">
+          <div class="top"><span class="icon-box"><img src="assets/p-book.svg" alt=""></span><span class="num">02</span></div>
+          <b>7 weeks of lessons</b>
+          <p>One module a week, at your own pace. Finish within 9 weeks for a bonus 1:1.</p>
+        </div>
+        <img class="after-arrow" src="assets/p-arrow.svg" alt="">
+        <div class="after-step">
+          <div class="top"><span class="icon-box"><img src="assets/p-cert.svg" alt=""></span><span class="num">03</span></div>
+          <b>Certificate</b>
+          <p>Get a blockchain-verified certificate and share it on LinkedIn.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program -->
+  <section class="program" id="program">
+    <div class="heading">
+      <p class="eyebrow">PROGRAM</p>
+      <h2 class="h2">7 modules, one a week</h2>
+      <p class="lead">Each module: video lessons, practice tasks and a speaking task on the topic.</p>
+    </div>
+    <div class="modules">
+      <div class="module"><span class="n">01</span><span class="w">WEEK 1</span><b>Hype Waves in Tech: Web3 and AI</b></div>
+      <div class="module"><span class="n">02</span><span class="w">WEEK 2</span><b>Outsourcing vs Product Companies</b></div>
+      <div class="module"><span class="n">03</span><span class="w">WEEK 3</span><b>Formal communication and documentation in tech</b></div>
+      <div class="module"><span class="n">04</span><span class="w">WEEK 4</span><b>Agile software development</b></div>
+    </div>
+    <div class="modules">
+      <div class="module"><span class="n">05</span><span class="w">WEEK 5</span><b>Team communication from Junior to Senior</b></div>
+      <div class="module"><span class="n">06</span><span class="w">WEEK 6</span><b>Cross-functional communication</b></div>
+      <div class="module"><span class="n">07</span><span class="w">WEEK 7</span><b>Networking offline and online</b></div>
+      <div class="level-check">
+        <b>Not sure your level fits?</b>
+        <p>Take a free 15-minute test and see if this course is right for you.</p>
+        <a class="btn btn-white" href="match-start.html">Take the test →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who teaches you -->
+  <section class="section">
+    <div class="panel who">
+      <div class="who-content">
+        <img class="anna" src="assets/anna.png" alt="Anna Gandrabura">
+        <div class="who-text">
+          <p class="eyebrow">WHO TEACHES YOU</p>
+          <h2 class="h2">Real people behind the course</h2>
+          <div class="author"><b>Anna Gandrabura</b><span>Course author · Founder of English For IT™</span></div>
+          <div class="who-fact"><span class="check-circle"><img src="assets/i-check.svg" alt=""></span>Author of the textbook “English For Tech”</div>
+          <div class="who-fact"><span class="check-circle"><img src="assets/i-check.svg" alt=""></span>Executive &amp; Leadership Coach</div>
+          <div class="who-fact"><span class="check-circle"><img src="assets/i-check.svg" alt=""></span>Host of the Power Skills for Success podcast</div>
+          <div class="who-fact"><span class="check-circle"><img src="assets/i-check.svg" alt=""></span>Studied Communication and Management at Stanford University</div>
+          <div class="mentors">
+            <span class="icon-box"><img src="assets/t-mentors.svg" alt=""></span>
+            <div><b>Your mentors</b><span>Native speakers and TESOL/CELTA-certified teachers. They check your speaking, answer questions and lead live classes.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Where you'll speak -->
+  <section class="section">
+    <div class="panel speak on-color">
+      <div class="heading">
+        <p class="eyebrow">SPEAKING PRACTICE</p>
+        <h2 class="h2">Where you’ll speak English</h2>
+        <p class="lead">The most asked question — here is every place you’ll practice.</p>
+      </div>
+      <div class="speak-tiles">
+        <div class="speak-tile"><span class="icon-box"><img src="assets/sp-mic.svg" alt=""></span><span class="speak-tag">All plans</span><b>In every lesson</b><p>Speaking tasks based on real work situations.</p></div>
+        <div class="speak-tile"><span class="icon-box"><img src="assets/sp-mentor.svg" alt=""></span><span class="speak-tag">Middle · Senior</span><b>With your mentor</b><p>Regular feedback on your speaking and pronunciation.</p></div>
+        <div class="speak-tile"><span class="icon-box"><img src="assets/sp-group.svg" alt=""></span><span class="speak-tag">Senior</span><b>In live classes</b><p>6 weekly classes in a mini group with a teacher.</p></div>
+        <div class="speak-tile"><span class="icon-box"><img src="assets/sp-chat.svg" alt=""></span><span class="speak-tag">Extra practice</span><b>In our Speaking Club</b><p>Every Friday, 5:30–7:00 PM CET — topics you choose.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing">
+    <div class="panel pricing on-color">
+      <div class="pricing-content">
+        <div class="plans">
+          <div class="heading">
+            <p class="eyebrow">PRICING</p>
+            <h2 class="h2">Choose how much support you want</h2>
+            <p class="lead">All plans include the full 7-week course. You pay once for the whole course — not per month.</p>
+          </div>
+          <div class="plan">
+            <div class="plan-name"><b>Junior</b><span>Self-study</span></div>
+            <div class="incl-list">
+              <div class="incl"><img src="assets/pr-check.svg" alt="">Unlimited access to course materials</div>
+              <div class="incl"><img src="assets/pr-check.svg" alt="">Private community with learners and mentors</div>
+              <div class="incl"><img src="assets/pr-check.svg" alt="">Exclusive events and perks</div>
+            </div>
+            <div class="plan-price"><b>$198</b><span>whole course</span></div>
+          </div>
+          <div class="plan popular">
+            <div class="plan-name"><span class="popular-badge">MOST POPULAR</span><b>Middle</b><span>With a mentor</span></div>
+            <div class="incl-list">
+              <div class="incl"><img src="assets/pr-check.svg" alt="">Everything in Self-study</div>
+              <div class="incl"><img src="assets/pr-check.svg" alt="">Live mentor feedback on your speaking</div>
+              <div class="incl"><img src="assets/pr-check.svg" alt="">AI writing check · blockchain certificate</div>
+            </div>
+            <div class="plan-price"><b>$288</b><span>whole course</span></div>
+          </div>
+          <div class="plan">
+            <div class="plan-name"><b>Senior</b><span>With live classes</span></div>
+            <div class="incl-list">
+              <div class="incl"><img src="assets/pr-check.svg" alt="">Everything in With a mentor</div>
+              <div class="incl"><img src="assets/pr-check.svg" alt="">6 weekly live classes in a mini group</div>
+              <div class="incl"><img src="assets/pr-check.svg" alt="">Personalized study plan</div>
+            </div>
+            <div class="plan-price"><b>$398</b><span>whole course</span></div>
+          </div>
+          <p class="pay-note">Payment via PayPal or USDT (crypto).</p>
+        </div>
+
+        <div class="price-card">
+          <p class="title">English For Tech</p>
+          <div class="switch" role="group" aria-label="Plan">
+            <button type="button" data-plan="junior" aria-pressed="false">Junior</button>
+            <button type="button" data-plan="middle" aria-pressed="true">Middle</button>
+            <button type="button" data-plan="senior" aria-pressed="false">Senior</button>
+          </div>
+          <div class="big-price"><b id="pc-price">$288</b><span>for the whole course</span></div>
+          <p class="plan-label" id="pc-label">Middle · With a mentor</p>
+          <div id="pc-incl">
+            <div class="incl"><img src="assets/pr-check2.svg" alt="">All course materials and community</div>
+            <div class="incl"><img src="assets/pr-check2.svg" alt="">Live mentor feedback on your speaking</div>
+            <div class="incl"><img src="assets/pr-check2.svg" alt="">AI writing check and certificate</div>
+          </div>
+          <div class="push"></div>
+          <a class="btn btn-blue" href="#" id="pc-enroll">Enroll in Middle →</a>
+          <a class="btn btn-outline" href="request.html">Book a free consultation</a>
+          <p class="note">Not sure which plan? We’ll help you choose.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2 class="h2">FAQ</h2>
+    <div class="faq-grid">
+      <div class="faq-col">
+        <div class="q"><p>How long is this course?</p><span><img src="assets/faq-plus.svg" alt=""></span></div>
+        <div class="q"><p>How will I practice speaking?</p><span><img src="assets/faq-plus.svg" alt=""></span></div>
+        <div class="q"><p>Can my company pay for this course?</p><span><img src="assets/faq-plus.svg" alt=""></span></div>
+      </div>
+      <div class="faq-col">
+        <div class="q"><p>What kind of tasks will I have in this course?</p><span><img src="assets/faq-plus.svg" alt=""></span></div>
+        <div class="q"><p>How long will I have access to the course?</p><span><img src="assets/faq-plus.svg" alt=""></span></div>
+        <div class="q"><p>Which plan should I choose?</p><span><img src="assets/faq-plus.svg" alt=""></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (original) -->
+  <footer class="ftr">
+    <div class="contacts">
+      <a class="contact" href="#"><img src="assets/c-mail.svg" alt="">Send email</a>
+      <a class="contact" href="#"><img src="assets/c-phone.svg" alt="">Book a call</a>
+      <a class="contact" href="#"><img src="assets/c-telegram.svg" alt="">Message us on Telegram</a>
+      <a class="contact" href="#"><img src="assets/c-whatsapp.svg" alt="">Message us on WhatsApp</a>
+    </div>
+    <div class="ftr-section">
+      <div class="ftr-cols">
+        <div class="ftr-left">
+          <div class="newsletter">
+            <div>
+              <b>Sign up to stay connected every week!</b>
+              <p>You'll get helpful tips, mini-lessons, motivation and more</p>
+            </div>
+            <form class="nl-form" onsubmit="return false">
+              <input type="email" placeholder="example@gmail.com" aria-label="Email">
+              <button type="submit">Sign up</button>
+            </form>
+          </div>
+          <div class="socials">
+            <a href="#" aria-label="YouTube"><img src="assets/s-yt.svg" alt=""></a>
+            <a href="#" aria-label="Instagram"><img src="assets/s-ig.svg" alt=""></a>
+            <a href="#" aria-label="Facebook"><img src="assets/s-fb.svg" alt=""></a>
+            <a href="#" aria-label="Telegram"><img src="assets/s-tg.svg" alt=""></a>
+            <a href="#" aria-label="WhatsApp"><img src="assets/s-wa.svg" alt=""></a>
+            <a href="#" aria-label="LinkedIn"><img src="assets/s-in.svg" alt=""></a>
+          </div>
+          <div class="legal">
+            <p>© 2026 English For IT™. All rights reserved.</p>
+            <div><a href="#">Terms and conditions</a><a href="#">Payments and refunds</a><a href="#">Privacy policy</a></div>
+          </div>
+        </div>
+        <div class="ftr-col">
+          <h4>Courses</h4>
+          <a href="#">English For Work: Starter</a>
+          <a href="#">Business English</a>
+          <a href="course.html">English For Tech</a>
+          <a href="#">English For Tech Lite</a>
+          <a href="#">English For Tech: Speaking &amp; Listening</a>
+          <a href="#">English For IT: Communication</a>
+          <a href="#">Power Skills For Work</a>
+          <a href="#">Job Interview Crash Course</a>
+          <a href="#">Modern English</a>
+          <a href="#">Vocabulary &amp; Grammar</a>
+        </div>
+        <div class="ftr-col">
+          <h4>e-books</h4>
+          <a href="#">English For Tech Textbook</a>
+          <a href="#">Grammar Phrasebook</a>
+          <a href="#">Interview Prep Workbook</a>
+          <a href="#">Practice English with AI</a>
+        </div>
+        <div class="ftr-col">
+          <h4>Formats</h4>
+          <a href="#">Corporate Training</a>
+          <a href="#">For Individuals</a>
+          <a href="#">For Schools</a>
+          <a href="#">Speaking Club</a>
+          <a href="#">Gift Card</a>
+          <a href="match-start.html">Free English level test</a>
+        </div>
+        <div class="ftr-col company">
+          <h4>Company</h4>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+        </div>
+        <div class="ftr-col lang">
+          <h4>Language</h4>
+          <a href="#">English 🇺🇸</a>
+          <a href="#">Українська 🇺🇦</a>
+          <a href="#">Español 🇪🇸</a>
+        </div>
+      </div>
+      <img class="wordmark" src="assets/footer-wordmark.png" alt="English For IT™">
+    </div>
+  </footer>
+
+</div>
+<script>
+  // Перемикач тарифів у картці ціни. Склад Junior/Senior взято з рядків тарифів ліворуч (у макеті показано лише Middle)
+  const plans = {
+    junior: { price: '$198', label: 'Junior · Self-study', name: 'Junior',
+      incl: ['Unlimited access to course materials', 'Private community with learners and mentors', 'Exclusive events and perks'] },
+    middle: { price: '$288', label: 'Middle · With a mentor', name: 'Middle',
+      incl: ['All course materials and community', 'Live mentor feedback on your speaking', 'AI writing check and certificate'] },
+    senior: { price: '$398', label: 'Senior · With live classes', name: 'Senior',
+      incl: ['Everything in With a mentor', '6 weekly live classes in a mini group', 'Personalized study plan'] },
+  };
+  document.querySelectorAll('.switch button').forEach(btn => btn.addEventListener('click', () => {
+    const p = plans[btn.dataset.plan];
+    document.querySelectorAll('.switch button').forEach(b => b.setAttribute('aria-pressed', b === btn));
+    document.getElementById('pc-price').textContent = p.price;
+    document.getElementById('pc-label').textContent = p.label;
+    document.getElementById('pc-enroll').textContent = `Enroll in ${p.name} →`;
+    document.getElementById('pc-incl').innerHTML = p.incl
+      .map(t => `<div class="incl"><img src="assets/pr-check2.svg" alt="">${t}</div>`).join('');
+  }));
+</script>
+</body>
+</html>

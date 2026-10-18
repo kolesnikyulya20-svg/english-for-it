@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English For IT™ — You’re booked</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Roboto:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Rubik', sans-serif; background: #f5f7ff; color: #1c1c1c; }
+  .page { width: 1440px; margin: 0 auto; background: #f5f7ff; min-height: 890px; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 3px solid rgba(53, 81, 240, .45); outline-offset: 3px; }
+
+  /* ---------- Header (home style: px 120) ---------- */
+  .hdr { background: #3551f0; display: flex; align-items: center; justify-content: space-between; padding: 0 120px; height: 73.5px; }
+  .hdr-logo img { display: block; width: 204.4px; height: 39px; }
+  .hdr-nav { display: flex; align-items: center; }
+  .hdr-link { display: flex; align-items: center; gap: 9.6px; padding: 29.25px 19.5px; font-size: 13.674px; line-height: 14.625px; color: #ffffe1; transition: opacity .15s; }
+  .hdr-link.dd { padding-right: 14.4px; font-family: 'Roboto', sans-serif; }
+  .hdr-link img { width: 14.625px; height: 14.625px; }
+  .hdr-link:hover { opacity: .75; }
+  .hdr-offer { background: #ffffe1; display: flex; align-items: center; gap: 9.75px; padding: 9.75px 19.5px; color: #3551f0; font-size: 13.674px; line-height: 19.108px; transition: background .15s; }
+  .hdr-offer img { width: 18.245px; height: 18.245px; }
+  .hdr-offer b { font-weight: 500; display: block; }
+  .hdr-offer:hover { background: #fff; }
+
+  /* ---------- Body ---------- */
+  .body { padding: 72px 120px 80px; display: flex; flex-direction: column; align-items: center; }
+  .card { width: 760px; background: #fff; border: 1.5px solid #e6e0a0; border-radius: 32px; padding: 56px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .ok { width: 72px; height: 72px; border-radius: 100px; background: #ddf8dd; display: flex; align-items: center; justify-content: center; }
+  .ok img { width: 33px; height: 33px; }
+  h1 { font-size: 44px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; white-space: nowrap; }
+  .lead { width: 600px; text-align: center; font-size: 18px; line-height: 1.5; color: #3f3f4a; }
+  .steps { width: 100%; display: flex; gap: 16px; }
+  .step { flex: 1 0 0; background: #f5f7ff; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 8px; line-height: 1.5; }
+  .step-icon { width: 44px; height: 44px; border-radius: 16px; background: #3551f0; display: flex; align-items: center; justify-content: center; }
+  .step-icon img { width: 20px; height: 20px; }
+  .step b { font-size: 16px; font-weight: 700; white-space: nowrap; }
+  .step p { font-size: 14px; color: #3f3f4a; }
+  .actions { display: flex; gap: 16px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 18px 32px; border-radius: 100px; font-size: 17px; font-weight: 600; line-height: 1.5; white-space: nowrap; transition: background .15s; }
+  .btn-blue { background: #3551f0; color: #fff; }
+  .btn-blue:hover { background: #2a43d6; }
+  .btn-outline { background: #fff; color: #3551f0; border: 2px solid #3551f0; padding: 16px 30px; }
+  .btn-outline:hover { background: #ebeefe; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hdr">
+    <a class="hdr-logo" href="home.html"><img src="assets/logo-home.svg" alt="English For IT™"></a>
+    <nav class="hdr-nav">
+      <a class="hdr-link dd" href="#">Courses <img src="assets/chev-home.svg" alt=""></a>
+      <a class="hdr-link dd" href="#">E-books <img src="assets/chev-home.svg" alt=""></a>
+      <a class="hdr-link" href="#">Individual lessons</a>
+      <a class="hdr-link" href="#">Corporate Training</a>
+    </nav>
+    <a class="hdr-link dd" href="#">English 🇺🇸 <img src="assets/chev-home.svg" alt=""></a>
+    <a class="hdr-offer" href="#">
+      <img src="assets/stars-home.svg" alt="">
+      <span><b>Special offer.</b>English For Tech Lite course for $20 →</span>
+    </a>
+  </header>
+
+  <main class="body">
+    <div class="card">
+      <div class="ok"><img src="assets/s-bigcheck.svg" alt=""></div>
+      <h1>You’re booked, <span id="name">Maria</span>!</h1>
+      <p class="lead">Your course advisor will message you <span class="via">on Telegram</span> within 15 minutes during working hours.</p>
+      <div class="steps">
+        <div class="step">
+          <span class="step-icon"><img src="assets/s-send.svg" alt=""></span>
+          <b>We message you</b>
+          <p><span class="via-cap">On Telegram</span> — to agree on a time</p>
+        </div>
+        <div class="step">
+          <span class="step-icon"><img src="assets/s-phone.svg" alt=""></span>
+          <b>15-minute call</b>
+          <p>Platform, your level, your goal</p>
+        </div>
+        <div class="step">
+          <span class="step-icon"><img src="assets/s-book.svg" alt=""></span>
+          <b>Your recommendation</b>
+          <p>A short summary with the right course</p>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-blue" href="#">Message us on Telegram now</a>
+        <a class="btn btn-outline" href="course.html">Back to your course</a>
+      </div>
+    </div>
+  </main>
+
+</div>
+<script>
+  // Підставляємо ім'я і канал, які людина вказала у формі
+  try {
+    const name = sessionStorage.getItem('requestName');
+    const ch = sessionStorage.getItem('requestChannel');
+    if (name) document.getElementById('name').textContent = name;
+    const via = { telegram: 'on Telegram', whatsapp: 'on WhatsApp', email: 'by email' }[ch];
+    if (via) {
+      document.querySelector('.via').textContent = via;
+      document.querySelector('.via-cap').textContent = via[0].toUpperCase() + via.slice(1);
+    }
+  } catch (e) {}
+</script>
+</body>
+</html>
