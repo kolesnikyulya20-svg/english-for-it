@@ -53,6 +53,8 @@
   .option:has(input:checked) .opt-icon .b { display: none; }
   .option:has(input:checked) .opt-icon .w { display: block; }
   .option:has(input:checked) .radio { background-image: url(assets/radio-on.svg); }
+  .options.multi .radio { border-radius: 6px; border: 2px solid #b8b8c4; background: #fff; transition: background .15s, border-color .15s; }
+  .options.multi .option:has(input:checked) .radio { border-color: #3551f0; background: #3551f0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6.5l2.5 2.5L10 3.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat; }
   .option:has(input:focus-visible) { outline: 3px solid rgba(53, 81, 240, .45); outline-offset: 3px; }
 
   .nav { display: flex; align-items: center; justify-content: space-between; }
@@ -88,35 +90,35 @@
         <div class="track"><div class="fill" style="width: 100px"></div></div>
       </div>
       <h1>What do you need English for?</h1>
-      <p class="hint">Choose the one that matters most right now.</p>
+      <p class="hint">Choose all that apply.</p>
 
-      <fieldset class="options">
+      <fieldset class="options multi">
         <label class="option">
-          <input type="radio" name="goal" value="team">
+          <input type="checkbox" name="goal" value="team">
           <span class="opt-icon"><img class="b" src="assets/q-chat.svg" alt=""><img class="w" src="assets/q-chat-w.svg" alt=""></span>
           <span class="opt-text"><b>Talk to my team and clients</b><span>Stand-ups, calls, demos and everyday work chats.</span></span>
           <span class="radio"></span>
         </label>
         <label class="option">
-          <input type="radio" name="goal" value="interview">
+          <input type="checkbox" name="goal" value="interview">
           <span class="opt-icon"><img class="b" src="assets/q-briefcase.svg" alt=""><img class="w" src="assets/q-briefcase-w.svg" alt=""></span>
           <span class="opt-text"><b>Pass a job interview in English</b><span>Talk about your experience without freezing.</span></span>
           <span class="radio"></span>
         </label>
         <label class="option">
-          <input type="radio" name="goal" value="confidence">
+          <input type="checkbox" name="goal" value="confidence">
           <span class="opt-icon"><img class="b" src="assets/q-mic.svg" alt=""><img class="w" src="assets/q-mic-w.svg" alt=""></span>
           <span class="opt-text"><b>Speak with more confidence</b><span>Understand fast speech and answer without long pauses.</span></span>
           <span class="radio"></span>
         </label>
         <label class="option">
-          <input type="radio" name="goal" value="basics">
+          <input type="checkbox" name="goal" value="basics">
           <span class="opt-icon"><img class="b" src="assets/q-sprout.svg" alt=""><img class="w" src="assets/q-sprout-w.svg" alt=""></span>
           <span class="opt-text"><b>Start from the basics</b><span>Build a solid base for work English.</span></span>
           <span class="radio"></span>
         </label>
         <label class="option">
-          <input type="radio" name="goal" value="myself">
+          <input type="checkbox" name="goal" value="myself">
           <span class="opt-icon"><img class="b" src="assets/q-heart.svg" alt=""><img class="w" src="assets/q-heart-w.svg" alt=""></span>
           <span class="opt-text"><b>English for myself</b><span>Movies, travel, real everyday English.</span></span>
           <span class="radio"></span>
@@ -134,10 +136,10 @@
 <script>
   // Ціль потрібна на екрані результату: «Pass a job interview» веде на варіант 06c
   const form = document.getElementById('form');
-  try { const saved = sessionStorage.getItem('goal'); if (saved) form.goal.value = saved; } catch (e) {}
+  try { const saved = (sessionStorage.getItem('goal') || '').split(','); form.querySelectorAll('input[name=goal]').forEach(i => { i.checked = saved.includes(i.value); }); } catch (e) {}
   form.addEventListener('submit', e => {
     e.preventDefault();
-    try { sessionStorage.setItem('goal', form.goal.value); } catch (e) {}
+    try { sessionStorage.setItem('goal', [...form.querySelectorAll('input[name=goal]:checked')].map(i => i.value).join(',')); } catch (e) {}
     location.href = 'match-format.html';
   });
   const next = document.querySelector('.btn');
@@ -157,8 +159,8 @@
   html.no-vt body { animation: vt-in .38s cubic-bezier(.2,.7,.2,1) both; }
 
   /* ---------- 2. поява блоків при прокрутці ---------- */
-  .rv { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); transition-delay: var(--rv-d, 0ms); }
-  .rv.in { opacity: 1; transform: none; }
+  .rv.rv { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); transition-delay: var(--rv-d, 0ms); }
+  .rv.rv.in { opacity: 1; transform: none; }
 
   /* ---------- 3. тест: варіант і прогрес ---------- */
   .fill { transition: width .7s cubic-bezier(.2,.7,.2,1); }
@@ -176,19 +178,30 @@
   .btn, .hdr-offer { transition: background .15s, color .15s, border-color .15s, transform .2s ease, box-shadow .2s ease; }
   .btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(53,81,240,.22); }
   .btn:not(:disabled):active { transform: translateY(0); box-shadow: none; }
-  .goal, .way, .review, .module, .tile, .speak-tile, .plan, .course-row, .q, .contact { transition: transform .25s ease, box-shadow .25s ease, border-color .15s, background .15s; }
-  .goal:hover, .way:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(28,28,28,.08); }
+  .goal, .way, .review, .module, .tile, .speak-tile, .plan, .course-row, .q, .contact, .step, .after-step, .fact, .option, .ns-opt, .point { transition: transform .25s ease, box-shadow .25s ease, border-color .15s, background .15s; }
+  .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .fact:hover, .q:hover, .contact:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(28,28,28,.08); }
+  .after-step:hover { transform: translateY(-4px); background: rgba(255,255,255,.2); box-shadow: 0 14px 32px rgba(10,20,90,.25); }
+  .option:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(53,81,240,.12); }
+  .ns-opt:hover { transform: translateX(4px); }
+  .point:hover { transform: translateX(4px); }
+  .goal-icon, .opt-icon, .point-icon, .icon-box, .num, .step-icon, .fact-icon { transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+  .goal:hover .goal-icon, .option:hover .opt-icon, .point:hover .point-icon, .tile:hover .icon-box, .after-step:hover .icon-box, .step:hover .num, .speak-tile:hover .icon-box, .fact:hover .fact-icon { transform: scale(1.12) rotate(-6deg); }
   .course-row:hover { transform: translateX(3px); }
   .arrow { transition: background .15s, color .15s, transform .2s ease; }
   .course-row:hover .arrow, a:hover > .arrow, .ns-opt:hover .arrow { transform: translateX(4px); }
+  .back { display: inline-block; transition: color .15s, transform .2s ease; }
+  .back:hover { transform: translateX(-4px); }
+  .btn.pop { animation: btn-pop .35s cubic-bezier(.3,1.6,.5,1); }
+  @keyframes btn-pop { 50% { transform: scale(1.06); } }
 
   /* Повага до налаштувань системи: без анімацій */
   @media (prefers-reduced-motion: reduce) {
     ::view-transition-old(root), ::view-transition-new(root), html.no-vt body { animation: none; }
-    .rv { opacity: 1; transform: none; transition: none; }
+    .rv.rv { opacity: 1; transform: none; transition: none; }
     .fill, .option:has(input:checked) { transition: none; animation: none; }
     .matching { display: none; }
-    .btn:hover, .goal:hover, .way:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .course-row:hover, .course-row:hover .arrow { transform: none; }
+    .btn:hover, .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .after-step:hover, .fact:hover, .q:hover, .contact:hover, .option:hover, .ns-opt:hover, .point:hover, .course-row:hover, .course-row:hover .arrow, .back:hover, [class*=icon], .num { transform: none !important; }
+    .btn.pop { animation: none; }
   }
 </style>
 <script>
@@ -211,6 +224,11 @@
     }
     ss.set('fillW', target);
   } else if (!page.startsWith('match-')) ss.del('fillW');
+  const nextBtn = document.querySelector('.options') && document.querySelector('form .btn');
+  if (nextBtn) { let was = nextBtn.disabled;
+    document.querySelector('.options').addEventListener('change', () => setTimeout(() => {
+      if (was && !nextBtn.disabled) { nextBtn.classList.remove('pop'); void nextBtn.offsetWidth; nextBtn.classList.add('pop'); }
+      was = nextBtn.disabled; })); }
   if (page === 'match-level.html') {
     const f = document.getElementById('form');
     if (f) f.addEventListener('submit', () => ss.set('justTested', '1'));
@@ -226,7 +244,7 @@
   // ponytail: перевірка по scroll замість IntersectionObserver — працює і у фонових вкладках
   let pending = els, ticking = false;
   const check = () => { ticking = false; const lim = innerHeight * 0.92;
-    pending = pending.filter(el => { if (el.getBoundingClientRect().top < lim) { el.classList.add('in'); return false; } return true; });
+    pending = pending.filter(el => { if (el.getBoundingClientRect().top < lim) { el.classList.add('in'); const d = parseInt(el.style.getPropertyValue('--rv-d')) || 0; setTimeout(() => el.classList.remove('rv', 'in'), 700 + d); return false; } return true; });
     if (!pending.length) removeEventListener('scroll', onScroll); };
   const onScroll = () => { if (!ticking) { ticking = true; setTimeout(check, 50); } };
   const start = () => { addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); check(); };
