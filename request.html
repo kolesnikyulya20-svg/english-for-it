@@ -209,5 +209,103 @@
     location.href = 'request-success.html';
   });
 </script>
+<!-- MOTION:START -->
+<style>
+  /* ---------- Motion: 1. переходи між сторінками ---------- */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: vt-out .22s ease-in both; }
+  ::view-transition-new(root) { animation: vt-in .38s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes vt-out { to { opacity: 0; transform: translateY(-8px); } }
+  @keyframes vt-in { from { opacity: 0; transform: translateY(12px); } }
+  /* Фолбек для браузерів без cross-document View Transitions */
+  html.no-vt body { animation: vt-in .38s cubic-bezier(.2,.7,.2,1) both; }
+
+  /* ---------- 2. поява блоків при прокрутці ---------- */
+  .rv { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); transition-delay: var(--rv-d, 0ms); }
+  .rv.in { opacity: 1; transform: none; }
+
+  /* ---------- 3. тест: варіант і прогрес ---------- */
+  .fill { transition: width .7s cubic-bezier(.2,.7,.2,1); }
+  .option:has(input:checked) { animation: opt-pop .28s ease; }
+  @keyframes opt-pop { 50% { transform: scale(1.015); } }
+
+  /* ---------- 4. результат: «підбираємо курс…» ---------- */
+  .matching { position: fixed; inset: 0; z-index: 50; background: #f5f7ff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; font: 600 22px/1.4 'Rubik', sans-serif; color: #1c1c1c; transition: opacity .35s ease; }
+  .matching small { font-size: 15px; font-weight: 400; color: #3f3f4a; }
+  .matching .spin { width: 56px; height: 56px; border-radius: 50%; border: 5px solid #ebeefe; border-top-color: #3551f0; animation: spin .8s linear infinite; }
+  .matching.out { opacity: 0; pointer-events: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---------- 5. мікроінтеракції ---------- */
+  .btn, .hdr-offer { transition: background .15s, color .15s, border-color .15s, transform .2s ease, box-shadow .2s ease; }
+  .btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(53,81,240,.22); }
+  .btn:not(:disabled):active { transform: translateY(0); box-shadow: none; }
+  .goal, .way, .review, .module, .tile, .speak-tile, .plan, .course-row, .q, .contact { transition: transform .25s ease, box-shadow .25s ease, border-color .15s, background .15s; }
+  .goal:hover, .way:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(28,28,28,.08); }
+  .course-row:hover { transform: translateX(3px); }
+  .arrow { transition: background .15s, color .15s, transform .2s ease; }
+  .course-row:hover .arrow, a:hover > .arrow, .ns-opt:hover .arrow { transform: translateX(4px); }
+
+  /* Повага до налаштувань системи: без анімацій */
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root), ::view-transition-new(root), html.no-vt body { animation: none; }
+    .rv { opacity: 1; transform: none; transition: none; }
+    .fill, .option:has(input:checked) { transition: none; animation: none; }
+    .matching { display: none; }
+    .btn:hover, .goal:hover, .way:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .course-row:hover, .course-row:hover .arrow { transform: none; }
+  }
+</style>
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!('onpagereveal' in window)) document.documentElement.classList.add('no-vt');
+  if (reduce) return;
+  const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
+               set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} },
+               del: k => { try { sessionStorage.removeItem(k); } catch (e) {} } };
+  const page = location.pathname.split('/').pop() || 'home.html';
+
+  // 3. Прогрес тесту плавно продовжується з попереднього кроку
+  const fill = document.querySelector('.fill');
+  if (fill) {
+    const target = fill.style.width, prev = ss.get('fillW');
+    if (prev && prev !== target) {
+      fill.style.transition = 'none'; fill.style.width = prev;
+      requestAnimationFrame(() => requestAnimationFrame(() => { fill.style.transition = ''; fill.style.width = target; }));
+    }
+    ss.set('fillW', target);
+  } else if (!page.startsWith('match-')) ss.del('fillW');
+  if (page === 'match-level.html') {
+    const f = document.getElementById('form');
+    if (f) f.addEventListener('submit', () => ss.set('justTested', '1'));
+  }
+
+  // 2. Поява блоків: анімуються «листові» картки, сусіди — з невеликою затримкою
+  const sel = 'main > *, .page > section, .section, .box, .goal, .way, .review, .module, .tile, .speak-tile, .plan, .step, .after-step, .point, .fact, .contact, .q, .card, .panel';
+  let els = [...document.querySelectorAll(sel)].filter(el => !el.closest('.hdr, .hero, .matching, .ftr'));
+  els = els.filter(el => !els.some(o => o !== el && el.contains(o)));
+  const groups = new Map();
+  els.forEach(el => { const g = groups.get(el.parentElement) || []; g.push(el); groups.set(el.parentElement, g); });
+  groups.forEach(g => g.forEach((el, i) => { el.classList.add('rv'); el.style.setProperty('--rv-d', Math.min(i, 5) * 70 + 'ms'); }));
+  // ponytail: перевірка по scroll замість IntersectionObserver — працює і у фонових вкладках
+  let pending = els, ticking = false;
+  const check = () => { ticking = false; const lim = innerHeight * 0.92;
+    pending = pending.filter(el => { if (el.getBoundingClientRect().top < lim) { el.classList.add('in'); return false; } return true; });
+    if (!pending.length) removeEventListener('scroll', onScroll); };
+  const onScroll = () => { if (!ticking) { ticking = true; setTimeout(check, 50); } };
+  const start = () => { addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); check(); };
+
+  // 4. Після тесту — коротке «підбираємо курс…», потім результат з'являється по черзі
+  if (page.startsWith('match-result') && ss.get('justTested')) {
+    ss.del('justTested');
+    const m = document.createElement('div');
+    m.className = 'matching'; m.setAttribute('role', 'status');
+    m.innerHTML = '<div class="spin"></div><div>Finding your best course…</div><small>Checking your goal, level and format</small>';
+    document.body.appendChild(m);
+    setTimeout(() => { m.classList.add('out'); start(); setTimeout(() => m.remove(), 400); }, 1100);
+  } else start();
+})();
+</script>
+<!-- MOTION:END -->
 </body>
 </html>
