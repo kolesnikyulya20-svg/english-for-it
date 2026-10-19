@@ -141,8 +141,9 @@
 
   /* ---------- Pricing ---------- */
   .pricing { background: #3551f0; }
+  .pricing .pricing-content { margin-bottom: 40px; }
   .pricing-content { display: flex; gap: 32px; align-items: stretch; }
-  .plans { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; }
+  .plans { position: relative; flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; }
   .plans .heading { margin-bottom: 8px; }
   .plans .lead { color: rgba(255,255,255,.85); }
   .plan { background: #fff; border-radius: 28px; padding: 28px; display: flex; gap: 24px; align-items: center; }
@@ -157,7 +158,7 @@
   .plan-price { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.5; white-space: nowrap; }
   .plan-price b { font-size: 34px; font-weight: 800; }
   .plan-price span { font-size: 13px; font-weight: 500; color: #3f3f4a; }
-  .pay-note { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.8); }
+  .pay-note { position: absolute; left: 0; top: calc(100% + 16px); font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.8); }
   .price-card { width: 352px; height: auto; flex-shrink: 0; background: #fff; border-radius: 32px; padding: 32px; box-shadow: 0 20px 48px rgba(13,20,77,.3); display: flex; flex-direction: column; gap: 16px; }
   .price-card > .title { font-size: 20px; font-weight: 700; line-height: 1.5; }
   .switch { height: 51px; background: #ebeefe; border-radius: 100px; padding: 4px; display: flex; gap: 4px; }
