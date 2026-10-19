@@ -124,7 +124,13 @@
 
   /* ---------- Other ways to learn ---------- */
   .ways { padding: 80px 120px 0; display: flex; flex-direction: column; gap: 36px; }
-  .ways-cards { display: flex; gap: 32px; height: 398px; }
+  .ways-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .ways-cards .way { height: 380px; }
+  .btn-ghost { background: #fff; color: #3551f0; box-shadow: inset 0 0 0 2px #3551f0; }
+  .btn-ghost:hover { background: #3551f0; color: #fff; }
+  .way.notsure-card { background: #fe7e4f; border: 0; justify-content: center; align-items: center; text-align: center; padding: 32px; gap: 12px; }
+  .way.notsure-card b { font-size: 24px; font-weight: 800; line-height: 1.3; color: #1c1c1c; }
+  .way.notsure-card p { font-size: 15px; line-height: 1.5; color: #1c1c1c; margin-bottom: 8px; }
   .way { flex: 1 0 0; min-width: 0; height: 100%; background: #fff; border: 1.5px solid #e6e0a0; border-radius: 32px; overflow: hidden; display: flex; flex-direction: column; }
   .way img { width: 100%; height: 170px; object-fit: cover; display: block; flex-shrink: 0; }
   .way-body { flex: 1 0 0; padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
@@ -240,6 +246,14 @@
     <h2 class="h2">Other ways to learn</h2>
     <div class="ways-cards">
       <div class="way">
+        <img src="assets/photo-online.png" alt="">
+        <div class="way-body">
+          <b>Online courses</b>
+          <p>Self-paced courses for work English — from 2 weeks to 2 months.</p>
+          <a class="btn btn-ghost btn-sm" href="#courses">See courses ↓</a>
+        </div>
+      </div>
+      <div class="way">
         <img src="assets/photo-individual.png" alt="">
         <div class="way-body">
           <b>Individual lessons</b>
@@ -252,7 +266,7 @@
         <div class="way-body">
           <b>Corporate training</b>
           <p>Group and individual classes, soft skills workshops, LMS for your team.</p>
-          <a class="btn btn-blue btn-sm" href="#">Book a call →</a>
+          <a class="btn btn-ghost btn-sm" href="#">Book a call →</a>
         </div>
       </div>
       <div class="way">
@@ -260,7 +274,7 @@
         <div class="way-body">
           <b>E-books</b>
           <p>English For Tech textbook, Grammar Phrasebook, Interview Prep Workbook.</p>
-          <a class="btn btn-blue btn-sm" href="#">See e-books →</a>
+          <a class="btn btn-ghost btn-sm" href="#">See e-books →</a>
         </div>
       </div>
       <div class="way">
@@ -268,8 +282,13 @@
         <div class="way-body">
           <b>Speaking Club</b>
           <p>Every Friday, 5:30–7:00 PM CET. Topics you choose.</p>
-          <a class="btn btn-blue btn-sm" href="#">Join the club →</a>
+          <a class="btn btn-ghost btn-sm" href="#">Join the club →</a>
         </div>
+      </div>
+      <div class="way notsure-card">
+        <b>Not sure where to start?</b>
+        <p>Your level + a course that fits · ~15 min</p>
+        <a class="btn btn-white btn-sm" href="match-start.html">Take a free test →</a>
       </div>
     </div>
   </section>
