@@ -123,6 +123,16 @@
   .cert-preview.discount { background: #fe7e4f; }
   .cert-preview.discount .t1, .cert-preview.discount .t2, .cert-preview.discount .t3 { color: #1c1c1c; }
   .cert-preview.discount .t2 { font-size: 36px; line-height: 1.2; }
+
+  /* Discount + certificate — two equal perks */
+  .cert-preview.perks { flex-direction: row; align-items: stretch; gap: 0; padding: 18px 12px; }
+  .perk { flex: 1 0 0; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+  .perk .ico { width: 40px; height: 40px; border-radius: 100px; background: rgba(255,255,255,.55); display: flex; align-items: center; justify-content: center; margin-bottom: 4px; }
+  .perk b { font-size: 19px; font-weight: 800; line-height: 1.2; color: #1c1c1c; white-space: nowrap; }
+  .perk span:not(.ico) { font-size: 13px; line-height: 1.4; color: #1c1c1c; }
+  .perks .sep { width: 1px; background: rgba(28,28,28,.2); margin: 6px 4px; }
+  .sent-list { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600; line-height: 1.5; }
+  .sent-list span::before { content: "✓ "; color: #1f9d55; }
 </style>
 </head>
 <body>
@@ -215,12 +225,12 @@
       <aside class="side">
         <!-- CERT:START -->
         <form class="box cert" id="cert" novalidate>
-          <div class="cert-preview discount">
-            <span class="t1">YOUR DISCOUNT</span>
-            <span class="t2">25% off</span>
-            <span class="t3">on any course + your B1 certificate</span>
+          <div class="cert-preview discount perks">
+            <div class="perk"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.5"/></svg></span><b>25% off</b><span>on any course</span></div>
+            <div class="sep"></div>
+            <div class="perk"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></svg></span><b>B1 certificate</b><span>for your LinkedIn</span></div>
           </div>
-          <h2>Get 25% off your course</h2>
+          <h2>Get 25% off + your certificate</h2>
           <p class="sub">Optional — your result is already here. We’ll email your discount code and your B1 certificate for LinkedIn.</p>
           <div class="field" id="email-field">
             <label for="email">Email</label>
