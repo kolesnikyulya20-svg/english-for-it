@@ -117,6 +117,16 @@
   .notice b { display: block; width: 580px; font-size: 15px; font-weight: 700; }
   .notice span { display: block; width: 580px; margin-top: 2px; font-size: 14px; color: #3f3f4a; }
   .note { font-size: 13px; line-height: 1.5; color: #3f3f4a; }
+
+  /* Best match — highlighted (curator feedback) */
+  .box.best { border: 3px solid #3551f0; box-shadow: 0 16px 40px rgba(51,77,230,.18); }
+  .box.best .course-title { font-size: 40px; line-height: 1.2; }
+  .discount-hint { background: #ffe3d8; color: #9a3412; border-radius: 12px; padding: 10px 14px; font-size: 14px; font-weight: 600; line-height: 1.5; }
+  .box.alts { background: #f5f7ff; border: 0; }
+  .box.level { padding-top: 28px; padding-bottom: 28px; }
+  .cert-preview.discount { background: #fe7e4f; }
+  .cert-preview.discount .t1, .cert-preview.discount .t2, .cert-preview.discount .t3 { color: #1c1c1c; }
+  .cert-preview.discount .t2 { font-size: 36px; line-height: 1.2; }
 </style>
 </head>
 <body>
@@ -147,7 +157,32 @@
     <div class="columns">
       <div class="main">
 
-        <section class="box">
+        <section class="box best">
+          <div class="notice">
+            <img src="assets/i-warning.svg" alt="">
+            <div><b>Job Interview Crash Course starts from Pre-Intermediate</b><span>Start with a course for your level first — it builds the base you need for interviews. Or choose another option below.</span></div>
+          </div>
+          <span class="tag">BEST MATCH FOR YOU</span>
+          <p class="course-title">English For Work: Starter</p>
+          <p class="course-meta">2 months · Online course · Elementary – Pre-Intermediate</p>
+          <div class="why">
+            <b>Why this course</b>
+            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Fits your level: A2 is right at the start of this course</p></div>
+            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Prepares you for interviews: talking about your work and experience</p></div>
+            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Your format: online, study any time</p></div>
+          </div>
+          <p class="discount-hint">Save 25% on this course — get your discount code on the right →</p>
+          <div class="next">
+            <a class="btn btn-blue" href="#">View course →</a>
+            <p>Not ready to decide? Talk to us or try a lesson first:</p>
+            <div class="secondary">
+              <a class="btn btn-outline" href="request.html">Book a free consultation</a>
+              <a class="btn btn-outline" href="request.html">Try a free lesson</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="box level">
           <p class="eyebrow">YOUR LEVEL</p>
           <div class="level-row">
             <span class="level-code">A2</span>
@@ -170,32 +205,8 @@
           </div>
         </section>
 
-        <section class="box">
-          <div class="notice">
-            <img src="assets/i-warning.svg" alt="">
-            <div><b>Job Interview Crash Course starts from Pre-Intermediate</b><span>Start with a course for your level first — it builds the base you need for interviews. Or choose another option below.</span></div>
-          </div>
-          <span class="tag">BEST MATCH FOR YOU</span>
-          <p class="course-title">English For Work: Starter</p>
-          <p class="course-meta">2 months · Online course · Elementary – Pre-Intermediate</p>
-          <div class="why">
-            <b>Why this course</b>
-            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Fits your level: A2 is right at the start of this course</p></div>
-            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Prepares you for interviews: talking about your work and experience</p></div>
-            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Your format: online, study any time</p></div>
-          </div>
-          <div class="next">
-            <a class="btn btn-blue" href="#">View course →</a>
-            <p>Not ready to decide? Talk to us or try a lesson first:</p>
-            <div class="secondary">
-              <a class="btn btn-outline" href="request.html">Book a free consultation</a>
-              <a class="btn btn-outline" href="request.html">Try a free lesson</a>
-            </div>
-          </div>
-        </section>
-
-        <section class="box">
-          <h2>Other options for your level</h2>
+        <section class="box alts">
+          <h2>Not quite right?</h2>
           <p class="sub">Want to prepare for the interview sooner? Choose another way.</p>
           <a class="course-row" href="request.html">
             <div class="info"><span class="name">Individual lessons</span><span class="meta">A teacher builds a plan for your interview · flexible schedule</span></div>
@@ -212,35 +223,31 @@
       <aside class="side">
         <!-- CERT:START -->
         <form class="box cert" id="cert" novalidate>
-          <div class="cert-preview">
-            <span class="t1">CERTIFICATE</span>
-            <span class="t2">English level A2</span>
-            <span class="t3">English For IT™ · Elementary</span>
+          <div class="cert-preview discount">
+            <span class="t1">YOUR DISCOUNT</span>
+            <span class="t2">25% off</span>
+            <span class="t3">on any course + your A2 certificate</span>
           </div>
-          <h2>Get your certificate by email</h2>
-          <p class="sub">Optional — your result is already here. Add the certificate to your LinkedIn profile.</p>
-          <div class="field">
-            <label for="name">Your name</label>
-            <input id="name" name="name" type="text" placeholder="Maria" autocomplete="given-name">
-          </div>
+          <h2>Get 25% off your course</h2>
+          <p class="sub">Optional — your result is already here. We’ll email your discount code and your A2 certificate for LinkedIn.</p>
           <div class="field" id="email-field">
             <label for="email">Email</label>
             <input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email">
             <span class="error">Enter an email like name@example.com</span>
           </div>
           <label class="check"><input type="checkbox" name="tips"><span>Also send me learning tips and offers</span></label>
-          <button class="btn btn-blue btn-full" type="submit">Send certificate</button>
-          <p class="note">We’ll only send the certificate. No calls, no spam.</p>
+          <button class="btn btn-blue btn-full" type="submit">Get my 25% discount</button>
+          <p class="note">We’ll only send the code and the certificate. No calls, no spam.</p>
         </form>
         <div class="box cert" id="cert-sent" hidden>
-          <div class="cert-preview">
-            <span class="t1">CERTIFICATE</span>
-            <span class="t2">English level A2</span>
-            <span class="t3">English For IT™ · Elementary</span>
+          <div class="cert-preview discount">
+            <span class="t1">YOUR DISCOUNT</span>
+            <span class="t2">25% off</span>
+            <span class="t3">on any course + your A2 certificate</span>
           </div>
           <div class="success-icon"><img src="assets/i-success.svg" alt=""></div>
-          <p class="sent-title">Certificate sent!</p>
-          <p class="sent-text">We sent it to <span class="sent-email">maria.koval@gmail.com</span>. It usually arrives within a couple of minutes.</p>
+          <p class="sent-title">Discount code sent!</p>
+          <p class="sent-text">We sent your 25% discount code and your A2 certificate to <span class="sent-email">maria.koval@gmail.com</span>. It usually arrives within a couple of minutes.</p>
           <a class="linkedin" href="#">Add to LinkedIn →</a>
         </div>
         <!-- CERT:END -->

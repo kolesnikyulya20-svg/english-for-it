@@ -113,6 +113,16 @@
   .linkedin:hover { text-decoration: underline; }
   [hidden] { display: none !important; }
   .note { font-size: 13px; line-height: 1.5; color: #3f3f4a; }
+
+  /* Best match — highlighted (curator feedback) */
+  .box.best { border: 3px solid #3551f0; box-shadow: 0 16px 40px rgba(51,77,230,.18); }
+  .box.best .course-title { font-size: 40px; line-height: 1.2; }
+  .discount-hint { background: #ffe3d8; color: #9a3412; border-radius: 12px; padding: 10px 14px; font-size: 14px; font-weight: 600; line-height: 1.5; }
+  .box.alts { background: #f5f7ff; border: 0; }
+  .box.level { padding-top: 28px; padding-bottom: 28px; }
+  .cert-preview.discount { background: #fe7e4f; }
+  .cert-preview.discount .t1, .cert-preview.discount .t2, .cert-preview.discount .t3 { color: #1c1c1c; }
+  .cert-preview.discount .t2 { font-size: 36px; line-height: 1.2; }
 </style>
 </head>
 <body>
@@ -143,7 +153,28 @@
     <div class="columns">
       <div class="main">
 
-        <section class="box">
+        <section class="box best">
+          <span class="tag">BEST MATCH FOR YOU</span>
+          <p class="course-title">English For Tech Course</p>
+          <p class="course-meta">7 weeks · Online course · Low Intermediate – Upper-Intermediate</p>
+          <div class="why">
+            <b>Why this course</b>
+            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Matches your goal: talk to my team and clients</p></div>
+            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Fits your level: B1 is in the middle of this course</p></div>
+            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Your format: online, study any time</p></div>
+          </div>
+          <p class="discount-hint">Your 25% discount code is in your inbox — use it for this course.</p>
+          <div class="next">
+            <a class="btn btn-blue" href="course.html">View course →</a>
+            <p>Not ready to decide? Talk to us or try a lesson first:</p>
+            <div class="secondary">
+              <a class="btn btn-outline" href="request.html">Book a free consultation</a>
+              <a class="btn btn-outline" href="request.html">Try a free lesson</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="box level">
           <p class="eyebrow">YOUR LEVEL</p>
           <div class="level-row">
             <span class="level-code">B1</span>
@@ -166,35 +197,15 @@
           </div>
         </section>
 
-        <section class="box">
-          <span class="tag">BEST MATCH FOR YOU</span>
-          <p class="course-title">English For Tech Course</p>
-          <p class="course-meta">7 weeks · Online course · Low Intermediate – Upper-Intermediate</p>
-          <div class="why">
-            <b>Why this course</b>
-            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Matches your goal: talk to my team and clients</p></div>
-            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Fits your level: B1 is in the middle of this course</p></div>
-            <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Your format: online, study any time</p></div>
-          </div>
-          <div class="next">
-            <a class="btn btn-blue" href="course.html">View course →</a>
-            <p>Not ready to decide? Talk to us or try a lesson first:</p>
-            <div class="secondary">
-              <a class="btn btn-outline" href="request.html">Book a free consultation</a>
-              <a class="btn btn-outline" href="request.html">Try a free lesson</a>
-            </div>
-          </div>
-        </section>
-
-        <section class="box">
-          <h2>Other courses for your level</h2>
-          <p class="sub">Not the right fit? These also work for B1.</p>
+        <section class="box alts">
+          <h2>Not quite right?</h2>
+          <p class="sub">Choose by what matters more to you:</p>
           <a class="course-row" href="#">
-            <div class="info"><span class="name">Business English</span><span class="meta">7 weeks · Pre-Intermediate – Strong Intermediate</span></div>
+            <div class="info"><span class="name">Business English</span><span class="meta">Need business communication more than tech English? · 7 weeks</span></div>
             <span class="arrow">→</span>
           </a>
           <a class="course-row" href="#">
-            <div class="info"><span class="name">English For Tech: Speaking &amp; Listening</span><span class="meta">6 weeks · Intermediate – Strong Intermediate</span></div>
+            <div class="info"><span class="name">English For Tech: Speaking &amp; Listening</span><span class="meta">Want more speaking practice? · 6 weeks</span></div>
             <span class="arrow">→</span>
           </a>
         </section>
@@ -203,14 +214,14 @@
 
       <aside class="side">
         <div class="box cert" id="cert-sent">
-          <div class="cert-preview">
-            <span class="t1">CERTIFICATE</span>
-            <span class="t2">English level B1</span>
-            <span class="t3">English For IT™ · Intermediate</span>
+          <div class="cert-preview discount">
+            <span class="t1">YOUR DISCOUNT</span>
+            <span class="t2">25% off</span>
+            <span class="t3">on any course + your B1 certificate</span>
           </div>
           <div class="success-icon"><img src="assets/i-success.svg" alt=""></div>
-          <p class="sent-title">Certificate sent!</p>
-          <p class="sent-text">We sent it to <span class="sent-email">maria.koval@gmail.com</span>. It usually arrives within a couple of minutes.</p>
+          <p class="sent-title">Discount code sent!</p>
+          <p class="sent-text">We sent your 25% discount code and your B1 certificate to <span class="sent-email">maria.koval@gmail.com</span>. It usually arrives within a couple of minutes.</p>
           <a class="linkedin" href="#">Add to LinkedIn →</a>
         </div>
         <!-- CERT:END -->
