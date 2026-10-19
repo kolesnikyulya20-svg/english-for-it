@@ -128,9 +128,10 @@
   .ways-cards .way { height: 380px; }
   .btn-ghost { background: #fff; color: #3551f0; box-shadow: inset 0 0 0 2px #3551f0; }
   .btn-ghost:hover { background: #3551f0; color: #fff; }
-  .way.notsure-card { background: #fe7e4f; border: 0; justify-content: center; align-items: center; text-align: center; padding: 32px; gap: 12px; }
+  .way.notsure-card { background: #fe7e4f; border-color: transparent; align-items: center; text-align: center; padding: 32px 24px 24px; gap: 12px; }
+  .notsure-card .ns-text { flex: 1 0 0; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
   .way.notsure-card b { font-size: 24px; font-weight: 800; line-height: 1.3; color: #1c1c1c; }
-  .way.notsure-card p { font-size: 15px; line-height: 1.5; color: #1c1c1c; margin-bottom: 8px; }
+  .way.notsure-card p { font-size: 15px; line-height: 1.5; color: #1c1c1c; }
   .way { flex: 1 0 0; min-width: 0; height: 100%; background: #fff; border: 1.5px solid #e6e0a0; border-radius: 32px; overflow: hidden; display: flex; flex-direction: column; }
   .way img { width: 100%; height: 170px; object-fit: cover; display: block; flex-shrink: 0; }
   .way-body { flex: 1 0 0; padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
@@ -286,8 +287,10 @@
         </div>
       </div>
       <div class="way notsure-card">
-        <b>Not sure where to start?</b>
-        <p>Your level + a course that fits · ~15 min</p>
+        <div class="ns-text">
+          <b>Not sure where to start?</b>
+          <p>Your level + a course that fits · ~15 min</p>
+        </div>
         <a class="btn btn-white btn-sm" href="match-start.html">Take a free test →</a>
       </div>
     </div>
