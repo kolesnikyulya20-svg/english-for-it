@@ -690,8 +690,10 @@
 <!-- MOTION:END -->
 <script>
   // Плашка «Recommended for you» — лише якщо людина прийшла після тесту
-  (() => { let from = null; try { from = sessionStorage.getItem('resultPage'); } catch (e) {}
-    if (!from) return; const rec = document.querySelector('.rec');
+  // ponytail: плашку показуємо лише при переході з результату тесту (параметр ?from=…), а не з каталогу
+  (() => { const from = new URLSearchParams(location.search).get('from');
+    if (!from || !/^match-result(-below)?\.html$/.test(from)) return;
+    const rec = document.querySelector('.rec');
     rec.querySelector('a').href = from;
     if (from === 'match-result-below.html') rec.querySelector('p').textContent = 'Your test result · A2 Elementary · Goal: pass a job interview';
     rec.hidden = false; rec.classList.add('show'); })();
