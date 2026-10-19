@@ -137,6 +137,16 @@
   .perks .sep { width: 1px; background: rgba(28,28,28,.2); margin: 6px 4px; }
   .sent-list { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600; line-height: 1.5; }
   .sent-list span::before { content: "✓ "; color: #1f9d55; }
+
+  /* Compact level on top (curator feedback) */
+  .box.level.compact { padding: 20px 28px; gap: 10px; }
+  .level.compact .lv-top { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .level.compact .level-row .level-code { font-size: 44px; }
+  .level.compact .level-row b { font-size: 20px; }
+  .level.compact .scale { width: 300px; }
+  .level.compact .scale span { padding: 4px 0; font-size: 12px; }
+  .lv-line { font-size: 14px; line-height: 1.5; color: #3f3f4a; }
+  .lv-line b { color: #1c1c1c; }
 </style>
 </head>
 <body>
@@ -166,6 +176,17 @@
 
     <div class="columns">
       <div class="main">
+        <section class="box level compact">
+          <p class="eyebrow">YOUR LEVEL</p>
+          <div class="lv-top">
+            <div class="level-row">
+            <span class="level-code">A2</span>
+            <div><b>Elementary</b><span>A good base to build on</span></div>
+          </div>
+            <div class="scale"><span>A1</span><span class="on">A2</span><span>B1</span><span>B2</span><span>C1</span></div>
+          </div>
+          <p class="lv-line"><b>You can:</b> introduce yourself and your role, understand simple work messages · <b>Still hard:</b> answering interview questions in full sentences, talking about your experience in detail</p>
+        </section>
 
         <section class="box best">
           <div class="notice">
@@ -192,31 +213,8 @@
           </div>
         </section>
 
-        <section class="box level">
-          <p class="eyebrow">YOUR LEVEL</p>
-          <div class="level-row">
-            <span class="level-code">A2</span>
-            <div><b>Elementary</b><span>A good base to build on</span></div>
-          </div>
-          <div class="scale"><span>A1</span><span class="on">A2</span><span>B1</span><span>B2</span><span>C1</span></div>
-          <div class="can-hard">
-            <div class="list">
-              <b>You can already</b>
-              <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Introduce yourself and your role</p></div>
-              <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Understand simple work messages</p></div>
-              <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Read short task descriptions</p></div>
-            </div>
-            <div class="list">
-              <b>Still hard for now</b>
-              <div class="item"><span class="mark hard"><img src="assets/i-arrow-orange.svg" alt=""></span><p>Answering interview questions in full sentences</p></div>
-              <div class="item"><span class="mark hard"><img src="assets/i-arrow-orange.svg" alt=""></span><p>Talking about your experience in detail</p></div>
-              <div class="item"><span class="mark hard"><img src="assets/i-arrow-orange.svg" alt=""></span><p>Understanding fast speech</p></div>
-            </div>
-          </div>
-        </section>
-
         <section class="box alts">
-          <h2>Not quite right?</h2>
+          <h2>Not the right course?</h2>
           <p class="sub">Want to prepare for the interview sooner? Choose another way.</p>
           <a class="course-row" href="request.html">
             <div class="info"><span class="name">Individual lessons</span><span class="meta">A teacher builds a plan for your interview · flexible schedule</span></div>

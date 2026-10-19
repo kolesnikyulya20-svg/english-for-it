@@ -133,6 +133,16 @@
   .perks .sep { width: 1px; background: rgba(28,28,28,.2); margin: 6px 4px; }
   .sent-list { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600; line-height: 1.5; }
   .sent-list span::before { content: "✓ "; color: #1f9d55; }
+
+  /* Compact level on top (curator feedback) */
+  .box.level.compact { padding: 20px 28px; gap: 10px; }
+  .level.compact .lv-top { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .level.compact .level-row .level-code { font-size: 44px; }
+  .level.compact .level-row b { font-size: 20px; }
+  .level.compact .scale { width: 300px; }
+  .level.compact .scale span { padding: 4px 0; font-size: 12px; }
+  .lv-line { font-size: 14px; line-height: 1.5; color: #3f3f4a; }
+  .lv-line b { color: #1c1c1c; }
 </style>
 </head>
 <body>
@@ -162,6 +172,17 @@
 
     <div class="columns">
       <div class="main">
+        <section class="box level compact">
+          <p class="eyebrow">YOUR LEVEL</p>
+          <div class="lv-top">
+            <div class="level-row">
+            <span class="level-code">B1</span>
+            <div><b>Intermediate</b><span>Comfortable at work — ready for the next step</span></div>
+          </div>
+            <div class="scale"><span>A1</span><span>A2</span><span class="on">B1</span><span>B2</span><span>C1</span></div>
+          </div>
+          <p class="lv-line"><b>You can:</b> follow stand-ups and team chats, write clear work emails · <b>Still hard:</b> fast discussions with native speakers, small talk with clients</p>
+        </section>
 
         <section class="box best">
           <span class="tag">BEST MATCH FOR YOU</span>
@@ -184,31 +205,8 @@
           </div>
         </section>
 
-        <section class="box level">
-          <p class="eyebrow">YOUR LEVEL</p>
-          <div class="level-row">
-            <span class="level-code">B1</span>
-            <div><b>Intermediate</b><span>Comfortable at work — ready for the next step</span></div>
-          </div>
-          <div class="scale"><span>A1</span><span>A2</span><span class="on">B1</span><span>B2</span><span>C1</span></div>
-          <div class="can-hard">
-            <div class="list">
-              <b>You can already</b>
-              <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Follow stand-ups and team chats</p></div>
-              <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Write clear work emails</p></div>
-              <div class="item"><span class="mark ok"><img src="assets/i-check.svg" alt=""></span><p>Talk about your tasks and progress</p></div>
-            </div>
-            <div class="list">
-              <b>Still hard for now</b>
-              <div class="item"><span class="mark hard"><img src="assets/i-arrow-orange.svg" alt=""></span><p>Fast discussions with native speakers</p></div>
-              <div class="item"><span class="mark hard"><img src="assets/i-arrow-orange.svg" alt=""></span><p>Small talk with clients</p></div>
-              <div class="item"><span class="mark hard"><img src="assets/i-arrow-orange.svg" alt=""></span><p>Explaining complex ideas without pauses</p></div>
-            </div>
-          </div>
-        </section>
-
         <section class="box alts">
-          <h2>Not quite right?</h2>
+          <h2>Not the right course?</h2>
           <p class="sub">Choose by what matters more to you:</p>
           <a class="course-row" href="#">
             <div class="info"><span class="name">Business English</span><span class="meta">Need business communication more than tech English? · 7 weeks</span></div>
