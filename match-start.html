@@ -122,14 +122,18 @@
   .btn, .hdr-offer { transition: background .15s, color .15s, border-color .15s, transform .2s ease, box-shadow .2s ease; }
   .btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(53,81,240,.22); }
   .btn:not(:disabled):active { transform: translateY(0); box-shadow: none; }
-  .goal, .way, .review, .module, .tile, .speak-tile, .plan, .course-row, .q, .contact, .step, .after-step, .fact, .option, .ns-opt, .point { transition: transform .25s ease, box-shadow .25s ease, border-color .15s, background .15s; }
-  .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .fact:hover, .q:hover, .contact:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(28,28,28,.08); }
+  .goal, .way, .review, .module, .tile, .speak-tile, .plan, .course-row, .q, .contact, .step, .after-step, .fact, .option, .ns-opt, .point, .learn-col, .wstep, .extra, .pstep, .focus-card { transition: transform .25s ease, box-shadow .25s ease, border-color .15s, background .15s; }
+  .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .fact:hover, .q:hover, .contact:hover, .learn-col.c-cream:hover, .wstep:hover, .extra:hover, .pstep:hover, .focus-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(28,28,28,.08); }
+  .learn-col.c-blue:hover, .learn-col.c-orange:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(53,81,240,.28); }
+  .learn-col.c-orange:hover { box-shadow: 0 16px 36px rgba(254,126,79,.35); }
+  .chip { transition: background .15s, color .15s, transform .2s ease; }
+  .chip:hover { background: #3551f0; color: #fff; transform: translateY(-2px); }
   .after-step:hover { transform: translateY(-4px); background: rgba(255,255,255,.2); box-shadow: 0 14px 32px rgba(10,20,90,.25); }
   .option:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(53,81,240,.12); }
   .ns-opt:hover { transform: translateX(4px); }
   .point:hover { transform: translateX(4px); }
-  .goal-icon, .opt-icon, .point-icon, .icon-box, .num, .step-icon, .fact-icon { transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
-  .goal:hover .goal-icon, .option:hover .opt-icon, .point:hover .point-icon, .tile:hover .icon-box, .after-step:hover .icon-box, .step:hover .num, .speak-tile:hover .icon-box, .fact:hover .fact-icon { transform: scale(1.12) rotate(-6deg); }
+  .goal-icon, .opt-icon, .point-icon, .icon-box, .num, .step-icon, .fact-icon, .focus-ico { transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+  .goal:hover .goal-icon, .option:hover .opt-icon, .point:hover .point-icon, .tile:hover .icon-box, .after-step:hover .icon-box, .step:hover .num, .speak-tile:hover .icon-box, .fact:hover .fact-icon, .learn-col:hover .icon-box, .wstep:hover .icon-box, .extra:hover .icon-box, .focus-card:hover .focus-ico { transform: scale(1.12) rotate(-6deg); }
   .course-row:hover { transform: translateX(3px); }
   .arrow { transition: background .15s, color .15s, transform .2s ease; }
   .course-row:hover .arrow, a:hover > .arrow, .ns-opt:hover .arrow { transform: translateX(4px); }
@@ -144,7 +148,7 @@
     .rv.rv { opacity: 1; transform: none; transition: none; }
     .fill, .option:has(input:checked) { transition: none; animation: none; }
     .matching { display: none; }
-    .btn:hover, .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .after-step:hover, .fact:hover, .q:hover, .contact:hover, .option:hover, .ns-opt:hover, .point:hover, .course-row:hover, .course-row:hover .arrow, .back:hover, [class*=icon], .num { transform: none !important; }
+    .btn:hover, .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .after-step:hover, .fact:hover, .q:hover, .contact:hover, .option:hover, .ns-opt:hover, .point:hover, .course-row:hover, .course-row:hover .arrow, .back:hover, [class*=icon], .num, .learn-col:hover, .wstep:hover, .extra:hover, .pstep:hover, .focus-card:hover, .chip:hover, .focus-ico { transform: none !important; }
     .btn.pop { animation: none; }
   }
 </style>
@@ -179,7 +183,7 @@
   }
 
   // 2. Поява блоків: анімуються «листові» картки, сусіди — з невеликою затримкою
-  const sel = 'main > *, .page > section, .section, .box, .goal, .way, .review, .module, .tile, .speak-tile, .plan, .step, .after-step, .point, .fact, .contact, .q, .card, .panel';
+  const sel = 'main > *, .page > section, .section, .box, .goal, .way, .review, .module, .tile, .speak-tile, .plan, .step, .after-step, .point, .fact, .contact, .q, .card, .panel, .learn-col, .wstep, .extra, .pstep, .focus-card';
   let els = [...document.querySelectorAll(sel)].filter(el => !el.closest('.hdr, .hero, .matching, .ftr'));
   els = els.filter(el => !els.some(o => o !== el && el.contains(o)));
   const groups = new Map();
