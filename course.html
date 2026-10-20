@@ -81,6 +81,21 @@
   .hero-price p { font-size: 14px; font-weight: 500; color: #3551f0; }
 
   /* ---------- How the course works ---------- */
+  .learn { background: #fff; }
+  .learn-cols { display: flex; gap: 20px; align-items: stretch; }
+  .learn-col { flex: 1 0 0; background: #ffffe1; border: 1.5px solid #e6e0a0; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .learn-col h3 { font-size: 22px; font-weight: 700; line-height: 1.3; }
+  .learn-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .learn-col li { display: flex; gap: 10px; font-size: 16px; line-height: 1.5; color: #3f3f4a; }
+  .learn-col li::before { content: "✓"; font-weight: 700; color: #3551f0; flex-shrink: 0; }
+  .week-steps { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; }
+  .wstep { background: #ffffe1; border: 1.5px solid #e6e0a0; border-radius: 24px; padding: 22px; display: flex; gap: 16px; align-items: center; }
+  .wstep .num { font-size: 15px; font-weight: 700; color: #3551f0; width: 28px; flex-shrink: 0; }
+  .plan-extra { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }
+  .plan-extra > b { font-size: 15px; font-weight: 600; letter-spacing: .6px; color: #3f3f4a; }
+  .plan-extra .row { display: flex; gap: 16px; }
+  .extra { flex: 1 0 0; border: 1.5px solid #dfe3fb; border-radius: 20px; padding: 16px 18px; display: flex; gap: 14px; align-items: center; }
+  .extra .icon-box { width: 44px; height: 44px; border-radius: 14px; } .extra .icon-box img { width: 22px; height: 22px; }
   .how { background: #fff; }
   .how-content { display: flex; gap: 32px; align-items: center; }
   .tiles { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; }
@@ -273,28 +288,51 @@
     </div>
   </section>
 
+  <!-- What you'll learn -->
+  <section class="section">
+    <div class="panel learn">
+      <div class="heading">
+        <p class="eyebrow">ABOUT THE COURSE</p>
+        <h2 class="h2">What you'll learn and get</h2>
+        <p class="lead">English for the situations you actually face at work in tech.</p>
+      </div>
+      <div class="learn-cols">
+        <div class="learn-col"><h3>You'll be able to</h3><ul>
+          <li>Speak confidently in meetings and stand-ups</li>
+          <li>Give and take feedback politely and clearly</li>
+          <li>Pitch yourself and your ideas in a minute</li>
+          <li>Write clear user stories, bug reports and emails</li></ul></div>
+        <div class="learn-col"><h3>Why it's "for tech"</h3><ul>
+          <li>Real cases from Slack chats, emails and docs</li>
+          <li>Topics from your work: Agile, AI, outsourcing vs product companies</li>
+          <li>20+ ready phrases for every topic</li>
+          <li>Made for developers, QA, PMs, designers, BAs, HR and marketers</li></ul></div>
+        <div class="learn-col"><h3>At the end you get</h3><ul>
+          <li>A blockchain-verified certificate to share on LinkedIn</li>
+          <li>A PDF vocabulary guide</li>
+          <li>A community of learners and mentors</li>
+          <li>Access to all materials with no time limit</li></ul></div>
+      </div>
+    </div>
+  </section>
+
   <!-- How the course works -->
   <section class="section">
     <div class="panel how">
       <div class="heading">
         <p class="eyebrow">HOW THE COURSE WORKS</p>
         <h2 class="h2">What a week on the course looks like</h2>
-        <p class="lead">One module a week · ~3 hours · study whenever it suits you, on any device.</p>
+        <p class="lead">One module a week · ~3 hours · no fixed schedule — study at your own pace.</p>
       </div>
       <div class="how-content">
-        <div class="tiles">
-          <div class="row">
-            <div class="tile"><span class="icon-box"><img src="assets/w-video.svg" alt=""></span><div class="tile-text"><b>Video and audio lessons</b><span>50+ lessons with subtitles</span></div></div>
-            <div class="tile"><span class="icon-box"><img src="assets/w-task.svg" alt=""></span><div class="tile-text"><b>Practice on real situations</b><span>Slack, emails, docs, meetings</span></div></div>
-          </div>
-          <div class="row">
-            <div class="tile"><span class="icon-box"><img src="assets/w-mic.svg" alt=""></span><div class="tile-text"><b>Speaking in every lesson</b><span>Record answers to work situations</span></div></div>
-            <div class="tile"><span class="icon-box"><img src="assets/w-mentor.svg" alt=""></span><div class="tile-text"><b>Live mentor feedback</b><span>On speaking and pronunciation — not AI</span><span class="plan-tag">Middle · Senior</span></div></div>
-          </div>
-          <div class="row">
-            <div class="tile"><span class="icon-box"><img src="assets/w-group.svg" alt=""></span><div class="tile-text"><b>Live mini-group class</b><span>Weekly, with a certified teacher</span><span class="plan-tag">Senior</span></div></div>
-            <div class="tile"><span class="icon-box"><img src="assets/w-cert.svg" alt=""></span><div class="tile-text"><b>Certificate</b><span>Share it on LinkedIn when you finish</span></div></div>
-          </div>
+        <div class="week-steps">
+          <div class="wstep"><span class="num">01</span><span class="icon-box"><img src="assets/w-video.svg" alt=""></span><div class="tile-text"><b>Short lessons, when it suits you</b><span>Video and audio lessons with subtitles — any day, any device</span></div></div>
+          <div class="wstep"><span class="num">02</span><span class="icon-box"><img src="assets/w-mic.svg" alt=""></span><div class="tile-text"><b>Practice and speaking in every lesson</b><span>Tasks on real work situations — you record your spoken answers</span></div></div>
+          <div class="wstep"><span class="num">03</span><span class="icon-box"><img src="assets/w-task.svg" alt=""></span><div class="tile-text"><b>Wrap up the module</b><span>A quiz and a case study from real tech work</span></div></div>
+          <div class="plan-extra"><b>DEPENDS ON YOUR PLAN</b><div class="row">
+            <div class="extra"><span class="icon-box"><img src="assets/w-mentor.svg" alt=""></span><div class="tile-text"><b>Mentor feedback</b><span>On your recordings — not AI</span><span class="plan-tag">Middle · Senior</span></div></div>
+            <div class="extra"><span class="icon-box"><img src="assets/w-group.svg" alt=""></span><div class="tile-text"><b>Live class</b><span>Once a week, in a mini group</span><span class="plan-tag">Senior</span></div></div>
+          </div></div>
         </div>
         <img class="platform" src="assets/platform.jpg" alt="English For IT learning platform on a laptop">
       </div>
