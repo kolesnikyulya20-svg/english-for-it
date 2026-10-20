@@ -147,6 +147,15 @@
   .level.compact .scale span { padding: 4px 0; font-size: 12px; }
   .lv-line { font-size: 14px; line-height: 1.5; color: #3f3f4a; }
   .lv-line b { color: #1c1c1c; }
+
+  /* Different focus — goal-style cards */
+  .focus h2 { font-size: 22px; font-weight: 700; line-height: 1.5; margin-bottom: 16px; }
+  .focus-row { display: flex; gap: 16px; }
+  .focus-card { flex: 1 0 0; background: #ffffe1; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+  .focus-ico { width: 44px; height: 44px; border-radius: 100px; background: #3551f0; display: flex; align-items: center; justify-content: center; }
+  .focus-card b { font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .focus-card p { font-size: 14px; line-height: 1.5; color: #3f3f4a; margin-bottom: 4px; }
+  .focus-card .course-row { margin-top: auto; }
 </style>
 </head>
 <body>
@@ -212,17 +221,22 @@
           </div>
         </section>
 
-        <section class="box alts">
-          <h2>Not the right course?</h2>
-          <p class="sub">Want to prepare for the interview sooner? Choose another way.</p>
-          <a class="course-row" href="request.html">
-            <div class="info"><span class="name">Individual lessons</span><span class="meta">A teacher builds a plan for your interview · flexible schedule</span></div>
-            <span class="arrow">→</span>
-          </a>
-          <a class="course-row" href="#">
-            <div class="info"><span class="badge">Next step</span><span class="name">Job Interview Crash Course</span><span class="meta">2 weeks · from Pre-Intermediate · your next step after Starter</span></div>
-            <span class="arrow">→</span>
-          </a>
+        <section class="focus">
+          <h2>Want a different focus?</h2>
+          <div class="focus-row">
+            <div class="focus-card">
+              <span class="focus-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg></span>
+              <b>Prepare with a personal teacher</b>
+              <p>A plan built around your interview, on your schedule</p>
+              <a class="course-row" href="request.html"><div class="info"><span class="name">Individual lessons</span><span class="meta">Flexible schedule</span></div><span class="arrow">→</span></a>
+            </div>
+            <div class="focus-card">
+              <span class="focus-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></span>
+              <b>Your next step after Starter</b>
+              <p>When you reach Pre-Intermediate</p>
+              <a class="course-row" href="#"><div class="info"><span class="name">Job Interview Crash Course</span><span class="meta">2 weeks</span></div><span class="arrow">→</span></a>
+            </div>
+          </div>
         </section>
 
       </div>

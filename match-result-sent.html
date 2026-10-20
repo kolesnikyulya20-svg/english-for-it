@@ -143,6 +143,15 @@
   .level.compact .scale span { padding: 4px 0; font-size: 12px; }
   .lv-line { font-size: 14px; line-height: 1.5; color: #3f3f4a; }
   .lv-line b { color: #1c1c1c; }
+
+  /* Different focus — goal-style cards */
+  .focus h2 { font-size: 22px; font-weight: 700; line-height: 1.5; margin-bottom: 16px; }
+  .focus-row { display: flex; gap: 16px; }
+  .focus-card { flex: 1 0 0; background: #ffffe1; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+  .focus-ico { width: 44px; height: 44px; border-radius: 100px; background: #3551f0; display: flex; align-items: center; justify-content: center; }
+  .focus-card b { font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .focus-card p { font-size: 14px; line-height: 1.5; color: #3f3f4a; margin-bottom: 4px; }
+  .focus-card .course-row { margin-top: auto; }
 </style>
 </head>
 <body>
@@ -204,17 +213,22 @@
           </div>
         </section>
 
-        <section class="box alts">
-          <h2>Not the right course?</h2>
-          <p class="sub">Choose by what matters more to you:</p>
-          <a class="course-row" href="#">
-            <div class="info"><span class="name">Business English</span><span class="meta">Need business communication more than tech English? · 7 weeks</span></div>
-            <span class="arrow">→</span>
-          </a>
-          <a class="course-row" href="#">
-            <div class="info"><span class="name">English For Tech: Speaking &amp; Listening</span><span class="meta">Want more speaking practice? · 6 weeks</span></div>
-            <span class="arrow">→</span>
-          </a>
+        <section class="focus">
+          <h2>Want a different focus?</h2>
+          <div class="focus-row">
+            <div class="focus-card">
+              <span class="focus-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg></span>
+              <b>Focus only on speaking and listening</b>
+              <p>Shorter course without grammar and writing</p>
+              <a class="course-row" href="#"><div class="info"><span class="name">English For Tech: Speaking &amp; Listening</span><span class="meta">6 weeks</span></div><span class="arrow">→</span></a>
+            </div>
+            <div class="focus-card">
+              <span class="focus-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg></span>
+              <b>Focus on business communication</b>
+              <p>Meetings, emails and negotiations — less tech vocabulary</p>
+              <a class="course-row" href="#"><div class="info"><span class="name">Business English</span><span class="meta">7 weeks</span></div><span class="arrow">→</span></a>
+            </div>
+          </div>
         </section>
 
       </div>
