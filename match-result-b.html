@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English For IT™ — Your result (variant B)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Roboto:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Rubik', sans-serif; background: #f5f7ff; color: #1c1c1c; }
+  .page { width: 1440px; margin: 0 auto; background: #f5f7ff; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 3px solid rgba(53, 81, 240, .45); outline-offset: 3px; }
+
+  /* ---------- Header (match style: px 48) ---------- */
+  .hdr { background: #3551f0; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 75px; }
+  .hdr-logo img { display: block; width: 209.64px; height: 40px; }
+  .hdr-nav { display: flex; align-items: center; }
+  .hdr-link { display: flex; align-items: center; gap: 10px; padding: 30px 20px; font-size: 14.025px; line-height: 15px; color: #ffffe1; transition: opacity .15s; }
+  .hdr-link.dd { padding-right: 15px; font-family: 'Roboto', sans-serif; }
+  .hdr-link img { width: 15px; height: 15px; }
+  .hdr-link:hover { opacity: .75; }
+  .hdr-offer { background: #ffffe1; display: flex; align-items: center; gap: 10px; padding: 10px 20px; color: #3551f0; font-size: 14.025px; line-height: 19.597px; transition: background .15s; }
+  .hdr-offer img { width: 18.713px; height: 18.713px; }
+  .hdr-offer b { font-weight: 500; display: block; }
+  .hdr-offer:hover { background: #fff; }
+
+  /* ---------- Body ---------- */
+  .body { background: #fff; height: 1855px; padding: 48px 120px 120px; display: flex; flex-direction: column; gap: 28px; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .6px; line-height: 1.5; color: #3551f0; }
+  .heading { display: flex; flex-direction: column; gap: 8px; }
+  .heading h1 { width: 900px; font-size: 44px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
+  .heading p:not(.eyebrow) { width: 900px; font-size: 17px; line-height: 1.5; color: #3f3f4a; }
+  .columns { display: flex; gap: 24px; align-items: flex-start; }
+  .main { flex: 1 0 0; display: flex; flex-direction: column; gap: 24px; }
+  .side { width: 380px; flex-shrink: 0; }
+  .box { background: #fff; border: 1.5px solid #e6e0a0; border-radius: 32px; padding: 36px; display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+
+  /* Your level */
+  .level-row { display: flex; align-items: center; gap: 16px; }
+  .level-row .level-code { font-size: 64px; font-weight: 800; line-height: 1.1; color: #3551f0; }
+  .level-row b { display: block; font-size: 24px; font-weight: 700; line-height: 1.5; }
+  .level-row div span { display: block; font-size: 15px; line-height: 1.5; color: #3f3f4a; }
+  .scale { width: 100%; display: flex; gap: 6px; }
+  .scale span { flex: 1 0 0; text-align: center; padding: 8px 0; border-radius: 100px; background: #ebeefe; color: #3551f0; font-size: 14px; font-weight: 700; line-height: 1.5; }
+  .scale span.on { background: #3551f0; color: #fff; }
+  .can-hard { width: 100%; display: flex; gap: 24px; }
+  .list { flex: 1 0 0; display: flex; flex-direction: column; gap: 10px; }
+  .list > b { font-size: 16px; font-weight: 700; line-height: 1.5; }
+  .item { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.5; }
+  .item p { width: 300px; }
+  .mark { width: 22px; height: 22px; border-radius: 100px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mark img { width: 13px; height: 13px; }
+  .mark.ok { background: #ddf8dd; }
+  .mark.hard { background: #ffe3d8; }
+
+  /* Best match */
+  .tag { background: #3551f0; color: #fff; padding: 6px 12px; border-radius: 100px; font-size: 13px; font-weight: 600; letter-spacing: .6px; line-height: 1.5; }
+  .course-title { font-size: 32px; font-weight: 800; line-height: 1.5; letter-spacing: -.5px; }
+  .course-meta { font-size: 15px; font-weight: 500; line-height: 1.5; color: #3f3f4a; }
+  .why { width: 100%; background: #ffffe1; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .why > b { font-size: 15px; font-weight: 700; line-height: 1.5; }
+  .why .item p { width: 560px; }
+  .next { width: 100%; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .next > p { font-size: 14px; line-height: 1.5; color: #3f3f4a; }
+  .secondary { display: flex; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 18px 32px; border: 0; border-radius: 100px; font: 600 17px/1.5 'Rubik', sans-serif; white-space: nowrap; cursor: pointer; transition: background .15s, color .15s; }
+  .btn-blue { background: #3551f0; color: #fff; }
+  .btn-blue:hover { background: #2a43d6; }
+  .btn-outline { background: #fff; color: #3551f0; border: 2px solid #3551f0; padding: 16px 30px; }
+  .btn-outline:hover { background: #ebeefe; }
+
+  /* Other courses */
+  .box h2 { font-size: 20px; font-weight: 700; line-height: 1.5; }
+  .box .sub { font-size: 14px; line-height: 1.5; color: #3f3f4a; }
+  .course-row { width: 100%; background: #fff; border: 1.5px solid #d9d28f; border-radius: 16px; padding: 12px 12px 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; transition: border-color .15s; }
+  .course-row .info { flex: 1 0 0; display: flex; flex-direction: column; gap: 2px; line-height: 1.5; }
+  .course-row .name { font-size: 16px; font-weight: 600; }
+  .course-row .meta { font-size: 13px; color: #5b5b66; }
+  .badge { align-self: flex-start; background: #3551f0; color: #fff; padding: 3px 8px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: .5px; line-height: 1.5; }
+  .arrow { width: 40px; height: 40px; flex-shrink: 0; border-radius: 100px; background: #ebeefe; color: #3551f0; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; transition: background .15s, color .15s; }
+  .course-row:hover { border-color: #3551f0; }
+  .course-row:hover .arrow { background: #3551f0; color: #fff; }
+
+  /* Certificate */
+  .cert { padding: 28px; gap: 16px; }
+  .cert-preview { width: 100%; background: #ebeefe; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 4px; line-height: 1.5; }
+  .cert-preview .t1 { font-size: 13px; font-weight: 600; letter-spacing: .6px; color: #3551f0; }
+  .cert-preview .t2 { font-size: 20px; font-weight: 800; color: #3551f0; }
+  .cert-preview .t3 { font-size: 12px; color: #3f3f4a; }
+  .cert h2 { font-size: 20px; font-weight: 700; line-height: 1.5; }
+  .cert .sub { font-size: 14px; }
+  .field { width: 100%; display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 13px; font-weight: 600; line-height: 1.5; color: #3f3f4a; }
+  .field input { width: 100%; padding: 12.5px 14.5px; border: 1.5px solid #d6d6e0; border-radius: 14px; font: 400 15px/1.5 'Rubik', sans-serif; color: #1c1c1c; background: #fff; outline: none; transition: border-color .15s; }
+  .field input::placeholder { color: #8a8a96; }
+  .field input:hover { border-color: #b8b8c4; }
+  .field input:focus { border-color: #3551f0; }
+  .field.invalid input { border-color: #e5484d; }
+  .error { display: none; font-size: 13px; line-height: 1.5; color: #e5484d; }
+  .field.invalid .error { display: block; }
+  .check { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; font-size: 14px; line-height: 1.5; color: #3f3f4a; }
+  .check input { appearance: none; width: 20px; height: 20px; flex-shrink: 0; margin: 0; border: 1.5px solid #b8b8c4; border-radius: 6px; background: #fff center / 12px no-repeat; cursor: pointer; transition: border-color .15s, background-color .15s; }
+  .check input:hover { border-color: #3551f0; }
+  .check input:checked { background-color: #3551f0; border-color: #3551f0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6.5l2.5 2.5L10 3.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+  .check span { width: 280px; }
+  .btn-full { width: 100%; }
+  .success-icon { width: 48px; height: 48px; border-radius: 100px; background: #ddf8dd; display: flex; align-items: center; justify-content: center; }
+  .success-icon img { width: 24px; height: 24px; }
+  .cert .sent-title { font-size: 22px; font-weight: 700; line-height: 1.5; }
+  .cert .sent-text { font-size: 15px; line-height: 1.5; color: #3f3f4a; }
+  .linkedin { font-size: 15px; font-weight: 600; line-height: 1.5; color: #3551f0; }
+  .linkedin:hover { text-decoration: underline; }
+  [hidden] { display: none !important; }
+  .note { font-size: 13px; line-height: 1.5; color: #3f3f4a; }
+
+  /* Best match — highlighted (curator feedback) */
+  .box.best { border: 3px solid #3551f0; box-shadow: 0 16px 40px rgba(51,77,230,.18); }
+  .box.best .course-title { font-size: 40px; line-height: 1.2; }
+  .discount-hint { background: #ffe3d8; color: #9a3412; border-radius: 12px; padding: 10px 14px; font-size: 14px; font-weight: 600; line-height: 1.5; }
+  .box.alts { background: #f5f7ff; border: 0; }
+  .box.level { padding-top: 28px; padding-bottom: 28px; }
+  .cert-preview.discount { background: #fe7e4f; }
+  .cert-preview.discount .t1, .cert-preview.discount .t2, .cert-preview.discount .t3 { color: #1c1c1c; }
+  .cert-preview.discount .t2 { font-size: 36px; line-height: 1.2; }
+
+  /* Discount + certificate — two equal perks */
+  .cert-preview.perks { flex-direction: row; align-items: stretch; gap: 0; padding: 18px 12px; }
+  .perk { flex: 1 0 0; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+  .perk .ico { width: 40px; height: 40px; border-radius: 100px; background: rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; margin-bottom: 4px; }
+  .perk b { font-size: 19px; font-weight: 800; line-height: 1.2; color: #fff; white-space: nowrap; }
+  .perk span:not(.ico) { font-size: 13px; line-height: 1.4; color: #fff; }
+  .perks .sep { width: 1px; background: rgba(255,255,255,.45); margin: 6px 4px; }
+  .sent-list { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600; line-height: 1.5; }
+  .sent-list span::before { content: "✓ "; color: #1f9d55; }
+
+  /* Compact level on top (curator feedback) */
+  .box.level.compact { padding: 20px 28px; gap: 10px; }
+  .level.compact .lv-top { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .level.compact .level-row .level-code { font-size: 44px; }
+  .level.compact .level-row b { font-size: 20px; }
+  .level.compact .scale { width: 300px; }
+  .level.compact .scale span { padding: 4px 0; font-size: 12px; }
+  .lv-line { font-size: 14px; line-height: 1.5; color: #3f3f4a; }
+  .lv-line b { color: #1c1c1c; }
+
+  /* Different focus — goal-style cards */
+  .focus h2 { font-size: 22px; font-weight: 700; line-height: 1.5; margin-bottom: 16px; }
+  .focus-row { display: flex; gap: 16px; }
+  .focus-card { flex: 1 0 0; background: #ffffe1; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+  .focus-ico { width: 44px; height: 44px; border-radius: 100px; background: #3551f0; display: flex; align-items: center; justify-content: center; }
+  .focus-card b { font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .focus-card p { font-size: 14px; line-height: 1.5; color: #3f3f4a; margin-bottom: 4px; }
+  .focus-card .course-row { margin-top: auto; }
+
+  /* Variant B — outcomes-led recommendation */
+  .chips { display: flex; gap: 8px; }
+  .chips span { background: #ddf8dd; color: #1f7a45; border-radius: 100px; padding: 6px 12px; font-size: 13px; font-weight: 600; line-height: 1.5; }
+  .outcomes { width: 100%; background: #ffffe1; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .outcomes > b { font-size: 20px; font-weight: 700; line-height: 1.5; }
+  .oc-item { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 500; line-height: 1.5; }
+  .oc-ico { width: 36px; height: 36px; border-radius: 100px; background: #3551f0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mini-quote { display: flex; gap: 12px; align-items: center; }
+  .mini-quote img { width: 40px; height: 40px; border-radius: 100px; }
+  .mini-quote p { font-size: 14px; line-height: 1.5; color: #3f3f4a; }
+  .mini-quote b { font-size: 13px; font-weight: 600; }
+  .price-line { display: flex; align-items: baseline; gap: 8px; }
+  .price-line span { font-size: 15px; font-weight: 500; color: #3f3f4a; }
+  .price-line b { font-size: 30px; font-weight: 800; }
+  .price-line em { font-style: normal; font-size: 14px; font-weight: 500; color: #3551f0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hdr">
+    <a class="hdr-logo" href="home.html"><img src="assets/logo.svg" alt="English For IT™"></a>
+    <nav class="hdr-nav">
+      <a class="hdr-link dd" href="#">Courses <img src="assets/chev.svg" alt=""></a>
+      <a class="hdr-link dd" href="#">E-books <img src="assets/chev.svg" alt=""></a>
+      <a class="hdr-link" href="#">Individual lessons</a>
+      <a class="hdr-link" href="#">Corporate Training</a>
+    </nav>
+    <a class="hdr-link dd" href="#">English 🇺🇸 <img src="assets/chev.svg" alt=""></a>
+    <a class="hdr-offer" href="#">
+      <img src="assets/stars.svg" alt="">
+      <span><b>Special offer.</b>English For Tech Lite course for $20 →</span>
+    </a>
+  </header>
+
+  <main class="body">
+    <div class="heading">
+      <p class="eyebrow">STEP 3 OF 3 · YOUR RESULT</p>
+      <h1>Here’s your result, Maria</h1>
+    </div>
+
+    <div class="columns">
+      <div class="main">
+        <section class="box level compact">
+          <p class="eyebrow">YOUR LEVEL</p>
+          <div class="lv-top">
+            <div class="level-row">
+            <span class="level-code">B1</span>
+            <div><b>Intermediate</b><span>Comfortable at work — ready for the next step</span></div>
+          </div>
+            <div class="scale"><span>A1</span><span>A2</span><span class="on">B1</span><span>B2</span><span>C1</span></div>
+          </div>
+          <p class="lv-line"><b>You can:</b> follow stand-ups and team chats, write clear work emails · <b>Still hard:</b> fast discussions with native speakers, small talk with clients</p>
+        </section>
+
+        <section class="box best">
+          <span class="tag">BEST MATCH FOR YOU</span>
+          <p class="course-title">English For Tech Course</p>
+          <p class="course-meta">7 weeks · Online course · For levels: Low Intermediate – Upper-Intermediate</p>
+          <div class="chips"><span>✓ Your goal</span><span>✓ Your level</span><span>✓ Your format</span></div>
+          <div class="outcomes"><b>After 7 weeks, you will:</b><div class="oc-item"><span class="oc-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>Speak in meetings and calls with confidence</div><div class="oc-item"><span class="oc-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg></span>Give a short elevator pitch about your work</div><div class="oc-item"><span class="oc-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Give clear feedback to your team and clients</div><div class="oc-item"><span class="oc-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>Improve all 5 skills: speaking, listening, writing, vocabulary, grammar</div></div>
+          <div class="mini-quote"><img src="assets/avatar-yaroslav.png" alt=""><div><p>“What I truly appreciate is the clear structure, the speaking practice and the personalized feedback.”</p><b>Yaroslav, Senior QA Engineer</b></div></div>
+          <p class="discount-hint">Save 25% on this course — get your discount code on the right →</p>
+          <div class="price-line"><span>from</span><b>$198</b><em>one-time payment for the whole course</em></div>
+          <div class="next">
+            <a class="btn btn-blue" href="course.html?from=match-result.html">View course</a>
+            <p>Not ready to decide? Talk to us or try a lesson first:</p>
+            <div class="secondary">
+              <a class="btn btn-outline" href="request.html">Book a free consultation</a>
+              <a class="btn btn-outline" href="request.html">Try a free lesson</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="focus">
+          <h2>Want a different focus?</h2>
+          <div class="focus-row">
+            <div class="focus-card">
+              <span class="focus-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg></span>
+              <b>Focus only on speaking and listening</b>
+              <p>Shorter course without grammar and writing</p>
+              <a class="course-row" href="#"><div class="info"><span class="name">English For Tech: Speaking &amp; Listening</span><span class="meta">6 weeks</span></div><span class="arrow">→</span></a>
+            </div>
+            <div class="focus-card">
+              <span class="focus-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg></span>
+              <b>Focus on business communication</b>
+              <p>Meetings, emails and negotiations — less tech vocabulary</p>
+              <a class="course-row" href="#"><div class="info"><span class="name">Business English</span><span class="meta">7 weeks</span></div><span class="arrow">→</span></a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <aside class="side">
+        <!-- CERT:START -->
+        <form class="box cert" id="cert" novalidate>
+          <div class="cert-preview discount perks">
+            <div class="perk"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.5"/></svg></span><b>25% off</b><span>on any course</span></div>
+            <div class="sep"></div>
+            <div class="perk"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></svg></span><b>Certificate</b><span>for your LinkedIn</span></div>
+          </div>
+          <h2>Get them by email</h2>
+          <p class="sub">Optional — your result is already here. We’ll email your discount code and your certificate for LinkedIn.</p>
+          <div class="field" id="email-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email">
+            <span class="error">Enter an email like name@example.com</span>
+          </div>
+          <label class="check"><input type="checkbox" name="tips"><span>Also send me learning tips and offers</span></label>
+          <button class="btn btn-blue btn-full" type="submit">Get my 25% discount</button>
+          <p class="note">We’ll only send the code and the certificate. No spam.</p>
+        </form>
+        <!-- CERT:END -->
+      </aside>
+    </div>
+  </main>
+
+</div>
+<script>
+  // Сертифікат: перевіряємо лише email (ім'я необов'язкове), потім показуємо стан «надіслано»
+  const cert = document.getElementById('cert');
+  if (cert) {
+    const field = document.getElementById('email-field');
+    const email = cert.email;
+    email.addEventListener('input', () => field.classList.remove('invalid'));
+    cert.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+        field.classList.add('invalid');
+        email.focus();
+        return;
+      }
+      try { sessionStorage.setItem('certEmail', email.value.trim()); } catch (e) {}
+      const sent = document.getElementById('cert-sent');
+      if (!sent) { location.href = 'match-result-sent.html'; return; }
+      sent.querySelector('.sent-email').textContent = email.value.trim();
+      cert.hidden = true;
+      sent.hidden = false;
+    });
+  }
+</script>
+<!-- MOTION:START -->
+<style>
+  /* ---------- Motion: 1. переходи між сторінками ---------- */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: vt-out .22s ease-in both; }
+  ::view-transition-new(root) { animation: vt-in .38s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes vt-out { to { opacity: 0; transform: translateY(-8px); } }
+  @keyframes vt-in { from { opacity: 0; transform: translateY(12px); } }
+  /* Фолбек для браузерів без cross-document View Transitions */
+  html.no-vt body { animation: vt-in .38s cubic-bezier(.2,.7,.2,1) both; }
+
+  /* ---------- 2. поява блоків при прокрутці ---------- */
+  .rv.rv { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); transition-delay: var(--rv-d, 0ms); }
+  .rv.rv.in { opacity: 1; transform: none; }
+
+  /* ---------- 3. тест: варіант і прогрес ---------- */
+  .fill { transition: width .7s cubic-bezier(.2,.7,.2,1); }
+  .option:has(input:checked) { animation: opt-pop .28s ease; }
+  @keyframes opt-pop { 50% { transform: scale(1.015); } }
+
+  /* ---------- 4. результат: «підбираємо курс…» ---------- */
+  .matching { position: fixed; inset: 0; z-index: 50; background: #f5f7ff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; font: 600 22px/1.4 'Rubik', sans-serif; color: #1c1c1c; transition: opacity .35s ease; }
+  .matching small { font-size: 15px; font-weight: 400; color: #3f3f4a; }
+  .matching .spin { width: 56px; height: 56px; border-radius: 50%; border: 5px solid #ebeefe; border-top-color: #3551f0; animation: spin .8s linear infinite; }
+  .matching.out { opacity: 0; pointer-events: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---------- 5. мікроінтеракції ---------- */
+  .btn, .hdr-offer { transition: background .15s, color .15s, border-color .15s, transform .2s ease, box-shadow .2s ease; }
+  .btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(53,81,240,.22); }
+  .btn:not(:disabled):active { transform: translateY(0); box-shadow: none; }
+  .goal, .way, .review, .module, .tile, .speak-tile, .plan, .course-row, .q, .contact, .step, .after-step, .fact, .option, .ns-opt, .point { transition: transform .25s ease, box-shadow .25s ease, border-color .15s, background .15s; }
+  .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .fact:hover, .q:hover, .contact:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(28,28,28,.08); }
+  .after-step:hover { transform: translateY(-4px); background: rgba(255,255,255,.2); box-shadow: 0 14px 32px rgba(10,20,90,.25); }
+  .option:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(53,81,240,.12); }
+  .ns-opt:hover { transform: translateX(4px); }
+  .point:hover { transform: translateX(4px); }
+  .goal-icon, .opt-icon, .point-icon, .icon-box, .num, .step-icon, .fact-icon { transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+  .goal:hover .goal-icon, .option:hover .opt-icon, .point:hover .point-icon, .tile:hover .icon-box, .after-step:hover .icon-box, .step:hover .num, .speak-tile:hover .icon-box, .fact:hover .fact-icon { transform: scale(1.12) rotate(-6deg); }
+  .course-row:hover { transform: translateX(3px); }
+  .arrow { transition: background .15s, color .15s, transform .2s ease; }
+  .course-row:hover .arrow, a:hover > .arrow, .ns-opt:hover .arrow { transform: translateX(4px); }
+  .back { display: inline-block; transition: color .15s, transform .2s ease; }
+  .back:hover { transform: translateX(-4px); }
+  .btn.pop { animation: btn-pop .35s cubic-bezier(.3,1.6,.5,1); }
+  @keyframes btn-pop { 50% { transform: scale(1.06); } }
+
+  /* Повага до налаштувань системи: без анімацій */
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root), ::view-transition-new(root), html.no-vt body { animation: none; }
+    .rv.rv { opacity: 1; transform: none; transition: none; }
+    .fill, .option:has(input:checked) { transition: none; animation: none; }
+    .matching { display: none; }
+    .btn:hover, .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .after-step:hover, .fact:hover, .q:hover, .contact:hover, .option:hover, .ns-opt:hover, .point:hover, .course-row:hover, .course-row:hover .arrow, .back:hover, [class*=icon], .num { transform: none !important; }
+    .btn.pop { animation: none; }
+  }
+</style>
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!('onpagereveal' in window)) document.documentElement.classList.add('no-vt');
+  if (reduce) return;
+  const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
+               set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} },
+               del: k => { try { sessionStorage.removeItem(k); } catch (e) {} } };
+  const page = location.pathname.split('/').pop() || 'home.html';
+
+  // 3. Прогрес тесту плавно продовжується з попереднього кроку
+  const fill = document.querySelector('.fill');
+  if (fill) {
+    const target = fill.style.width, prev = ss.get('fillW');
+    if (prev && prev !== target) {
+      fill.style.transition = 'none'; fill.style.width = prev;
+      requestAnimationFrame(() => requestAnimationFrame(() => { fill.style.transition = ''; fill.style.width = target; }));
+    }
+    ss.set('fillW', target);
+  } else if (!page.startsWith('match-')) ss.del('fillW');
+  const nextBtn = document.querySelector('.options') && document.querySelector('form .btn');
+  if (nextBtn) { let was = nextBtn.disabled;
+    document.querySelector('.options').addEventListener('change', () => setTimeout(() => {
+      if (was && !nextBtn.disabled) { nextBtn.classList.remove('pop'); void nextBtn.offsetWidth; nextBtn.classList.add('pop'); }
+      was = nextBtn.disabled; })); }
+  if (page === 'match-level.html') {
+    const f = document.getElementById('form');
+    if (f) f.addEventListener('submit', () => ss.set('justTested', '1'));
+  }
+
+  // 2. Поява блоків: анімуються «листові» картки, сусіди — з невеликою затримкою
+  const sel = 'main > *, .page > section, .section, .box, .goal, .way, .review, .module, .tile, .speak-tile, .plan, .step, .after-step, .point, .fact, .contact, .q, .card, .panel';
+  let els = [...document.querySelectorAll(sel)].filter(el => !el.closest('.hdr, .hero, .matching, .ftr'));
+  els = els.filter(el => !els.some(o => o !== el && el.contains(o)));
+  const groups = new Map();
+  els.forEach(el => { const g = groups.get(el.parentElement) || []; g.push(el); groups.set(el.parentElement, g); });
+  groups.forEach(g => g.forEach((el, i) => { el.classList.add('rv'); el.style.setProperty('--rv-d', Math.min(i, 5) * 70 + 'ms'); }));
+  // ponytail: перевірка по scroll замість IntersectionObserver — працює і у фонових вкладках
+  let pending = els, ticking = false;
+  const check = () => { ticking = false; const lim = innerHeight * 0.92;
+    pending = pending.filter(el => { if (el.getBoundingClientRect().top < lim) { el.classList.add('in'); const d = parseInt(el.style.getPropertyValue('--rv-d')) || 0; setTimeout(() => el.classList.remove('rv', 'in'), 700 + d); return false; } return true; });
+    if (!pending.length) removeEventListener('scroll', onScroll); };
+  const onScroll = () => { if (!ticking) { ticking = true; setTimeout(check, 50); } };
+  const start = () => { addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); check(); };
+
+  // 4. Після тесту — коротке «підбираємо курс…», потім результат з'являється по черзі
+  if (page.startsWith('match-result') && ss.get('justTested')) {
+    ss.del('justTested');
+    const m = document.createElement('div');
+    m.className = 'matching'; m.setAttribute('role', 'status');
+    m.innerHTML = '<div class="spin"></div><div>Finding your best course…</div><small>Checking your goal, level and format</small>';
+    document.body.appendChild(m);
+    setTimeout(() => { m.classList.add('out'); start(); setTimeout(() => m.remove(), 400); }, 1100);
+  } else start();
+})();
+</script>
+<!-- MOTION:END -->
+</body>
+</html>
