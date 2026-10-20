@@ -83,11 +83,22 @@
   /* ---------- How the course works ---------- */
   .learn { background: #fff; }
   .learn-cols { display: flex; gap: 20px; align-items: stretch; }
-  .learn-col { flex: 1 0 0; background: #ffffe1; border: 1.5px solid #e6e0a0; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
-  .learn-col h3 { font-size: 22px; font-weight: 700; line-height: 1.3; }
-  .learn-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .learn-col li { display: flex; gap: 10px; font-size: 16px; line-height: 1.5; color: #3f3f4a; }
-  .learn-col li::before { content: "✓"; font-weight: 700; color: #3551f0; flex-shrink: 0; }
+  .learn-col { flex: 1 0 0; border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+  .learn-col.c-blue { background: #3551f0; color: #fff; }
+  .learn-col.c-cream { background: #ffffe1; border: 1.5px solid #e6e0a0; }
+  .learn-col.c-orange { background: #fe7e4f; color: #fff; }
+  .learn-col .icon-box.soft { background: rgba(255,255,255,.2); }
+  .learn-col h3 { font-size: 24px; font-weight: 700; line-height: 1.3; }
+  .learn-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .learn-col li { display: flex; gap: 10px; font-size: 16px; line-height: 1.5; }
+  .learn-col li::before { content: "✓"; font-weight: 700; flex-shrink: 0; }
+  .learn-col li b { font-weight: 700; }
+  .stat { display: flex; align-items: center; gap: 12px; }
+  .stat b { font-size: 48px; font-weight: 800; line-height: 1; color: #3551f0; letter-spacing: -1px; }
+  .stat span { font-size: 16px; font-weight: 500; line-height: 1.4; color: #3f3f4a; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: #fff; border: 1.5px solid #dfe3fb; color: #3551f0; font-size: 14px; font-weight: 600; padding: 6px 14px; border-radius: 100px; }
+  .learn-col .for { font-size: 15px; line-height: 1.5; color: #3f3f4a; margin-top: auto; }
   .week-steps { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; }
   .wstep { background: #ffffe1; border: 1.5px solid #e6e0a0; border-radius: 24px; padding: 22px; display: flex; gap: 16px; align-items: center; }
   .wstep .num { font-size: 15px; font-weight: 700; color: #3551f0; width: 28px; flex-shrink: 0; }
@@ -297,21 +308,33 @@
         <p class="lead">English for the situations you actually face at work in tech.</p>
       </div>
       <div class="learn-cols">
-        <div class="learn-col"><h3>You'll be able to</h3><ul>
-          <li>Speak confidently in meetings and stand-ups</li>
-          <li>Give and take feedback politely and clearly</li>
-          <li>Pitch yourself and your ideas in a minute</li>
-          <li>Write clear user stories, bug reports and emails</li></ul></div>
-        <div class="learn-col"><h3>Why it's "for tech"</h3><ul>
-          <li>Real cases from Slack chats, emails and docs</li>
-          <li>Topics from your work: Agile, AI, outsourcing vs product companies</li>
-          <li>20+ ready phrases for every topic</li>
-          <li>Made for developers, QA, PMs, designers, BAs, HR and marketers</li></ul></div>
-        <div class="learn-col"><h3>At the end you get</h3><ul>
-          <li>A blockchain-verified certificate to share on LinkedIn</li>
-          <li>A PDF vocabulary guide</li>
-          <li>A community of learners and mentors</li>
-          <li>Access to all materials with no time limit</li></ul></div>
+        <div class="learn-col c-blue">
+          <span class="icon-box soft"><img src="assets/w-mic.svg" alt=""></span>
+          <h3>You'll be able to</h3>
+          <ul>
+            <li><span><b>Speak</b> confidently in meetings and stand-ups</span></li>
+            <li><span><b>Give and take feedback</b> politely and clearly</span></li>
+            <li><span><b>Pitch</b> yourself and your ideas in a minute</span></li>
+            <li><span><b>Write</b> clear user stories, bug reports and emails</span></li>
+          </ul>
+        </div>
+        <div class="learn-col c-cream">
+          <span class="icon-box"><img src="assets/w-task.svg" alt=""></span>
+          <h3>Why it's "for tech"</h3>
+          <div class="stat"><b>20+</b><span>ready phrases<br>for every topic</span></div>
+          <div class="chips"><span class="chip">Slack chats</span><span class="chip">Emails</span><span class="chip">Stand-ups</span><span class="chip">Agile</span><span class="chip">User stories</span><span class="chip">Bug reports</span><span class="chip">AI tools</span><span class="chip">Product vs outsourcing</span></div>
+          <p class="for">Made for developers, QA, PMs, designers, BAs, HR and marketers.</p>
+        </div>
+        <div class="learn-col c-orange">
+          <span class="icon-box soft"><img src="assets/w-cert.svg" alt=""></span>
+          <h3>At the end you get</h3>
+          <ul>
+            <li><span>A <b>blockchain-verified certificate</b> to share on LinkedIn</span></li>
+            <li><span>A <b>PDF vocabulary guide</b></span></li>
+            <li><span>A <b>community</b> of learners and mentors</span></li>
+            <li><span>Access to all materials with <b>no time limit</b></span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
