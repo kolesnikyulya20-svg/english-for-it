@@ -413,6 +413,16 @@
   } else start();
 })();
 </script>
+<script>
+// На весь екран: макет 1440px масштабується під ширину вікна (і більші, і менші екрани)
+(() => {
+  const page = document.querySelector('.page');
+  if (!page) return;
+  const fit = () => { page.style.zoom = document.documentElement.clientWidth / 1440; };
+  fit();
+  addEventListener('resize', fit);
+})();
+</script>
 <!-- MOTION:END -->
 </body>
 </html>
