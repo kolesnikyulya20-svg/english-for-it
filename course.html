@@ -61,7 +61,7 @@
   .rec[hidden] { display: none; }
   .rec.show { animation: rec-in .5s .3s cubic-bezier(.2,.7,.2,1) both; }
   @keyframes rec-in { from { opacity: 0; transform: translateY(-14px); } }
-  .hero-row { position: absolute; left: 56px; right: 56px; top: 50%; transform: translateY(-45%); padding: 0; display: flex; align-items: stretch; gap: 48px; }
+  .hero-row { position: absolute; left: 56px; right: 56px; top: 50%; transform: translateY(-45%); padding: 0; display: flex; align-items: stretch; justify-content: space-between; gap: 48px; }
   .hero-text { width: 749px; background: #fff; border-radius: 32px; padding: 44px; display: flex; flex-direction: column; justify-content: center; gap: 18px; align-items: flex-start; }
   .tag { background: #3551f0; color: #fff; padding: 6px 12px; border-radius: 100px; font-size: 13px; font-weight: 600; letter-spacing: .6px; line-height: 1.5; }
   .hero-text h1 { font-size: 60px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; }
@@ -108,8 +108,8 @@
   .program { padding: 48px 120px 0; display: flex; flex-direction: column; gap: 40px; scroll-margin-top: 0; }
   .modules { display: flex; gap: 20px; align-items: stretch; }
   .module { flex: 1 0 0; background: #fff; border: 1.5px solid #e6e0a0; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
-  .module .n { font-size: 48px; font-weight: 800; line-height: 1.1; color: #3551f0; }
   .module .w { font-size: 14px; font-weight: 600; letter-spacing: .8px; line-height: 1.5; color: #3f3f4a; }
+  .module .n { font-size: 20px; font-weight: 800; letter-spacing: 0; color: #3551f0; }
   .module b { font-size: 19px; font-weight: 700; line-height: 1.5; }
   .level-check { flex: 1 0 0; background: #3551f0; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
   .level-check b { font-size: 22px; font-weight: 700; line-height: 1.5; color: #fff; }
@@ -220,6 +220,7 @@
   .ftr-col.company { min-width: 80.9px; }
   .wordmark { width: 1200px; aspect-ratio: 1733.33 / 336.27; display: block; }
   #pc-incl { display: flex; flex-direction: column; gap: 16px; }
+  .ftr-line { width: 100%; height: 2px; border-radius: 2px; background: rgba(53,81,240,.35); margin: 48px 0 40px; }
 </style>
 </head>
 <body>
@@ -246,7 +247,6 @@
     <div class="rec" hidden>
       <span class="rec-icon"><img src="assets/ch-star.svg" alt=""></span>
       <p>Recommended for you · B1 Intermediate · Goal: talk to my team and clients</p>
-      <a href="match-result.html">← Back to your result</a>
     </div>
     <div class="hero-row">
       <div class="hero-text">
@@ -335,19 +335,19 @@
   <section class="program" id="program">
     <div class="heading">
       <p class="eyebrow">PROGRAM</p>
-      <h2 class="h2">7 modules, one a week</h2>
+      <h2 class="h2">7 modules in 7 weeks</h2>
       <p class="lead">Each module: video lessons, practice tasks and a speaking task on the topic.</p>
     </div>
     <div class="modules">
-      <div class="module"><span class="n">01</span><span class="w">WEEK 1</span><b>Hype Waves in Tech: Web3 and AI</b></div>
-      <div class="module"><span class="n">02</span><span class="w">WEEK 2</span><b>Outsourcing vs Product Companies</b></div>
-      <div class="module"><span class="n">03</span><span class="w">WEEK 3</span><b>Formal communication and documentation in tech</b></div>
-      <div class="module"><span class="n">04</span><span class="w">WEEK 4</span><b>Agile software development</b></div>
+      <div class="module"><span class="w">WEEK <span class="n">01</span></span><b>Hype Waves in Tech: Web3 and AI</b></div>
+      <div class="module"><span class="w">WEEK <span class="n">02</span></span><b>Outsourcing vs Product Companies</b></div>
+      <div class="module"><span class="w">WEEK <span class="n">03</span></span><b>Formal communication and documentation in tech</b></div>
+      <div class="module"><span class="w">WEEK <span class="n">04</span></span><b>Agile software development</b></div>
     </div>
     <div class="modules">
-      <div class="module"><span class="n">05</span><span class="w">WEEK 5</span><b>Team communication from Junior to Senior</b></div>
-      <div class="module"><span class="n">06</span><span class="w">WEEK 6</span><b>Cross-functional communication</b></div>
-      <div class="module"><span class="n">07</span><span class="w">WEEK 7</span><b>Networking offline and online</b></div>
+      <div class="module"><span class="w">WEEK <span class="n">05</span></span><b>Team communication from Junior to Senior</b></div>
+      <div class="module"><span class="w">WEEK <span class="n">06</span></span><b>Cross-functional communication</b></div>
+      <div class="module"><span class="w">WEEK <span class="n">07</span></span><b>Networking offline and online</b></div>
       <div class="level-check">
         <b>Not sure your level fits?</b>
         <p>Take a free 15-minute test and see if this course is right for you.</p>
@@ -477,6 +477,7 @@
 
   <!-- Footer (original) -->
   <footer class="ftr">
+    <div class="ftr-line"></div>
     <div class="contacts">
       <a class="contact" href="#"><img src="assets/c-mail.svg" alt="">Send email</a>
       <a class="contact" href="#"><img src="assets/c-phone.svg" alt="">Book a call</a>
