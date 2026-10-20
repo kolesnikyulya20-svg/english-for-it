@@ -36,6 +36,8 @@
   .btn-sm { padding: 12px 20px; font-size: 15px; }
   .text-link { font-size: 17px; font-weight: 600; line-height: 1.5; color: #3551f0; white-space: nowrap; }
   .text-link:hover { text-decoration: underline; }
+  .btn-outline-h { background: #fff; color: #3551f0; box-shadow: inset 0 0 0 2px #3551f0; }
+  .btn-outline-h:hover { background: #3551f0; color: #fff; }
 
   /* ---------- Hero ---------- */
   .hero { position: relative; overflow: hidden; display: flex; align-items: center; gap: 64px; padding: 182px 120px; height: 821px; }
@@ -49,7 +51,7 @@
   .hero-sub { margin-top: 20px; font-size: 20px; line-height: 1.5; color: #3f3f4a; }
   .hero-actions { margin-top: 36px; display: flex; align-items: center; gap: 28px; }
   .hero-facts { margin-top: 20px; display: flex; gap: 20px; font-size: 14px; line-height: 1.5; color: #5b5b66; }
-  .hero-facts b { color: #1f9d55; }
+  .hero-facts b { color: #3551f0; }
 
   /* ---------- Trust ---------- */
   .trust { padding: 40px 120px 0; }
@@ -144,16 +146,26 @@
   .reviews { padding: 48px 120px; }
   .reviews-panel { background: #fe7e4f; border-radius: 40px; padding: 56px; display: flex; flex-direction: column; gap: 36px; }
   .reviews-panel h2 { color: #fff; }
-  .review-cards { display: flex; gap: 24px; height: 216px; }
-  .review { flex: 1 0 0; background: #fff; border-radius: 32px; padding: 28px; display: flex; flex-direction: column; gap: 20px; }
+  .review-cards { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
+  .review-cards::-webkit-scrollbar { display: none; }
+  .review { flex: 0 0 calc((100% - 48px) / 3); scroll-snap-align: start; background: #fff; border-radius: 32px; padding: 28px; display: flex; flex-direction: column; gap: 20px; }
   .review > p { flex: 1 0 0; font-size: 15px; line-height: 1.5; }
   .person { display: flex; gap: 12px; align-items: center; line-height: 1.5; }
-  .person img { width: 48px; height: 48px; }
+  .person img, .person .initial { width: 48px; height: 48px; border-radius: 100px; flex-shrink: 0; }
+  .person .initial { display: flex; align-items: center; justify-content: center; background: #ebeefe; color: #3551f0; font-weight: 700; font-size: 18px; }
+  .li-link { font-size: 14px; font-weight: 600; color: #3551f0; text-decoration: underline; }
+  .rev-nav { display: flex; align-items: center; gap: 16px; }
+  .rev-btn { width: 48px; height: 48px; border: 0; border-radius: 100px; background: #fff; color: #3551f0; font: 700 18px 'Rubik', sans-serif; cursor: pointer; transition: transform .2s; }
+  .rev-btn:hover { transform: scale(1.08); }
+  .rev-dots { display: flex; gap: 8px; }
+  .rev-dots i { width: 10px; height: 10px; border-radius: 100px; background: rgba(255,255,255,.5); }
+  .rev-dots i.on { background: #fff; }
   .person b { display: block; font-size: 15px; font-weight: 600; }
   .person span { display: block; font-size: 13px; color: #3f3f4a; }
 
   /* ---------- Footer (original) ---------- */
   .ftr { background: #f5f7ff; padding: 0 120px 24px; display: flex; flex-direction: column; align-items: center; }
+  .ftr-line { width: 100%; height: 1px; background: #d1d6eb; margin-top: 40px; }
   .contacts { width: 100%; background: #fff; border-radius: 24px; padding: 22px 48px; display: flex; align-items: center; justify-content: space-between; }
   .contact { display: flex; align-items: center; gap: 11.1px; font-size: 15.583px; line-height: 21.775px; color: #ff8533; }
   .contact img { width: 33.3px; height: 33.3px; }
@@ -218,8 +230,8 @@
       </h1>
       <p class="hero-sub">Not sure which course is right for you? Tell us your goal, take a short level test — and get a course that fits.</p>
       <div class="hero-actions">
-        <a class="btn btn-orange" href="match-start.html">Take a free test →</a>
-        <a class="text-link" href="#courses">Browse all courses</a>
+        <a class="btn btn-orange" href="match-start.html">Take a free test</a>
+        <a class="btn btn-outline-h" href="#courses">Browse all courses</a>
       </div>
       <div class="hero-facts">
         <span><b>✓</b> Your level + a course that fits</span>
@@ -246,14 +258,14 @@
 
   <!-- Other ways to learn -->
   <section class="ways">
-    <h2 class="h2">Other ways to learn</h2>
+    <h2 class="h2">Learn the way that suits you</h2>
     <div class="ways-cards">
       <div class="way">
         <img src="assets/photo-online.png" alt="">
         <div class="way-body">
           <b>Online courses</b>
           <p>Self-paced courses for work English — from 2 weeks to 2 months.</p>
-          <a class="btn btn-ghost btn-sm" href="#courses">See courses ↓</a>
+          <a class="btn btn-ghost btn-sm" href="#courses">See courses</a>
         </div>
       </div>
       <div class="way">
@@ -261,7 +273,7 @@
         <div class="way-body">
           <b>Individual lessons</b>
           <p>Personal learning plan, flexible schedule, matched teacher.</p>
-          <a class="btn btn-blue btn-sm" href="request.html">Get a free lesson →</a>
+          <a class="btn btn-blue btn-sm" href="request.html">Get a free lesson</a>
         </div>
       </div>
       <div class="way">
@@ -269,7 +281,7 @@
         <div class="way-body">
           <b>Corporate training</b>
           <p>Group and individual classes, soft skills workshops, LMS for your team.</p>
-          <a class="btn btn-ghost btn-sm" href="#">Book a call →</a>
+          <a class="btn btn-ghost btn-sm" href="#">Book a call</a>
         </div>
       </div>
       <div class="way">
@@ -277,7 +289,7 @@
         <div class="way-body">
           <b>E-books</b>
           <p>English For Tech textbook, Grammar Phrasebook, Interview Prep Workbook.</p>
-          <a class="btn btn-ghost btn-sm" href="#">See e-books →</a>
+          <a class="btn btn-ghost btn-sm" href="#">See e-books</a>
         </div>
       </div>
       <div class="way">
@@ -285,7 +297,7 @@
         <div class="way-body">
           <b>Speaking Club</b>
           <p>Every Friday, 5:30–7:00 PM CET. Topics you choose.</p>
-          <a class="btn btn-ghost btn-sm" href="#">Join the club →</a>
+          <a class="btn btn-ghost btn-sm" href="#">Join the club</a>
         </div>
       </div>
       <div class="way notsure-card">
@@ -293,7 +305,7 @@
           <b>Not sure where to start?</b>
           <p>Your level + a course that fits · ~15 min</p>
         </div>
-        <a class="btn btn-ghost btn-sm" href="match-start.html">Take a free test →</a>
+        <a class="btn btn-ghost btn-sm" href="match-start.html">Take a free test</a>
       </div>
     </div>
   </section>
@@ -381,7 +393,7 @@
           <div class="goal-icon"><img src="assets/goal-question.svg" alt=""></div>
           <h3>None of these, or not sure?</h3>
           <p>Answer 3 questions about your goal and take the level test — we’ll pick a course for you.</p>
-          <a class="btn btn-white" href="match-start.html" style="align-self: flex-start">Take a free test →</a>
+          <a class="btn btn-white" href="match-start.html" style="align-self: flex-start">Take a free test</a>
         </div>
       </div>
     </div>
@@ -412,7 +424,7 @@
           <div><b>Certificate at the end</b><span>Add it to your LinkedIn profile when you finish the course.</span></div>
         </div>
       </div>
-      <a class="btn btn-blue" href="course.html#program">See a course program →</a>
+      <a class="btn btn-blue" href="course.html#program">See a course program</a>
     </div>
     </div>
   </section>
@@ -441,20 +453,39 @@
   <section class="reviews">
     <div class="reviews-panel">
       <h2 class="h2">What our learners say</h2>
-      <div class="review-cards">
+      <div class="review-cards" id="rev">
         <div class="review">
           <p>“I have completed several courses by English For IT, and what I truly appreciate is the clear structure, the speaking practice and the personalized feedback.”</p>
           <div class="person"><img src="assets/avatar-yaroslav.png" alt=""><div><b>Yaroslav</b><span>Senior QA Engineer</span></div></div>
+          <a class="li-link" href="#">View on LinkedIn</a>
         </div>
         <div class="review">
           <p>“I just completed the English for Tech Lite course and I highly recommend it! I loved the audio corrections, the relevant tech topics, and of course the memes.”</p>
           <div class="person"><img src="assets/avatar-beatriz.png" alt=""><div><b>Beatriz</b><span>Senior Software Development Engineer</span></div></div>
+          <a class="li-link" href="#">View on LinkedIn</a>
         </div>
         <div class="review">
           <p>“The Job Interview Crash Course gave me practical tools to feel more confident during job interviews in English.”</p>
           <div class="person"><img src="assets/avatar-kateryna.png" alt=""><div><b>Kateryna</b><span>Tech Recruiter</span></div></div>
+          <a class="li-link" href="#">View on LinkedIn</a>
+        </div>
+        <div class="review">
+          <p>“The lessons are always different and interesting, and there’s a lot of speaking practice, which I find super helpful.”</p>
+          <div class="person"><img src="assets/avatar-valeriia.png" alt=""><div><b>Valeriia</b><span>Recruiter</span></div></div>
+          
+        </div>
+        <div class="review">
+          <p>“These courses are a treasure island for any tech specialist who feels they’re missing fluency or confidence in English.”</p>
+          <div class="person"><span class="initial">B</span><div><b>Botakoz</b><span>Lead Business System Analyst</span></div></div>
+          <a class="li-link" href="#">View on LinkedIn</a>
+        </div>
+        <div class="review">
+          <p>“Learning English has always been stressful for me, but lessons with English For IT are different. The material always makes sense.”</p>
+          <div class="person"><span class="initial">V</span><div><b>Viktoriia</b><span>HRBP</span></div></div>
+          
         </div>
       </div>
+      <div class="rev-nav"><button type="button" class="rev-btn" data-d="-1" aria-label="Previous reviews">←</button><span class="rev-dots"><i class="on"></i><i></i></span><button type="button" class="rev-btn" data-d="1" aria-label="Next reviews">→</button></div>
     </div>
   </section>
 
@@ -466,6 +497,7 @@
       <a class="contact" href="#"><img src="assets/c-telegram.svg" alt="">Message us on Telegram</a>
       <a class="contact" href="#"><img src="assets/c-whatsapp.svg" alt="">Message us on WhatsApp</a>
     </div>
+    <div class="ftr-line"></div>
     <div class="ftr-section">
       <div class="ftr-cols">
         <div class="ftr-left">
@@ -652,5 +684,11 @@
 })();
 </script>
 <!-- MOTION:END -->
+<script>
+  // Відгуки: карусель по 3 картки
+  (() => { const t = document.getElementById('rev'); if (!t) return; const dots = document.querySelectorAll('.rev-dots i');
+    document.querySelectorAll('.rev-btn').forEach(b => b.addEventListener('click', () => t.scrollBy({ left: +b.dataset.d * t.clientWidth, behavior: 'smooth' })));
+    t.addEventListener('scroll', () => { const i = Math.round(t.scrollLeft / t.clientWidth); dots.forEach((d, k) => d.classList.toggle('on', k === i)); }); })();
+</script>
 </body>
 </html>
