@@ -106,9 +106,9 @@
   .htable.st .hhead, .htable.st .hrow { grid-template-columns: 70px 280px 1fr; align-items: center; }
   .htable.st .f { font-size: 22px; }
   .htable.combo .hhead, .htable.combo .hrow { grid-template-columns: 50px 600px 230px 1fr; align-items: center; }
-  .htable.combo .hrow { min-height: 0; padding: 16px 0; }
+  .htable.combo .hrow { min-height: 0; padding: 10px 0; height: 64px; }
   .htable.combo .h { font-size: 24px; }
-  .htable.combo .f { font-size: 19px; }
+  .htable.combo .f { font-size: 18px; line-height: 1.3; }
   .slide .t2 { display: none; }
   .slide.step2 .t1 { display: none; } .slide.step2 .t2 { display: inline; }
   .s2 { opacity: 0; transform: translateX(-16px); transition: opacity .45s var(--ease), transform .45s var(--ease); }
@@ -122,6 +122,12 @@
 
   /* 06 Інсайти */
   .insights { display: grid; grid-template-columns: repeat(3, 520px); gap: 40px; margin-top: 56px; }
+  .insights.one { grid-template-columns: 1640px; }
+  .insights.one .insight { height: 420px; padding: 60px; display: grid; grid-template-columns: 900px 1fr; column-gap: 80px; align-content: start; }
+  .insights.one .insight h3 { font-size: 44px; height: auto; grid-column: 1; }
+  .insights.one .insight .big { font-size: 64px; grid-column: 1; margin-top: 40px; }
+  .insights.one .insight p { grid-column: 1; }
+  .insights.one .insight blockquote { position: static; grid-column: 2; grid-row: 1 / 4; align-self: center; font-size: 32px; }
   .insight { padding: 40px; height: 620px; position: relative; }
   .insight h3 { font-size: 34px; font-weight: 700; line-height: 1.2; height: 140px; }
   .insight .big { font-size: 44px; font-weight: 700; color: var(--blue); margin-top: 30px; }
@@ -285,7 +291,7 @@
     <h1 class="a" style="font-size:64px">Від даних клієнта до прототипу</h1>
     <div class="steps">
       <div class="step card a"><div class="n">01</div><h3>Кікофф</h3><p>бізнес-цілі, воронка, дані про тест, теплові карти</p></div>
-      <div class="step card a"><div class="n">02</div><h3>8 гіпотез</h3><p>що може заважати залишити заявку</p></div>
+      <div class="step card a"><div class="n">02</div><h3>10 гіпотез</h3><p>що може заважати залишити заявку</p></div>
       <div class="step card a"><div class="n">03</div><h3>9 інтерв’ю</h3><p>+ юзабіліті-тест поточного сайту</p></div>
       <div class="step card a"><div class="n">04</div><h3>Синтез</h3><p>гіпотези, основні проблеми, інсайти</p></div>
       <div class="step card a"><div class="n">05</div><h3>Конкуренти</h3><p>Lingoda, Preply, Berlitz, BaseLang</p></div>
@@ -301,14 +307,16 @@
     <h1 class="a"><span class="t1">Що ми перевіряли в інтерв’ю</span><span class="t2">Які гіпотези підтвердились</span></h1>
     <div class="htable combo">
       <div class="hhead a"><span>№</span><span>ГІПОТЕЗА</span><span class="s2">СТАТУС</span><span class="s2">ЩО З’ЯСУВАЛИ</span></div>
-      <div class="hrow a" style="--r:0"><span class="num">1</span><span class="h">Ціну сприймають як помісячну, тому курс здається дорогим</span><span class="s2"><i class="pill part">Частково</i></span><span class="f s2">6 з 9 не розуміють, за який період ціна: вона внизу, окремо від того, що входить. «Дорого» не сказав ніхто</span></div>
-      <div class="hrow a" style="--r:1"><span class="num">2</span><span class="h">Не видно, як отримати консультацію</span><span class="s2"><i class="pill ok">Підтверджено</i></span><span class="f s2">Контакти в самому низу, Telegram веде в блог. 5 з 9 хочуть написати, але в месенджер, а не дзвонити</span></div>
-      <div class="hrow a" style="--r:2"><span class="num">3</span><span class="h">Бракує інформації, щоб вирішити</span><span class="s2"><i class="pill ok">Підтверджено</i></span><span class="f s2">5 з 9 не можуть уявити навчання: як часто заняття, хто викладає, чи буде розмовна практика</span></div>
-      <div class="hrow a" style="--r:3"><span class="num">4</span><span class="h">За 5 секунд незрозуміло, що це за продукт</span><span class="s2"><i class="pill part">Частково</i></span><span class="f s2">Що це англійська для IT, ясно всім. Але люди не з IT не бачать курсу «для себе»</span></div>
-      <div class="hrow a" style="--r:4"><span class="num">5</span><span class="h">Тест задовгий і нерелевантний</span><span class="s2"><i class="pill no">Спростовано</i></span><span class="f s2">Довжина влаштовує всіх. Справжня проблема в іншому: 4 з 9 тест просто не помітили</span></div>
-      <div class="hrow a" style="--r:5"><span class="num">6</span><span class="h">Сайт неконсистентний</span><span class="s2"><i class="pill ok">Підтверджено</i></span><span class="f s2">В українській версії назви й програма англійською, Speaking Club «виглядає як інший сайт»</span></div>
-      <div class="hrow a" style="--r:6"><span class="num">7</span><span class="h">Сторінки перевантажені</span><span class="s2"><i class="pill part">Частково</i></span><span class="f s2">5 з 8 губляться через навігацію, а не через обсяг. Програму курсу читають найбільше</span></div>
-      <div class="hrow a" style="--r:7"><span class="num">8</span><span class="h">Шлях придбання задовгий</span><span class="s2"><i class="pill na">Не перевірено</i></span><span class="f s2">У завданні інтерв’ю ніхто не доходив до оформлення — перевіримо на юзабіліті-тесті прототипу</span></div>
+      <div class="hrow a" style="--r:0"><span class="num">1</span><span class="h">Параліч вибору</span><span class="s2"><i class="pill part">Частково</i></span><span class="f s2">5 з 9 обирають курс «методом тику». Хто знає, що шукає, знаходить курс за 30–40 секунд</span></div>
+      <div class="hrow a" style="--r:1"><span class="num">2</span><span class="h">Бар’єр ціноутворення</span><span class="s2"><i class="pill ok">Підтверджено</i></span><span class="f s2">6 з 9 не розуміють, за який період ціна: вона внизу, окремо від того, що входить. «Дорого» не сказав ніхто</span></div>
+      <div class="hrow a" style="--r:2"><span class="num">3</span><span class="h">Не видно опцію консультації</span><span class="s2"><i class="pill ok">Підтверджено</i></span><span class="f s2">Контакти в самому низу, Telegram веде в блог. 5 з 9 хочуть написати, але в месенджер, а не дзвонити</span></div>
+      <div class="hrow a" style="--r:3"><span class="num">4</span><span class="h">Невизначеність результату</span><span class="s2"><i class="pill ok">Підтверджено</i></span><span class="f s2">5 з 9 не можуть уявити навчання: як часто заняття, хто викладає, чи буде розмовна практика</span></div>
+      <div class="hrow a" style="--r:4"><span class="num">5</span><span class="h">Незручний тест</span><span class="s2"><i class="pill part">Частково</i></span><span class="f s2">Довжина влаштовує 6 з 9. Але 4 з 9 тест не помітили, а 3 з 9 не бачать у ньому сенсу</span></div>
+      <div class="hrow a" style="--r:5"><span class="num">6</span><span class="h">Контакти перед результатом тесту</span><span class="s2"><i class="pill ok">Підтверджено</i></span><span class="f s2">6 з 9 негативно сприйняли запит контактів перед результатом: «будуть слати спам»</span></div>
+      <div class="hrow a" style="--r:6"><span class="num">7</span><span class="h">Неконсистентність сайту</span><span class="s2"><i class="pill ok">Підтверджено</i></span><span class="f s2">В українській версії назви й програма англійською, Speaking Club «виглядає як інший сайт»</span></div>
+      <div class="hrow a" style="--r:7"><span class="num">8</span><span class="h">Шлях придбання задовгий</span><span class="s2"><i class="pill part">Частково</i></span><span class="f s2">Ціна, тест і контакти глибоко на сторінці. До оплати в інтерв’ю ніхто не доходив</span></div>
+      <div class="hrow a" style="--r:8"><span class="num">9</span><span class="h">5 секунд: незрозуміло, що за продукт</span><span class="s2"><i class="pill part">Частково</i></span><span class="f s2">Що це англійська для IT, ясно всім. Але люди не з IT не бачать курсу «для себе»</span></div>
+      <div class="hrow a" style="--r:9"><span class="num">10</span><span class="h">Перевантажені сторінки</span><span class="s2"><i class="pill part">Частково</i></span><span class="f s2">5 з 8 губляться через навігацію, а не через обсяг. Програму курсу читають найбільше</span></div>
     </div>
     <div class="footer"><span class="t1">04</span><span class="t2">05</span></div>
   </section>
@@ -316,10 +324,8 @@
   <!-- 06 Інсайти -->
   <section class="slide">
     <div class="eyebrow a">Дослідження · чого не було в гіпотезах</div>
-    <h1 class="a">Три інсайти, яких ми не очікували</h1>
-    <div class="insights">
-      <div class="insight card a"><h3>Email перед результатом тесту відштовхує</h3><div class="big">6 з 9</div><p>негативно сприйняли запит контактів перед результатом тесту</p><blockquote>«Не хочу, щоб спамили. А вони всі спамлять»</blockquote></div>
-      <div class="insight card a"><h3>Губляться ті, хто без чіткого запиту</h3><div class="big">5 з 9</div><p>обирають курс «методом тику». Хто знає, що шукає, знаходить курс за 30–40 секунд</p><blockquote>«Ясно, що нічого не ясно»</blockquote></div>
+    <h1 class="a">Інсайт, якого ми не очікували</h1>
+    <div class="insights one">
       <div class="insight card a"><h3>Застарілий вигляд знижує довіру до методики</h3><div class="big">5 з 9</div><p>сприймають строкаті блоки й різні сторінки як застарілість</p><blockquote>«Застарілий сайт — автоматично думка, що і методики застарілі»</blockquote></div>
     </div>
     <div class="footer"><span>06</span></div>
