@@ -75,7 +75,7 @@
   .goals-sub { margin-top: 8px; font-size: 20px; line-height: 1.5; color: #3f3f4a; }
   .goal-row { display: flex; gap: 16px; align-items: stretch; }
   .goal-row + .goal-row { margin-top: -20px; }
-  .goal { position: relative; flex: 1 0 0; min-width: 0; background: #ffffe1; border: 1.5px solid transparent; border-radius: 32px; padding: 28px; display: flex; flex-direction: column; gap: 8px; }
+  .goal { position: relative; flex: 1 0 0; min-width: 0; background: #ffffe1; border: 1px solid rgba(28,28,28,.08); border-radius: 32px; padding: 28px; display: flex; flex-direction: column; gap: 8px; }
   .goal-icon { width: 52px; height: 52px; border-radius: 100px; background: #3551f0; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
   .goal-icon img { width: 24px; height: 24px; }
   .goal h3 { font-size: 26px; font-weight: 700; line-height: 1.5; }
@@ -84,7 +84,7 @@
   .goal.orange .goal-icon { background: #fff; }
   .goal.orange h3 { color: #fff; }
   .goal.orange > p { color: #f0f2ff; }
-  .course-row { width: 100%; background: #fff; border: 1.5px solid #d9d28f; border-radius: 16px; padding: 10px 10px 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; transition: border-color .15s; }
+  .course-row { width: 100%; background: #fff; border: 1px solid rgba(28,28,28,.08); border-radius: 16px; padding: 10px 10px 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; transition: border-color .15s; }
   .course-row .info { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 2px; line-height: 1.5; }
   .course-row .name { font-size: 16px; font-weight: 600; }
   .course-row .meta { font-size: 13px; color: #3f3f4a; }
@@ -127,20 +127,20 @@
   .ns-opt.ghost:hover { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.6); }
 
   /* ---------- Other ways to learn ---------- */
-  .ways { padding: 48px 120px 0; display: flex; flex-direction: column; gap: 36px; }
-  .ways-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .ways-cards .way { height: 380px; }
+  .ways { padding: 48px 120px 0; display: flex; flex-direction: column; gap: 24px; }
+  .ways-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .ways-cards .way { height: 300px; }
   .btn-ghost { background: #fff; color: #3551f0; box-shadow: inset 0 0 0 2px #3551f0; }
   .btn-ghost:hover { background: #3551f0; color: #fff; }
   .way.notsure-card { background: #fe7e4f; border-color: transparent; align-items: flex-start; text-align: left; padding: 32px 24px 24px; gap: 12px; }
   .notsure-card .ns-text { flex: 1 0 0; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
   .way.notsure-card b { font-size: 26px; font-weight: 800; line-height: 1.3; color: #fff; }
   .way.notsure-card p { font-size: 15px; line-height: 1.5; color: #fff; }
-  .way { flex: 1 0 0; min-width: 0; height: 100%; background: #fff; border: 1.5px solid #e6e0a0; border-radius: 32px; overflow: hidden; display: flex; flex-direction: column; }
-  .way img { width: 100%; height: 170px; object-fit: cover; display: block; flex-shrink: 0; }
-  .way-body { flex: 1 0 0; padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
-  .way-body b { font-size: 22px; font-weight: 700; line-height: 1.5; }
-  .way-body p { flex: 1 0 0; font-size: 15px; line-height: 1.5; color: #3f3f4a; margin-bottom: 8px; }
+  .way { flex: 1 0 0; min-width: 0; height: 100%; background: #fff; border: 1px solid rgba(28,28,28,.08); border-radius: 32px; overflow: hidden; display: flex; flex-direction: column; }
+  .way img { width: 100%; height: 128px; object-fit: cover; display: block; flex-shrink: 0; }
+  .way-body { flex: 1 0 0; padding: 16px 22px 20px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .way-body b { font-size: 20px; font-weight: 700; line-height: 1.5; }
+  .way-body p { flex: 1 0 0; font-size: 14px; line-height: 1.45; color: #3f3f4a; margin-bottom: 4px; }
 
   /* ---------- Reviews ---------- */
   .reviews { padding: 48px 120px; }
@@ -148,7 +148,7 @@
   .reviews-panel h2 { color: #fff; }
   .review-cards { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
   .review-cards::-webkit-scrollbar { display: none; }
-  .review { flex: 0 0 calc((100% - 48px) / 3); scroll-snap-align: start; background: #fff; border-radius: 32px; padding: 28px; display: flex; flex-direction: column; gap: 20px; }
+  .review { flex: 0 0 calc((100% - 48px) / 3); scroll-snap-align: start; background: #fff; border: 1px solid rgba(28,28,28,.08); border-radius: 32px; padding: 28px; display: flex; flex-direction: column; gap: 20px; }
   .review > p { flex: 1 0 0; font-size: 15px; line-height: 1.5; }
   .person { display: flex; gap: 12px; align-items: center; line-height: 1.5; }
   .person img, .person .initial { width: 48px; height: 48px; border-radius: 100px; flex-shrink: 0; }
@@ -600,6 +600,12 @@
   /* ---------- 5. мікроінтеракції ---------- */
   .btn, .hdr-offer { transition: background .15s, color .15s, border-color .15s, transform .2s ease, box-shadow .2s ease; }
   .btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(53,81,240,.22); }
+  /* Ховер кнопок: контурні → сині заповнені; білі на синьому фоні → білі заповнені */
+  .btn-outline:not(:disabled):hover, .btn-ghost:not(:disabled):hover, .btn-outline-h:not(:disabled):hover { background: #3551f0; color: #fff; border-color: #3551f0; }
+  .btn-white:not(:disabled):hover { background: #fff; color: #3551f0; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+  .goal.orange { border-color: transparent; }
+  /* Меню завжди в полі зору */
+  .hdr { position: sticky; top: 0; z-index: 50; }
   .btn:not(:disabled):active { transform: translateY(0); box-shadow: none; }
   .goal, .way, .review, .module, .tile, .speak-tile, .plan, .course-row, .q, .contact, .step, .after-step, .fact, .option, .ns-opt, .point, .learn-col, .wstep, .extra, .pstep, .focus-card { transition: transform .25s ease, box-shadow .25s ease, border-color .15s, background .15s; }
   .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .fact:hover, .q:hover, .contact:hover, .learn-col.c-cream:hover, .wstep:hover, .extra:hover, .pstep:hover, .focus-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(28,28,28,.08); }

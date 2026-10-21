@@ -34,7 +34,7 @@
   .columns { display: flex; gap: 24px; align-items: flex-start; }
   .main { flex: 1 0 0; display: flex; flex-direction: column; gap: 24px; }
   .side { width: 380px; flex-shrink: 0; }
-  .box { background: #fff; border: 1.5px solid #e6e0a0; border-radius: 32px; padding: 36px; display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+  .box { background: #fff; border: 1px solid rgba(28,28,28,.08); border-radius: 32px; padding: 36px; display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
 
   /* Your level */
   .level-row { display: flex; align-items: center; gap: 16px; }
@@ -73,7 +73,7 @@
   /* Other courses */
   .box h2 { font-size: 20px; font-weight: 700; line-height: 1.5; }
   .box .sub { font-size: 14px; line-height: 1.5; color: #3f3f4a; }
-  .course-row { width: 100%; background: #fff; border: 1.5px solid #d9d28f; border-radius: 16px; padding: 12px 12px 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; transition: border-color .15s; }
+  .course-row { width: 100%; background: #fff; border: 1px solid rgba(28,28,28,.08); border-radius: 16px; padding: 12px 12px 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; transition: border-color .15s; }
   .course-row .info { flex: 1 0 0; display: flex; flex-direction: column; gap: 2px; line-height: 1.5; }
   .course-row .name { font-size: 16px; font-weight: 600; }
   .course-row .meta { font-size: 13px; color: #5b5b66; }
@@ -330,6 +330,12 @@
   /* ---------- 5. мікроінтеракції ---------- */
   .btn, .hdr-offer { transition: background .15s, color .15s, border-color .15s, transform .2s ease, box-shadow .2s ease; }
   .btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(53,81,240,.22); }
+  /* Ховер кнопок: контурні → сині заповнені; білі на синьому фоні → білі заповнені */
+  .btn-outline:not(:disabled):hover, .btn-ghost:not(:disabled):hover, .btn-outline-h:not(:disabled):hover { background: #3551f0; color: #fff; border-color: #3551f0; }
+  .btn-white:not(:disabled):hover { background: #fff; color: #3551f0; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+  .goal.orange { border-color: transparent; }
+  /* Меню завжди в полі зору */
+  .hdr { position: sticky; top: 0; z-index: 50; }
   .btn:not(:disabled):active { transform: translateY(0); box-shadow: none; }
   .goal, .way, .review, .module, .tile, .speak-tile, .plan, .course-row, .q, .contact, .step, .after-step, .fact, .option, .ns-opt, .point, .learn-col, .wstep, .extra, .pstep, .focus-card { transition: transform .25s ease, box-shadow .25s ease, border-color .15s, background .15s; }
   .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .fact:hover, .q:hover, .contact:hover, .learn-col.c-cream:hover, .wstep:hover, .extra:hover, .pstep:hover, .focus-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(28,28,28,.08); }

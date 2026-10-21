@@ -85,7 +85,7 @@
   .learn-cols { display: flex; gap: 20px; align-items: stretch; }
   .learn-col { flex: 1 0 0; border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
   .learn-col.c-blue { background: #3551f0; color: #fff; }
-  .learn-col.c-cream { background: #ffffe1; border: 1.5px solid #e6e0a0; }
+  .learn-col.c-cream { background: #ffffe1; border: 1px solid rgba(28,28,28,.08); }
   .learn-col.c-orange { background: #fe7e4f; color: #fff; }
   .learn-col .icon-box.soft { background: rgba(255,255,255,.2); }
   .learn-col h3 { font-size: 24px; font-weight: 700; line-height: 1.3; }
@@ -100,7 +100,7 @@
   .chip { background: #fff; border: 1.5px solid #dfe3fb; color: #3551f0; font-size: 14px; font-weight: 600; padding: 6px 14px; border-radius: 100px; }
   .learn-col .for { font-size: 15px; line-height: 1.5; color: #3f3f4a; margin-top: auto; }
   .week-steps { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; }
-  .wstep { background: #ffffe1; border: 1.5px solid #e6e0a0; border-radius: 24px; padding: 22px; display: flex; gap: 16px; align-items: center; }
+  .wstep { background: #ffffe1; border: 1px solid rgba(28,28,28,.08); border-radius: 24px; padding: 22px; display: flex; gap: 16px; align-items: center; }
   .wstep .num { font-size: 15px; font-weight: 700; color: #3551f0; width: 28px; flex-shrink: 0; }
   .plan-extra { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }
   .plan-extra > b { font-size: 15px; font-weight: 600; letter-spacing: .6px; color: #3f3f4a; }
@@ -111,7 +111,7 @@
   .how-content { display: flex; gap: 32px; align-items: center; }
   .tiles { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; }
   .tiles .row { display: flex; gap: 16px; }
-  .tile { flex: 1 0 0; background: #ffffe1; border: 1.5px solid #e6e0a0; border-radius: 24px; padding: 22px; display: flex; gap: 16px; align-items: center; }
+  .tile { flex: 1 0 0; background: #ffffe1; border: 1px solid rgba(28,28,28,.08); border-radius: 24px; padding: 22px; display: flex; gap: 16px; align-items: center; }
   .tile-text { flex: 1 0 0; display: flex; flex-direction: column; gap: 4px; align-items: flex-start; line-height: 1.5; }
   .tile-text b { font-size: 18px; font-weight: 700; }
   .tile-text span { font-size: 15px; color: #3f3f4a; }
@@ -133,7 +133,7 @@
   /* ---------- Program ---------- */
   .program { padding: 48px 120px 0; display: flex; flex-direction: column; gap: 40px; scroll-margin-top: 0; }
   .modules { display: flex; gap: 20px; align-items: stretch; }
-  .module { flex: 1 0 0; background: #fff; border: 1.5px solid #e6e0a0; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .module { flex: 1 0 0; background: #fff; border: 1px solid rgba(28,28,28,.08); border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
   .module .w { font-size: 14px; font-weight: 600; letter-spacing: .8px; line-height: 1.5; color: #3f3f4a; }
   .module .n { font-size: 20px; font-weight: 800; letter-spacing: 0; color: #3551f0; }
   .module b { font-size: 19px; font-weight: 700; line-height: 1.5; }
@@ -208,7 +208,7 @@
   .faq { padding: 48px 120px 0; display: flex; flex-direction: column; gap: 40px; }
   .faq-grid { display: flex; gap: 20px; }
   .faq-col { flex: 1 0 0; display: flex; flex-direction: column; gap: 12px; }
-  .q { background: #fff; border: 1.5px solid #e6e0a0; border-radius: 20px; padding: 22px 24px; display: flex; gap: 12px; align-items: center; cursor: pointer; transition: border-color .15s; }
+  .q { background: #fff; border: 1px solid rgba(28,28,28,.08); border-radius: 20px; padding: 22px 24px; display: flex; gap: 12px; align-items: center; cursor: pointer; transition: border-color .15s; }
   .q p { flex: 1 0 0; font-size: 18px; font-weight: 600; line-height: 1.5; }
   .q span { width: 36px; height: 36px; border-radius: 100px; background: #ebeefe; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .15s; }
   .q span img { width: 17px; height: 17px; }
@@ -667,6 +667,12 @@
   /* ---------- 5. мікроінтеракції ---------- */
   .btn, .hdr-offer { transition: background .15s, color .15s, border-color .15s, transform .2s ease, box-shadow .2s ease; }
   .btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(53,81,240,.22); }
+  /* Ховер кнопок: контурні → сині заповнені; білі на синьому фоні → білі заповнені */
+  .btn-outline:not(:disabled):hover, .btn-ghost:not(:disabled):hover, .btn-outline-h:not(:disabled):hover { background: #3551f0; color: #fff; border-color: #3551f0; }
+  .btn-white:not(:disabled):hover { background: #fff; color: #3551f0; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+  .goal.orange { border-color: transparent; }
+  /* Меню завжди в полі зору */
+  .hdr { position: sticky; top: 0; z-index: 50; }
   .btn:not(:disabled):active { transform: translateY(0); box-shadow: none; }
   .goal, .way, .review, .module, .tile, .speak-tile, .plan, .course-row, .q, .contact, .step, .after-step, .fact, .option, .ns-opt, .point, .learn-col, .wstep, .extra, .pstep, .focus-card { transition: transform .25s ease, box-shadow .25s ease, border-color .15s, background .15s; }
   .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .fact:hover, .q:hover, .contact:hover, .learn-col.c-cream:hover, .wstep:hover, .extra:hover, .pstep:hover, .focus-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(28,28,28,.08); }

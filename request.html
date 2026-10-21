@@ -33,7 +33,7 @@
   .columns { display: flex; gap: 24px; align-items: flex-start; }
 
   /* What you get */
-  .info { flex: 1 0 0; background: #fff; border: 1.5px solid #e6e0a0; border-radius: 32px; padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+  .info { flex: 1 0 0; background: #fff; border: 1px solid rgba(28,28,28,.08); border-radius: 32px; padding: 40px; display: flex; flex-direction: column; gap: 20px; }
   .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .8px; line-height: 1.5; color: #3551f0; }
   h1 { font-size: 44px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
   .seg { width: 100%; background: #ebeefe; border-radius: 100px; padding: 4px; display: flex; gap: 4px; }
@@ -46,7 +46,7 @@
   .gets-icon img { width: 22px; height: 22px; }
   .gets b { display: block; font-size: 17px; font-weight: 700; }
   .gets div span { display: block; margin-top: 2px; font-size: 15px; color: #3f3f4a; }
-  .known { background: #ffffe1; border: 1px solid #e6e0a0; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .known { background: #ffffe1; border: 1px solid rgba(28,28,28,.08); border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
   .known-head { display: flex; gap: 10px; align-items: center; font-size: 15px; font-weight: 700; line-height: 1.5; }
   .known-head span { width: 28px; height: 28px; border-radius: 100px; background: #3551f0; display: flex; align-items: center; justify-content: center; }
   .known-head img { width: 13px; height: 13px; }
@@ -239,6 +239,12 @@
   /* ---------- 5. мікроінтеракції ---------- */
   .btn, .hdr-offer { transition: background .15s, color .15s, border-color .15s, transform .2s ease, box-shadow .2s ease; }
   .btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(53,81,240,.22); }
+  /* Ховер кнопок: контурні → сині заповнені; білі на синьому фоні → білі заповнені */
+  .btn-outline:not(:disabled):hover, .btn-ghost:not(:disabled):hover, .btn-outline-h:not(:disabled):hover { background: #3551f0; color: #fff; border-color: #3551f0; }
+  .btn-white:not(:disabled):hover { background: #fff; color: #3551f0; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+  .goal.orange { border-color: transparent; }
+  /* Меню завжди в полі зору */
+  .hdr { position: sticky; top: 0; z-index: 50; }
   .btn:not(:disabled):active { transform: translateY(0); box-shadow: none; }
   .goal, .way, .review, .module, .tile, .speak-tile, .plan, .course-row, .q, .contact, .step, .after-step, .fact, .option, .ns-opt, .point, .learn-col, .wstep, .extra, .pstep, .focus-card { transition: transform .25s ease, box-shadow .25s ease, border-color .15s, background .15s; }
   .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .fact:hover, .q:hover, .contact:hover, .learn-col.c-cream:hover, .wstep:hover, .extra:hover, .pstep:hover, .focus-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(28,28,28,.08); }
