@@ -765,21 +765,21 @@
 })();
 </script>
 <style>
-  .demo-toggle { position: fixed; right: 24px; bottom: 24px; z-index: 1000; display: flex; background: #1c1c1c; border-radius: 100px; padding: 4px; box-shadow: 0 10px 30px rgba(0,0,0,.25); font-family: 'Rubik', sans-serif; }
-  .demo-toggle button { border: 0; background: none; color: #fff; font: 600 15px 'Rubik', sans-serif; padding: 10px 20px; border-radius: 100px; cursor: pointer; }
+  .demo-toggle { position: fixed; right: 24px; bottom: 24px; z-index: 1000; display: flex; height: 44px; box-sizing: border-box; background: #1c1c1c; border-radius: 100px; padding: 4px; box-shadow: 0 10px 30px rgba(0,0,0,.25); font-family: 'Rubik', sans-serif; }
+  .demo-toggle button { border: 0; background: none; color: #fff; font: 600 14px/36px 'Rubik', sans-serif; height: 36px; padding: 0 18px; border-radius: 100px; cursor: pointer; }
   .demo-toggle button.on { background: #fff; color: #1c1c1c; }
   .demo-before { position: fixed; inset: 0; z-index: 999; overflow-y: auto; background: #f4f4f4; display: none; }
   .demo-before.show { display: block; }
   .demo-before img { display: block; width: 100%; }
   .demo-before.small { background: #ffffe1; padding: 6vh 0; }
   .demo-before.small img { width: min(900px, 90%); margin: 0 auto; }
-  .demo-badge { position: fixed; left: 50%; transform: translateX(-50%); bottom: 30px; z-index: 1000; background: #ff5a3c; color: #fff; font: 600 14px 'Rubik', sans-serif; padding: 8px 14px; border-radius: 100px; display: none; }
+  .demo-badge { position: fixed; left: 50%; transform: translateX(-50%); bottom: 24px; z-index: 1000; background: #ff5a3c; color: #fff; font: 600 14px/44px 'Rubik', sans-serif; height: 44px; padding: 0 20px; border-radius: 100px; white-space: nowrap; display: none; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
   .demo-before.show + .demo-badge { display: block; }
 </style>
 <script>
 // Режим демо для захисту: ?demo у адресі → кнопка «Було | Стало» зі знімком поточного сайту (клавіша B)
 (() => {
-  try { const q = new URLSearchParams(location.search).get('demo'); if (q === '0') sessionStorage.removeItem('demo'); else if (q !== null) sessionStorage.setItem('demo', '1'); } catch (e) {}
+  try { const q = new URLSearchParams(location.search).get('demo'); if (q === '0') sessionStorage.removeItem('demo'); else if (q !== null) sessionStorage.setItem('demo', '1'); if (q === 'before') sessionStorage.setItem('demoStart', '1'); } catch (e) {}
   let on = false; try { on = sessionStorage.getItem('demo') === '1'; } catch (e) {}
   if (!on) return;
   const file = location.pathname.split('/').pop() || 'index.html';
@@ -796,6 +796,8 @@
   document.body.append(ov, badge, tg);
   const set = before => { ov.classList.toggle('show', before); ov.scrollTop = 0; tg.children[0].classList.toggle('on', before); tg.children[1].classList.toggle('on', !before); };
   tg.addEventListener('click', e => { const b = e.target.closest('button'); if (b) set(b.dataset.v === '1'); });
+  // перший екран демо відкривається одразу на «Було»
+  try { if (sessionStorage.getItem('demoStart')) { sessionStorage.removeItem('demoStart'); set(true); } } catch (e) {}
   addEventListener('keydown', e => { if ((e.key === 'b' || e.key === 'и') && !e.target.closest('input, textarea')) set(!ov.classList.contains('show')); });
 })();
 </script>
