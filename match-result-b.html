@@ -422,6 +422,41 @@
   addEventListener('resize', fit);
 })();
 </script>
+<style>
+  .demo-toggle { position: fixed; right: 24px; bottom: 24px; z-index: 1000; display: flex; background: #1c1c1c; border-radius: 100px; padding: 4px; box-shadow: 0 10px 30px rgba(0,0,0,.25); font-family: 'Rubik', sans-serif; }
+  .demo-toggle button { border: 0; background: none; color: #fff; font: 600 15px 'Rubik', sans-serif; padding: 10px 20px; border-radius: 100px; cursor: pointer; }
+  .demo-toggle button.on { background: #fff; color: #1c1c1c; }
+  .demo-before { position: fixed; inset: 0; z-index: 999; overflow-y: auto; background: #f4f4f4; display: none; }
+  .demo-before.show { display: block; }
+  .demo-before img { display: block; width: 100%; }
+  .demo-before.small { background: #ffffe1; padding: 6vh 0; }
+  .demo-before.small img { width: min(900px, 90%); margin: 0 auto; }
+  .demo-badge { position: fixed; left: 24px; bottom: 24px; z-index: 1000; background: #ff5a3c; color: #fff; font: 600 14px 'Rubik', sans-serif; padding: 8px 14px; border-radius: 100px; display: none; }
+  .demo-before.show + .demo-badge { display: block; }
+</style>
+<script>
+// Режим демо для захисту: ?demo у адресі → кнопка «Було | Стало» зі знімком поточного сайту (клавіша B)
+(() => {
+  try { if (new URLSearchParams(location.search).has('demo')) sessionStorage.setItem('demo', '1'); } catch (e) {}
+  let on = false; try { on = sessionStorage.getItem('demo') === '1'; } catch (e) {}
+  if (!on) return;
+  const file = location.pathname.split('/').pop() || 'index.html';
+  // у демо курс відкривається в тій самій вкладці
+  document.querySelectorAll('a[target="_blank"][href^="course.html"]').forEach(a => a.removeAttribute('target'));
+  const shots = { 'home.html': ['assets/before-home.jpg', 'Було: головна english4it.online'], 'course.html': ['assets/before-course.jpg', 'Було: English For Tech на english4it.online'] };
+  const shot = shots[file] || (file.startsWith('match-result') ? ['assets/before-test-email.jpg', 'Було: кінець тесту на english4it.online', true] : null);
+  if (!shot) return;
+  const ov = document.createElement('div'); ov.className = 'demo-before' + (shot[2] ? ' small' : '');
+  ov.innerHTML = '<img alt="">'; ov.firstChild.src = shot[0];
+  const badge = document.createElement('div'); badge.className = 'demo-badge'; badge.textContent = shot[1];
+  const tg = document.createElement('div'); tg.className = 'demo-toggle';
+  tg.innerHTML = '<button type="button" data-v="1">Було</button><button type="button" data-v="0" class="on">Стало</button>';
+  document.body.append(ov, badge, tg);
+  const set = before => { ov.classList.toggle('show', before); ov.scrollTop = 0; tg.children[0].classList.toggle('on', before); tg.children[1].classList.toggle('on', !before); };
+  tg.addEventListener('click', e => { const b = e.target.closest('button'); if (b) set(b.dataset.v === '1'); });
+  addEventListener('keydown', e => { if ((e.key === 'b' || e.key === 'и') && !e.target.closest('input, textarea')) set(!ov.classList.contains('show')); });
+})();
+</script>
 <!-- MOTION:END -->
 </body>
 </html>
