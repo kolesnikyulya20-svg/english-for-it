@@ -61,8 +61,8 @@
   .rec[hidden] { display: none; }
   .rec.show { animation: rec-in .5s .3s cubic-bezier(.2,.7,.2,1) both; }
   @keyframes rec-in { from { opacity: 0; transform: translateY(-14px); } }
-  .hero-row { position: absolute; left: 56px; right: 56px; top: 50%; transform: translateY(-45%); padding: 0; display: flex; align-items: stretch; justify-content: space-between; gap: 48px; }
-  .hero-text { width: 749px; background: #fff; border-radius: 32px; padding: 44px; display: flex; flex-direction: column; justify-content: center; gap: 18px; align-items: flex-start; }
+  .hero-row { position: absolute; left: 56px; right: 56px; top: 50%; transform: translateY(-45%); padding: 0; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+  .hero-text { width: 749px; background: #fff; border-radius: 32px; padding: 44px; display: flex; flex-direction: column; gap: 18px; align-items: flex-start; box-shadow: 0 16px 40px rgba(13,20,77,.18); }
   .tag { background: #3551f0; color: #fff; padding: 6px 12px; border-radius: 100px; font-size: 13px; font-weight: 600; letter-spacing: .6px; line-height: 1.5; }
   .hero-text h1 { font-size: 60px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; }
   .hero-text p { font-size: 20px; line-height: 1.5; color: #3f3f4a; }
@@ -779,7 +779,7 @@
 <script>
 // Режим демо для захисту: ?demo у адресі → кнопка «Було | Стало» зі знімком поточного сайту (клавіша B)
 (() => {
-  try { const q = new URLSearchParams(location.search).get('demo'); if (q === '0') sessionStorage.removeItem('demo'); else if (q !== null) sessionStorage.setItem('demo', '1'); if (q === 'before') sessionStorage.setItem('demoStart', '1'); } catch (e) {}
+  try { const q = new URLSearchParams(location.search).get('demo'); if (q === '0') sessionStorage.removeItem('demo'); else if (q !== null) sessionStorage.setItem('demo', '1'); if (q === 'before') { sessionStorage.setItem('demoStart', '1'); ['goal', 'format'].forEach(k => sessionStorage.removeItem(k)); } } catch (e) {}
   let on = false; try { on = sessionStorage.getItem('demo') === '1'; } catch (e) {}
   if (!on) return;
   const file = location.pathname.split('/').pop() || 'index.html';

@@ -438,7 +438,7 @@
 <script>
 // Режим демо для захисту: ?demo у адресі → кнопка «Було | Стало» зі знімком поточного сайту (клавіша B)
 (() => {
-  try { const q = new URLSearchParams(location.search).get('demo'); if (q === '0') sessionStorage.removeItem('demo'); else if (q !== null) sessionStorage.setItem('demo', '1'); if (q === 'before') sessionStorage.setItem('demoStart', '1'); } catch (e) {}
+  try { const q = new URLSearchParams(location.search).get('demo'); if (q === '0') sessionStorage.removeItem('demo'); else if (q !== null) sessionStorage.setItem('demo', '1'); if (q === 'before') { sessionStorage.setItem('demoStart', '1'); ['goal', 'format'].forEach(k => sessionStorage.removeItem(k)); } } catch (e) {}
   let on = false; try { on = sessionStorage.getItem('demo') === '1'; } catch (e) {}
   if (!on) return;
   const file = location.pathname.split('/').pop() || 'index.html';
