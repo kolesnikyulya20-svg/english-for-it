@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English For IT — захист проєкту</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C1C1C;
+    --text: #3A3A44;
+    --muted: #9A9AA5;
+    --blue: #3551F0;
+    --blue-soft: #EEF1FF;
+    --blue-pale: #C9D0FF;
+    --orange: #FE7E4F;
+    --orange-soft: #FFE9DF;
+    --red: #E0412B;
+    --green: #1F8A3B;
+    --green-soft: #E8FBE8;
+    --grey: #F6F6F8;
+    --line: #E6E6EA;
+    --ease: cubic-bezier(.2, .7, .2, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: #111; overflow: hidden; }
+  body { font-family: 'Rubik', system-ui, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+  /* Сцена 1920×1080, масштабується під вікно */
+  #stage {
+    position: absolute; left: 50%; top: 50%;
+    width: 1920px; height: 1080px;
+    transform-origin: 0 0;
+  }
+  .slide {
+    position: absolute; inset: 0;
+    background: #fff;
+    padding: 110px 140px 0;
+    opacity: 0; visibility: hidden;
+    transition: opacity .5s var(--ease), visibility 0s .5s;
+  }
+  .slide.active { opacity: 1; visibility: visible; transition: opacity .5s var(--ease); }
+  .slide.blue { background: var(--blue); color: #fff; }
+
+  /* Поява елементів по черзі (--i ставить скрипт) */
+  .a { opacity: 0; transform: translateY(28px); }
+  .slide.active .a { animation: up .7s var(--ease) both; animation-delay: calc(var(--i, 0) * 90ms + 120ms); }
+  @keyframes up { to { opacity: 1; transform: none; } }
+
+  /* Загальна типографіка */
+  .eyebrow { font-size: 22px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
+  .blue .eyebrow { color: var(--blue-pale); }
+  h1 { font-size: 56px; font-weight: 700; line-height: 1.15; margin-top: 24px; }
+  .footer { position: absolute; left: 140px; right: 140px; bottom: 56px; display: flex; justify-content: flex-end; font-size: 18px; color: var(--muted); }
+  .blue .footer { color: var(--blue-pale); }
+  .card { background: var(--grey); border-radius: 24px; }
+
+  /* 01 Титул */
+  .title-big { font-size: 150px; font-weight: 700; line-height: 1.05; margin-top: 220px; }
+  .title-sub { font-size: 56px; font-weight: 500; line-height: 1.2; margin-top: 40px; }
+  .title-note { font-size: 30px; color: #E4E8FF; margin-top: 40px; }
+
+  /* 02 Контекст */
+  .lead { font-size: 28px; line-height: 1.45; color: #4A4A55; max-width: 1300px; margin-top: 32px; }
+  .row3 { display: grid; grid-template-columns: repeat(3, 520px); gap: 40px; margin-top: 70px; }
+  .row3 .card { padding: 40px; min-height: 330px; }
+  .card h3 { font-size: 26px; font-weight: 600; margin-bottom: 20px; }
+  .card p { font-size: 24px; line-height: 1.45; color: var(--text); }
+
+  /* 03 Процес */
+  .steps { display: grid; grid-template-columns: repeat(4, 385px); gap: 40px 30px; margin-top: 60px; }
+  .step { padding: 30px 32px; height: 260px; }
+  .step .n { font-size: 22px; font-weight: 600; color: var(--blue); }
+  .step h3 { font-size: 34px; font-weight: 700; margin: 24px 0 14px; }
+  .step p { font-size: 22px; line-height: 1.4; color: #5B5B66; }
+  .step.me { background: var(--blue); color: #fff; }
+  .step.me .n { color: var(--blue-pale); }
+  .step.me p { color: #E4E8FF; }
+  .legend { display: flex; gap: 40px; margin-top: 40px; font-size: 20px; color: #5B5B66; }
+  .legend span::before { content: ''; display: inline-block; width: 22px; height: 22px; border-radius: 6px; margin-right: 12px; vertical-align: -4px; background: var(--grey); border: 1px solid #DADAE0; }
+  .legend span.me::before { background: var(--blue); border-color: var(--blue); }
+
+  /* 04 До інтерв'ю */
+  .facts { display: grid; grid-template-columns: repeat(2, 800px); gap: 30px; margin-top: 56px; }
+  .fact { padding: 36px 40px; height: 270px; }
+  .fact .big { font-size: 48px; font-weight: 700; }
+  .fact .label { font-size: 26px; font-weight: 600; color: #4A4A55; margin-top: 4px; }
+  .fact p { font-size: 22px; line-height: 1.45; color: #4A4A55; margin-top: 26px; }
+  .fact.cold { background: #FFEDE5; } .fact.cold .big { color: #D94A1A; }
+  .fact.hot { background: var(--green-soft); } .fact.hot .big { color: var(--green); }
+  .after { font-size: 24px; font-weight: 500; color: var(--blue); margin-top: 22px; }
+
+  /* 05 Гіпотези */
+  .htable { margin-top: 40px; }
+  .hhead, .hrow { display: grid; grid-template-columns: 40px 580px 240px 1fr; align-items: start; }
+  .hhead { font-size: 18px; font-weight: 600; letter-spacing: .06em; color: var(--muted); padding-bottom: 14px; }
+  .hrow { border-top: 1px solid var(--line); padding: 18px 0; min-height: 80px; }
+  .hrow .num { font-size: 22px; font-weight: 600; color: var(--blue); }
+  .hrow .h { font-size: 22px; font-weight: 500; line-height: 1.25; padding-right: 40px; }
+  .htable.list .hrow { grid-template-columns: 70px 1fr; min-height: 0; padding: 24px 0; }
+  .htable.list .num, .htable.list .h { font-size: 30px; }
+  .htable.list .hrow { padding: 20px 0; }
+  .pill.na { background: #EFEFF2; color: #6B6B76; }
+  .htable.st .hhead, .htable.st .hrow { grid-template-columns: 70px 280px 1fr; align-items: center; }
+  .htable.st .f { font-size: 22px; }
+  .htable.combo .hhead, .htable.combo .hrow { grid-template-columns: 50px 600px 230px 1fr; align-items: center; }
+  .htable.combo .hrow { min-height: 0; padding: 16px 0; }
+  .htable.combo .h { font-size: 24px; }
+  .htable.combo .f { font-size: 19px; }
+  .slide .t2 { display: none; }
+  .slide.step2 .t1 { display: none; } .slide.step2 .t2 { display: inline; }
+  .s2 { opacity: 0; transform: translateX(-16px); transition: opacity .45s var(--ease), transform .45s var(--ease); }
+  .slide.step2 .s2 { opacity: 1; transform: none; transition-delay: calc(var(--r, 0) * 90ms); }
+  .pill.na { background: #EFEFF2; color: #6B6B76; }
+  .hrow .f { font-size: 20px; line-height: 1.35; color: var(--text); }
+  .pill { display: inline-block; font-size: 20px; font-weight: 500; padding: 7px 18px; border-radius: 20px; }
+  .pill.ok { background: #E3F7E5; color: #1F7A35; }
+  .pill.part { background: #FFF1D6; color: #9A5B00; }
+  .pill.no { background: #FFE4E0; color: #C0341D; }
+
+  /* 06 Інсайти */
+  .insights { display: grid; grid-template-columns: repeat(3, 520px); gap: 40px; margin-top: 56px; }
+  .insight { padding: 40px; height: 620px; position: relative; }
+  .insight h3 { font-size: 34px; font-weight: 700; line-height: 1.2; height: 140px; }
+  .insight .big { font-size: 44px; font-weight: 700; color: var(--blue); margin-top: 30px; }
+  .insight p { font-size: 22px; line-height: 1.4; color: var(--text); margin-top: 14px; }
+  .insight blockquote { position: absolute; left: 40px; right: 40px; top: 430px; border-left: 4px solid var(--blue); padding-left: 20px; font-size: 22px; font-weight: 500; line-height: 1.4; }
+  .insight cite { display: block; font-style: normal; font-size: 18px; font-weight: 400; color: #7A7A85; margin-top: 18px; }
+
+  /* 07 Персона + CJM */
+  .persona-wrap { display: flex; gap: 40px; margin-top: 30px; }
+  .persona { width: 420px; height: 780px; background: var(--blue-soft); border-radius: 24px; padding: 40px; flex: none; }
+  .persona .who { display: flex; gap: 24px; align-items: center; }
+  .avatar { width: 96px; height: 96px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 40px; font-weight: 700; display: grid; place-items: center; flex: none; }
+  .persona .name { font-size: 32px; font-weight: 700; }
+  .persona .role { font-size: 18px; line-height: 1.35; color: #4A4A55; margin-top: 4px; }
+  .persona dl { margin-top: 40px; }
+  .persona dt { font-size: 16px; font-weight: 600; letter-spacing: .06em; color: var(--blue); text-transform: uppercase; }
+  .persona dd { font-size: 21px; line-height: 1.4; margin: 8px 0 28px; }
+  .cjm { position: relative; width: 1176px; height: 780px; }
+  .cjm h2 { font-size: 30px; font-weight: 700; }
+  .cols { position: absolute; top: 60px; left: 0; display: grid; grid-template-columns: repeat(6, 196px); height: 720px; }
+  .col { position: relative; margin: 0 4px; border-radius: 16px; padding: 12px 12px; }
+  .col.A { background: rgba(254,126,79,.08); } .col.B { background: rgba(53,81,240,.08); }
+  .col .tag { font-size: 16px; font-weight: 600; height: 22px; }
+  .col.A .tag { color: var(--orange); } .col.B .tag { color: var(--blue); }
+  .col h4 { font-size: 20px; font-weight: 700; line-height: 1.2; margin-top: 10px; height: 52px; }
+  .col .does { font-size: 18px; line-height: 1.35; color: var(--text); margin-top: 14px; height: 100px; }
+  .col .thinks { font-size: 18px; font-weight: 500; line-height: 1.35; }
+  .col .pain { position: absolute; left: 12px; right: 12px; top: 590px; height: 110px; border-radius: 12px; padding: 12px; font-size: 17px; font-weight: 500; line-height: 1.3; background: #F1F1F4; color: #4A4A55; }
+  .col.A .pain { background: var(--orange-soft); color: #B23E12; }
+  .col.B .pain { background: #E3E8FF; color: #2238B8; }
+  .emo-label { position: absolute; top: 380px; left: 16px; font-size: 14px; font-weight: 600; letter-spacing: .08em; color: var(--muted); }
+  .emo { position: absolute; top: 60px; left: 0; width: 1176px; height: 720px; pointer-events: none; overflow: visible; }
+  .emo polyline { fill: none; stroke: var(--ink); stroke-width: 3; stroke-dasharray: 1400; stroke-dashoffset: 1400; }
+  .slide.active .emo polyline { animation: draw 1.4s .9s var(--ease) forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .emo circle { stroke: #fff; stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .slide.active .emo circle { animation: pop .4s var(--ease) forwards; animation-delay: calc(var(--i) * 200ms + 1s); }
+  @keyframes pop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
+
+  /* 08 Проблеми */
+  .problems { display: grid; grid-template-columns: repeat(2, 800px); gap: 40px; margin-top: 30px; }
+  .problem { padding: 50px 48px; height: 790px; border-top: 8px solid; }
+  .problem.A { border-color: var(--orange); } .problem.B { border-color: var(--blue); }
+  .problem .tag { font-size: 20px; font-weight: 600; letter-spacing: .08em; }
+  .problem.A .tag, .problem.A .big { color: var(--orange); }
+  .problem.B .tag, .problem.B .big { color: var(--blue); }
+  .problem h2 { font-size: 52px; font-weight: 700; line-height: 1.12; margin-top: 16px; }
+  .problem > p { font-size: 24px; line-height: 1.45; color: var(--text); margin-top: 24px; }
+  .problems.three { grid-template-columns: repeat(3, 520px); }
+  .problems.three .problem { padding: 44px 40px; }
+  .problems.three .problem h2 { font-size: 40px; min-height: 135px; }
+  .problems.three .problem > p { font-size: 21px; min-height: 152px; }
+  .problems.three .nums div { grid-template-columns: 180px 1fr; }
+  .problems.three .nums .big { font-size: 34px; }
+  .problems.three .nums span:last-child { font-size: 20px; }
+  .problems.three .nums div.wide { grid-template-columns: 1fr; }
+  .problems.three .nums div.wide .big { font-size: 24px; line-height: 1.3; }
+  .nums { margin-top: 36px; }
+  .nums div { display: grid; grid-template-columns: 252px 1fr; align-items: center; border-top: 1px solid #DADAE0; padding: 18px 0; }
+  .nums .big { font-size: 40px; font-weight: 700; }
+  .nums span:last-child { font-size: 22px; line-height: 1.35; color: var(--text); }
+
+  /* 09 Було */
+  .eyebrow.red { color: var(--red); }
+  .shots { display: grid; grid-template-columns: repeat(3, 520px); gap: 40px; margin-top: 56px; }
+  .shot img { display: block; width: 520px; height: 400px; border-radius: 16px; border: 1px solid #DADAE0; object-fit: cover; }
+  .shot .bar { height: 6px; border-radius: 3px; margin-top: 40px; }
+  .shot .tag { font-size: 18px; font-weight: 600; letter-spacing: .08em; margin-top: 24px; }
+  .shot h3 { font-size: 30px; font-weight: 700; margin-top: 10px; }
+  .shot p { font-size: 22px; line-height: 1.45; color: var(--text); margin-top: 10px; }
+  .shot.A .bar { background: var(--orange); } .shot.A .tag { color: var(--orange); }
+  .shot.B .bar { background: var(--blue); } .shot.B .tag { color: var(--blue); }
+
+  /* 10 Рішення */
+  .concept { font-size: 60px; font-weight: 700; line-height: 1.15; max-width: 1500px; margin-top: 30px; }
+  .proto-btns { position: absolute; top: 96px; right: 140px; display: flex; gap: 16px; }
+  .proto-btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: #fff; color: var(--blue); text-decoration: none;
+    font-size: 22px; font-weight: 600; padding: 18px 32px; border-radius: 40px;
+    transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+  }
+  .proto-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,.18); }
+  .proto-btn.ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 2px #fff; }
+  .proto-btn.ghost:hover { box-shadow: inset 0 0 0 2px #fff, 0 12px 30px rgba(0,0,0,.18); }
+  .proto-btn:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+  .solutions { display: grid; grid-template-columns: repeat(2, 800px); gap: 40px; margin-top: 90px; }
+  .solutions.three { grid-template-columns: repeat(3, 520px); }
+  .solutions.three .solution { padding: 40px; }
+  .solutions.three h3 { font-size: 32px; }
+  .solutions.three p { font-size: 21px; }
+  .solution { background: rgba(255,255,255,.1); border-radius: 24px; padding: 40px 48px; height: 400px; }
+  .solution .tag { font-size: 18px; font-weight: 600; letter-spacing: .08em; color: var(--blue-pale); }
+  .solution h3 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-top: 16px; }
+  .solution p { font-size: 23px; line-height: 1.45; color: #E4E8FF; margin-top: 24px; }
+
+  /* 11 Підсумок */
+  .summary { display: grid; grid-template-columns: repeat(3, 520px); gap: 40px; margin-top: 56px; }
+  .sum { padding: 40px; height: 640px; }
+  .sum h3 { font-size: 32px; font-weight: 700; }
+  .sum ul { list-style: none; margin-top: 36px; }
+  .sum li { position: relative; padding-left: 24px; font-size: 23px; line-height: 1.45; color: #2A2A33; margin-bottom: 28px; }
+  .sum li::before { content: ''; position: absolute; left: 0; top: 13px; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .sum.done { background: var(--blue-soft); } .sum.done h3, .sum.done li::before { color: var(--blue); }
+  .sum.exp { background: var(--green-soft); } .sum.exp h3, .sum.exp li::before { color: var(--green); }
+  .sum li::before { background: var(--c, var(--ink)); }
+  .sum.done li { --c: var(--blue); } .sum.exp li { --c: var(--green); }
+
+  /* 12 Дякую */
+  .thanks { font-size: 160px; font-weight: 700; margin-top: 230px; }
+
+  /* Прогрес і підказка */
+  #progress { position: fixed; left: 0; bottom: 0; height: 4px; background: var(--blue); transition: width .4s var(--ease); z-index: 10; }
+  #hint { position: fixed; right: 16px; bottom: 12px; font: 13px 'Rubik', sans-serif; color: rgba(255,255,255,.55); z-index: 10; transition: opacity .6s; }
+
+  /* Прототип поверх презентації */
+  #demo { position: fixed; inset: 0; z-index: 20; background: #fff; display: none; }
+  #demo.open { display: block; animation: fadein .3s ease; }
+  @keyframes fadein { from { opacity: 0; } }
+  #demo iframe { width: 100%; height: 100%; border: 0; }
+  #demo-back {
+    position: fixed; left: 24px; bottom: 24px; z-index: 21; height: 44px;
+    font: 600 14px/44px 'Rubik', sans-serif; color: #fff; background: #1c1c1c;
+    border: 0; border-radius: 100px; padding: 0 20px; cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25); transition: transform .2s;
+  }
+  #demo-back:hover, #demo-back:focus-visible { transform: translateY(-2px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide, .slide.active { transition: none; }
+    .slide.active .a, .slide.active .emo polyline, .slide.active .emo circle { animation: none; opacity: 1; transform: none; stroke-dashoffset: 0; }
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- 01 Титул -->
+  <section class="slide blue">
+    <div class="title-big a">English For IT™</div>
+    <div class="title-sub a">Як допомогти людині обрати курс<br>і залишити заявку</div>
+    <div class="title-note a">Редизайн шляху «сайт → заявка» на english4it.online</div>
+  </section>
+
+  <!-- 02 Контекст -->
+  <section class="slide">
+    <div class="eyebrow a">Контекст і задача</div>
+    <h1 class="a" style="font-size:64px">English For IT™ — школа англійської<br>і soft skills для людей у tech</h1>
+    <p class="lead a">Онлайн-курси, індивідуальні заняття, підручники, спікінг-клуби. Аудиторія — розробники, дизайнери, менеджери, світчери з України, Європи, Азії й Латинської Америки. Серед корпоративних клієнтів — EPAM, Exadel, Ciklum.</p>
+    <div class="row3">
+      <div class="card a" style="background:var(--blue-soft)"><h3 style="color:var(--blue)">Що сказав замовник на кікоффі</h3><p>Люди переглядають курси, але рідко залишають заявку чи купують. Їм важко обрати, а по консультацію не звертаються — просто йдуть із сайту.</p></div>
+      <div class="card a"><h3>Пріоритетна дія для бізнесу</h3><p>Заявка на консультацію: після розмови з менеджером люди купують найчастіше.</p></div>
+      <div class="card a"><h3>Скоуп проєкту</h3><p>Шлях «сайт → заявка». Навчальна платформа після оплати — поза скоупом.</p></div>
+    </div>
+    <div class="footer"><span>02</span></div>
+  </section>
+
+  <!-- 03 Процес -->
+  <section class="slide">
+    <div class="eyebrow a">Процес</div>
+    <h1 class="a" style="font-size:64px">Від даних клієнта до прототипу</h1>
+    <div class="steps">
+      <div class="step card a"><div class="n">01</div><h3>Кікофф</h3><p>бізнес-цілі, воронка, дані про тест, теплові карти</p></div>
+      <div class="step card a"><div class="n">02</div><h3>8 гіпотез</h3><p>що може заважати залишити заявку</p></div>
+      <div class="step card a"><div class="n">03</div><h3>9 інтерв’ю</h3><p>+ юзабіліті-тест поточного сайту</p></div>
+      <div class="step card a"><div class="n">04</div><h3>Синтез</h3><p>гіпотези, основні проблеми, інсайти</p></div>
+      <div class="step card a"><div class="n">05</div><h3>Конкуренти</h3><p>Lingoda, Preply, Berlitz, BaseLang</p></div>
+      <div class="step card me a"><div class="n">06</div><h3>3 проблеми</h3><p>обрала, що найсильніше впливає на заявку</p></div>
+      <div class="step card me a"><div class="n">07</div><h3>Прототип</h3><p>11 клікабельних екранів</p></div>
+    </div>
+    <div class="footer"><span>03</span></div>
+  </section>
+
+  <!-- 04–05 Гіпотези: крок 1 — список, крок 2 (→) — статуси і що з'ясували -->
+  <section class="slide" data-steps>
+    <div class="eyebrow a"><span class="t1">Дослідження · гіпотези команди</span><span class="t2">Дослідження · 9 інтерв’ю</span></div>
+    <h1 class="a"><span class="t1">Що ми перевіряли в інтерв’ю</span><span class="t2">Які гіпотези підтвердились</span></h1>
+    <div class="htable combo">
+      <div class="hhead a"><span>№</span><span>ГІПОТЕЗА</span><span class="s2">СТАТУС</span><span class="s2">ЩО З’ЯСУВАЛИ</span></div>
+      <div class="hrow a" style="--r:0"><span class="num">1</span><span class="h">Ціну сприймають як помісячну, тому курс здається дорогим</span><span class="s2"><i class="pill part">Частково</i></span><span class="f s2">6 з 9 не розуміють, за який період ціна: вона внизу, окремо від того, що входить. «Дорого» не сказав ніхто</span></div>
+      <div class="hrow a" style="--r:1"><span class="num">2</span><span class="h">Не видно, як отримати консультацію</span><span class="s2"><i class="pill ok">Підтверджено</i></span><span class="f s2">Контакти в самому низу, Telegram веде в блог. 5 з 9 хочуть написати, але в месенджер, а не дзвонити</span></div>
+      <div class="hrow a" style="--r:2"><span class="num">3</span><span class="h">Бракує інформації, щоб вирішити</span><span class="s2"><i class="pill ok">Підтверджено</i></span><span class="f s2">5 з 9 не можуть уявити навчання: як часто заняття, хто викладає, чи буде розмовна практика</span></div>
+      <div class="hrow a" style="--r:3"><span class="num">4</span><span class="h">За 5 секунд незрозуміло, що це за продукт</span><span class="s2"><i class="pill part">Частково</i></span><span class="f s2">Що це англійська для IT, ясно всім. Але люди не з IT не бачать курсу «для себе»</span></div>
+      <div class="hrow a" style="--r:4"><span class="num">5</span><span class="h">Тест задовгий і нерелевантний</span><span class="s2"><i class="pill no">Спростовано</i></span><span class="f s2">Довжина влаштовує всіх. Справжня проблема в іншому: 4 з 9 тест просто не помітили</span></div>
+      <div class="hrow a" style="--r:5"><span class="num">6</span><span class="h">Сайт неконсистентний</span><span class="s2"><i class="pill ok">Підтверджено</i></span><span class="f s2">В українській версії назви й програма англійською, Speaking Club «виглядає як інший сайт»</span></div>
+      <div class="hrow a" style="--r:6"><span class="num">7</span><span class="h">Сторінки перевантажені</span><span class="s2"><i class="pill part">Частково</i></span><span class="f s2">6 з 9 губляться, але через навігацію, а не обсяг. Програму курсу читають найбільше</span></div>
+      <div class="hrow a" style="--r:7"><span class="num">8</span><span class="h">Шлях придбання задовгий</span><span class="s2"><i class="pill na">Не перевірено</i></span><span class="f s2">У завданні інтерв’ю ніхто не доходив до оформлення — перевіримо на юзабіліті-тесті прототипу</span></div>
+    </div>
+    <div class="footer"><span class="t1">04</span><span class="t2">05</span></div>
+  </section>
+
+  <!-- 06 Інсайти -->
+  <section class="slide">
+    <div class="eyebrow a">Дослідження · чого не було в гіпотезах</div>
+    <h1 class="a">Три інсайти, яких ми не очікували</h1>
+    <div class="insights">
+      <div class="insight card a"><h3>Email перед результатом тесту відштовхує</h3><div class="big">6 з 9</div><p>негативно сприйняли запит контактів перед результатом тесту</p><blockquote>«Не хочу, щоб спамили. А вони всі спамлять»</blockquote></div>
+      <div class="insight card a"><h3>Губляться ті, хто без чіткого запиту</h3><div class="big">5 з 9</div><p>обирають курс «методом тику». Хто знає, що шукає, знаходить курс за 30–40 секунд</p><blockquote>«Ясно, що нічого не ясно»</blockquote></div>
+      <div class="insight card a"><h3>Застарілий вигляд знижує довіру до методики</h3><div class="big">5 з 9</div><p>сприймають строкаті блоки й різні сторінки як застарілість</p><blockquote>«Застарілий сайт — автоматично думка, що і методики застарілі»</blockquote></div>
+    </div>
+    <div class="footer"><span>06</span></div>
+  </section>
+
+  <!-- 07 Персона + CJM -->
+  <section class="slide">
+    <div class="eyebrow a">Персона та її шлях</div>
+    <div class="persona-wrap">
+      <div class="persona a">
+        <div class="who"><div class="avatar">М</div><div><div class="name">Марія, 28</div><div class="role">Project manager у продуктовій<br>IT-компанії</div></div></div>
+        <dl>
+          <dt>Ціль</dt><dd>Впевнено говорити на мітингах з іноземною командою</dd>
+          <dt>Ситуація</dt><dd>Свій рівень точно не знає. Запит розмитий: «англійська для роботи»</dd>
+          <dt>Як обирає</dt><dd>Сама, ввечері. Порівнює 2–3 школи</dd>
+          <dt>Чого уникає</dt><dd>Спаму після email, дзвінків з менеджером. Хоче просто написати в Telegram</dd>
+        </dl>
+      </div>
+      <div class="cjm">
+        <h2 class="a">Шлях від першого екрана до заявки</h2>
+        <div class="cols">
+          <div class="col a"><div class="tag"></div><h4>01 Перший екран</h4><div class="does">Гортає головну</div><div class="thinks">«Англійська для IT, але чи для мене?»</div><div class="pain">Люди не з IT не бачать курсу для себе</div></div>
+          <div class="col A a"><div class="tag">Проблема А1</div><h4>02 Пошук курсу</h4><div class="does">Клікає меню, «Tell me more»</div><div class="thinks">«Ясно, що нічого не ясно»</div><div class="pain">5 з 9 обирають «методом тику»</div></div>
+          <div class="col A a"><div class="tag">Проблема А2</div><h4>03 Тест на рівень</h4><div class="does">Випадково знаходить тест унизу</div><div class="thinks">«Email? Будуть спамити»</div><div class="pain">6 з 9 негативно про запит контактів</div></div>
+          <div class="col B a"><div class="tag">Проблема Б</div><h4>04 Сторінка курсу</h4><div class="does">Шукає, як проходить навчання</div><div class="thinks">«Шість тижнів — це щодня чи раз на тиждень?»</div><div class="pain">5 з 9 не уявляють процес навчання</div></div>
+          <div class="col B a"><div class="tag">Проблема Б</div><h4>05 Ціна</h4><div class="does">Бачить $288 унизу сторінки</div><div class="thinks">«За курс… чи за місяць?»</div><div class="pain">6 з 9 не розуміють період ціни</div></div>
+          <div class="col a"><div class="tag"></div><h4>06 Заявка</h4><div class="does">Шукає, кому написати</div><div class="thinks">«Telegram… а це блог»</div><div class="pain">Йде порівнювати інші школи</div></div>
+        </div>
+        <svg class="emo" viewBox="0 0 1176 720">
+          <text x="16" y="330" font-size="14" font-weight="600" letter-spacing="1.2" fill="#9A9AA5">ЕМОЦІЯ</text>
+          <polyline points="98,380 294,430 490,480 686,430 882,480 1078,480"/>
+          <circle style="--i:0" cx="98" cy="380" r="11" fill="#F5B700"/>
+          <circle style="--i:1" cx="294" cy="430" r="11" fill="#FE7E4F"/>
+          <circle style="--i:2" cx="490" cy="480" r="11" fill="#E0412B"/>
+          <circle style="--i:3" cx="686" cy="430" r="11" fill="#FE7E4F"/>
+          <circle style="--i:4" cx="882" cy="480" r="11" fill="#E0412B"/>
+          <circle style="--i:5" cx="1078" cy="480" r="11" fill="#E0412B"/>
+        </svg>
+      </div>
+    </div>
+    <div class="footer"><span>07</span></div>
+  </section>
+
+  <!-- 08 Проблеми -->
+  <section class="slide">
+    <div class="eyebrow a">Основні проблеми</div>
+    <div class="problems three">
+      <div class="problem A card a">
+        <div class="tag">ПРОБЛЕМА А1</div>
+        <h2>Тест на рівень непомітний</h2>
+        <p>Людина без чіткого запиту губиться серед курсів. Тест уже вміє підібрати курс, але захований унизу сторінок.</p>
+        <div class="nums">
+          <div><span class="big">4 з 9</span><span>не помітили тест або знайшли випадково</span></div>
+          <div><span class="big">5 з 9</span><span>обирають курс «методом тику»</span></div>
+          <div><span class="big">3 з 9</span><span>не бачать сенсу в тесті «для себе»</span></div>
+        </div>
+      </div>
+      <div class="problem A card a">
+        <div class="tag">ПРОБЛЕМА А2</div>
+        <h2>Email до результату відштовхує</h2>
+        <p>Людина пройшла тест, а замість результату бачить форму для контактів без попередження. Страх спаму — і вона йде.</p>
+        <div class="nums">
+          <div><span class="big">6 з 9</span><span>негативно сприйняли email перед результатом</span></div>
+          <div><span class="big">4 з 9</span><span>чекали результат одразу</span></div>
+          <div><span class="big">~5 з ~123</span><span>проходжень тесту закінчились покупкою</span></div>
+        </div>
+      </div>
+      <div class="problem B card a">
+        <div class="tag">ПРОБЛЕМА Б</div>
+        <h2>Сторінка курсу не пояснює навчання і ціну</h2>
+        <p>Людина вже знайшла курс, але не може уявити свій тиждень навчання і не розуміє, за що платить. Тому йде порівнювати інші школи.</p>
+        <div class="nums">
+          <div><span class="big">5 з 9</span><span>не уявляють, як проходить навчання</span></div>
+          <div><span class="big">6 з 9</span><span>не розуміють, ціна за місяць чи за весь курс</span></div>
+          <div class="wide"><span class="big">Програма курсу — найгарячіша зона теплових карт</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>08</span></div>
+  </section>
+
+  <!-- 09 Рішення -->
+  <section class="slide blue">
+    <div class="eyebrow a">Рішення</div>
+    <div class="proto-btns a">
+      <a class="proto-btn" href="home.html?demo=before" data-demo>Було → Стало</a>
+    </div>
+    <div class="concept a">Сайт сам підбирає курс під ціль людини і показує, як виглядатиме навчання, ще до оплати</div>
+    <div class="solutions three">
+      <div class="solution a"><div class="tag">ПРОБЛЕМА А1</div><h3>Тест непомітний → «Find my course»</h3><p>Підбір курсу — головна дія на першому екрані. «Not sure where to start?» під каталогом і тест на сторінці курсу. Ціль і формат — 2 питання перед тестом.</p></div>
+      <div class="solution a"><div class="tag">ПРОБЛЕМА А2</div><h3>Email до результату → результат одразу</h3><p>Без реєстрації: рівень простими словами й один курс з поясненням «чому саме він». Email — за бажанням, в обмін на знижку і сертифікат.</p></div>
+      <div class="solution a"><div class="tag">ПРОБЛЕМА Б</div><h3>Сторінка курсу → картина навчання</h3><p>На першому екрані тривалість, формат і ціна «за весь курс». Як виглядає тиждень на курсі, що буде після оплати, хто викладає і де розмовна практика.</p></div>
+    </div>
+    <div class="footer"><span>09</span></div>
+  </section>
+
+  <!-- 10 Підсумок -->
+  <section class="slide">
+    <div class="eyebrow a">Підсумок</div>
+    <h1 class="a">Що зроблено і що далі</h1>
+    <div class="summary">
+      <div class="sum done card a"><h3>Що зроблено</h3><ul><li>Шлях людини тепер такий:<br>головна → підбір курсу → результат → сторінка курсу → заявка</li><li>Закрито три проблеми: видимість тесту, email і сторінку курсу</li><li>Заявка — 2 поля замість 4, відповідь у Telegram за 15 хвилин</li></ul></div>
+      <div class="sum exp card a"><h3>Що очікуємо</h3><ul><li>Більше людей доходять до результату тесту й переходять на курс</li><li>Email залишають, бо тепер це вигідно, а не обов’язково</li><li>Людина розуміє навчання й ціну — і обирає тариф або пише консультанту, а не йде до інших шкіл</li></ul></div>
+      <div class="sum card a"><h3>Що далі</h3><ul><li>Юзабіліті-тест прототипу: дійти до заявки (і заодно перевірити, чи не задовгий шлях до покупки)</li><li>Уточнити в клієнта: години на тиждень, FAQ, термін доступу до курсу</li></ul></div>
+    </div>
+    <div class="footer"><span>10</span></div>
+  </section>
+
+  <!-- 11 Дякую -->
+  <section class="slide blue">
+    <div class="thanks a">Дякую!</div>
+    <div class="title-sub a" style="font-size:44px;color:#E4E8FF;margin-top:20px">Готова відповісти на питання</div>
+  </section>
+
+</div>
+<div id="demo"><iframe title="Прототип English For IT"></iframe><button id="demo-back" type="button">← До презентації</button></div>
+<div id="progress"></div>
+<div id="hint">← → гортати · F — повний екран</div>
+
+<script>
+  const stage = document.getElementById('stage');
+  const slides = [...document.querySelectorAll('.slide')];
+  const progress = document.getElementById('progress');
+  let current = 0;
+
+  // Порядок появи елементів усередині кожного слайда
+  slides.forEach(s => s.querySelectorAll('.a').forEach((el, i) => el.style.setProperty('--i', i)));
+
+  function fit() {
+    const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+    stage.style.transform = `scale(${k}) translate(-50%, -50%)`;
+  }
+
+  function show(n) {
+    current = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, i) => { s.classList.toggle('active', i === current); if (i !== current) s.classList.remove('step2'); });
+    progress.style.width = ((current + 1) / slides.length * 100) + '%';
+    history.replaceState(null, '', '#' + (current + 1));
+  }
+
+  // Слайд з кроками (data-steps): спершу → відкриває другий крок на тому ж слайді, потім іде далі
+  function next() {
+    const s = slides[current];
+    if (s.hasAttribute('data-steps') && !s.classList.contains('step2')) { s.classList.add('step2'); return; }
+    show(current + 1);
+  }
+  function prev() {
+    const s = slides[current];
+    if (s.classList.contains('step2')) { s.classList.remove('step2'); return; }
+    show(current - 1);
+    const p = slides[current]; if (p.hasAttribute('data-steps')) p.classList.add('step2');
+  }
+
+  // Прототип відкривається поверх слайдів; «До презентації» повертає на той самий слайд
+  const demo = document.getElementById('demo');
+  const frame = demo.querySelector('iframe');
+  document.querySelectorAll('[data-demo]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    frame.src = a.getAttribute('href');
+    demo.classList.add('open');
+    frame.focus();
+  }));
+  function closeDemo() { demo.classList.remove('open'); frame.src = 'about:blank'; }
+  document.getElementById('demo-back').addEventListener('click', closeDemo);
+
+  addEventListener('keydown', e => {
+    if (demo.classList.contains('open')) { if (e.key === 'Escape') closeDemo(); return; }
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); next(); }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key === 'f' || e.key === 'F' || e.key === 'а' || e.key === 'А') {
+      document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+    }
+  });
+
+  addEventListener('resize', fit);
+  fit();
+  show((parseInt(location.hash.slice(1)) || 1) - 1);
+  setTimeout(() => document.getElementById('hint').style.opacity = 0, 4000);
+</script>
+</body>
+</html>
