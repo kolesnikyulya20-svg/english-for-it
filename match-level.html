@@ -127,7 +127,11 @@
     let goal = null;
     try { goal = sessionStorage.getItem('goal'); } catch (e) {}
     // ponytail: кілька цілей — якщо серед них співбесіда, показуємо варіант 06c (демо крайнього випадку)
-    location.href = (goal || '').split(',').includes('interview') ? 'match-result-below.html' : 'match-result.html';
+    // У презентації (режим демо) показуємо варіанти екранів: 06a і 06c1
+    let demo = false; try { demo = sessionStorage.getItem('demo') === '1'; } catch (e) {}
+    const interview = (goal || '').split(',').includes('interview');
+    location.href = demo ? (interview ? 'match-result-below-plan.html' : 'match-result-b.html')
+                         : (interview ? 'match-result-below.html' : 'match-result.html');
   });
   const next = document.querySelector('.btn');
   const sync = () => { next.disabled = !document.querySelector('.options input:checked'); };
