@@ -247,6 +247,18 @@
   .wordmark { width: 1200px; aspect-ratio: 1733.33 / 336.27; display: block; }
   #pc-incl { display: flex; flex-direction: column; gap: 16px; }
   .ftr-line { width: 100%; height: 2px; border-radius: 2px; background: rgba(53,81,240,.35); margin: 48px 0 40px; }
+  /* Закріплена панель запису: з'являється після першого екрана, ховається біля тарифів і футера */
+  .cbar { position: fixed; left: 50%; bottom: 24px; z-index: 40; width: 1200px; margin-left: -600px; background: #fff; border: 1px solid rgba(28,28,28,.08); border-radius: 24px; box-shadow: 0 16px 40px rgba(13,20,77,.18); padding: 14px 14px 14px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; opacity: 0; transform: translateY(24px); pointer-events: none; transition: opacity .3s ease, transform .3s ease; }
+  .cbar.show { opacity: 1; transform: none; pointer-events: auto; }
+  .cbar-info { display: flex; align-items: baseline; gap: 14px; line-height: 1.4; }
+  .cbar-info b { font-size: 19px; font-weight: 700; }
+  .cbar-info span { font-size: 15px; color: #3f3f4a; }
+  .cbar-info strong { font-size: 19px; font-weight: 800; color: #1c1c1c; }
+  .cbar-actions { display: flex; gap: 12px; }
+  .cbar .btn { padding: 12px 24px; font-size: 16px; }
+  .cbar .btn-outline { padding: 10px 22px; }
+  .demo-on .cbar { bottom: 84px; }
+  @media (prefers-reduced-motion: reduce) { .cbar { transition: none; } }
 </style>
 </head>
 <body>
@@ -616,6 +628,25 @@
     </div>
   </footer>
 
+  <!-- Закріплена панель запису на курс -->
+  <div class="cbar" aria-hidden="true">
+    <div class="cbar-info"><b>English For Tech</b><span>from <strong>$198</strong> · one-time payment for the whole course</span></div>
+    <div class="cbar-actions">
+      <a class="btn btn-outline" href="request.html">Book a free consultation</a>
+      <a class="btn btn-orange" href="#pricing">Choose a plan</a>
+    </div>
+  </div>
+  <script>
+  (() => {
+    const bar = document.querySelector('.cbar'), hero = document.querySelector('.hero'), pricing = document.getElementById('pricing'), ftr = document.querySelector('.ftr');
+    const inView = el => { const r = el.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; };
+    const check = () => {
+      const show = hero.getBoundingClientRect().bottom < 0 && !inView(pricing) && !inView(ftr);
+      bar.classList.toggle('show', show); bar.setAttribute('aria-hidden', String(!show));
+    };
+    addEventListener('scroll', check, { passive: true }); addEventListener('resize', check); check();
+  })();
+  </script>
 </div>
 <script>
   // Перемикач тарифів у картці ціни. Склад Junior/Senior взято з рядків тарифів ліворуч (у макеті показано лише Middle)
@@ -788,6 +819,7 @@
   try { const q = new URLSearchParams(location.search).get('demo'); if (q === '0') sessionStorage.removeItem('demo'); else if (q !== null) sessionStorage.setItem('demo', '1'); if (q === 'before') { sessionStorage.setItem('demoStart', '1'); ['goal', 'format'].forEach(k => sessionStorage.removeItem(k)); } } catch (e) {}
   let on = false; try { on = sessionStorage.getItem('demo') === '1'; } catch (e) {}
   if (!on) return;
+  document.documentElement.classList.add('demo-on');
   const file = location.pathname.split('/').pop() || 'index.html';
   // у демо курс відкривається в тій самій вкладці
   document.querySelectorAll('a[target="_blank"][href^="course.html"]').forEach(a => a.removeAttribute('target'));
