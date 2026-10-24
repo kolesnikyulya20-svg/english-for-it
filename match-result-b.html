@@ -158,7 +158,8 @@
   .chips span { background: #ddf8dd; color: #1f7a45; border-radius: 100px; padding: 6px 12px; font-size: 13px; font-weight: 600; line-height: 1.5; }
   .outcomes { width: 100%; background: #ffffe1; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
   .outcomes > b { font-size: 20px; font-weight: 700; line-height: 1.5; }
-  .oc-item { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 500; line-height: 1.5; }
+  .oc-item { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 400; line-height: 1.5; }
+  .oc-item b { font-weight: 700; }
   .oc-ico { width: 36px; height: 36px; border-radius: 100px; background: #3551f0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .mini-quote { display: flex; gap: 12px; align-items: center; }
   .mini-quote img { width: 40px; height: 40px; border-radius: 100px; }
@@ -168,6 +169,10 @@
   .price-line span { font-size: 15px; font-weight: 500; color: #3f3f4a; }
   .price-line b { font-size: 30px; font-weight: 800; }
   .price-line em { font-style: normal; font-size: 14px; font-weight: 500; color: #3551f0; }
+  .code-box { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1.5px dashed #3551f0; background: #ebeefe; border-radius: 16px; padding: 10px 10px 10px 20px; }
+  .code-box .code { font-size: 24px; font-weight: 800; letter-spacing: 2px; color: #3551f0; }
+  .code-box .copy { border: 0; border-radius: 100px; background: #3551f0; color: #fff; font: 600 15px 'Rubik', sans-serif; padding: 10px 18px; cursor: pointer; }
+  .code-box .copy:hover { background: #2a43d6; }
 </style>
 </head>
 <body>
@@ -213,7 +218,7 @@
           <p class="course-title">English For Tech Course</p>
           <p class="course-meta">7 weeks · Online course · For levels: Low Intermediate – Upper-Intermediate</p>
           <div class="chips"><span>✓ Your goal</span><span>✓ Your level</span><span>✓ Your format</span></div>
-          <div class="outcomes"><b>After 7 weeks, you will:</b><div class="oc-item"><span class="oc-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>Speak in meetings and calls with confidence</div><div class="oc-item"><span class="oc-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg></span>Give a short elevator pitch about your work</div><div class="oc-item"><span class="oc-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Give clear feedback to your team and clients</div><div class="oc-item"><span class="oc-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>Improve all 5 skills: speaking, listening, writing, vocabulary, grammar</div></div>
+          <div class="outcomes"><b>After 7 weeks, you will:</b><div class="oc-item"><span class="oc-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span class="oc-t"><b>Speak in meetings</b> and calls with confidence</span></div><div class="oc-item"><span class="oc-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg></span><span class="oc-t">Give a short <b>elevator pitch</b> about your work</span></div><div class="oc-item"><span class="oc-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="oc-t">Give <b>clear feedback</b> to your team and clients</span></div><div class="oc-item"><span class="oc-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="oc-t">Improve <b>all 5 skills</b>: speaking, listening, writing, vocabulary, grammar</span></div></div>
           <div class="mini-quote"><img src="assets/avatar-yaroslav.png" alt=""><div><p>“What I truly appreciate is the clear structure, the speaking practice and the personalized feedback.”</p><b>Yaroslav, Senior QA Engineer</b></div></div>
           <p class="discount-hint">Save 25% on this course — get your discount code on the right →</p>
           <div class="price-line"><span>from</span><b>$198</b><em>one-time payment for the whole course</em></div>
@@ -273,8 +278,9 @@
             <div class="perk"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></svg></span><b>Certificate</b><span>for your LinkedIn</span></div>
           </div>
           <div class="success-icon"><img src="assets/i-success.svg" alt=""></div>
-          <p class="sent-title">Sent to your email!</p>
-          <p class="sent-text">Check <span class="sent-email">maria.koval@gmail.com</span> — it usually arrives within a couple of minutes.</p>
+          <p class="sent-title">Here’s your 25% discount</p>
+          <div class="code-box"><span class="code">TECH25</span><button type="button" class="copy">Copy</button></div>
+          <p class="sent-text">Use it at checkout. We’ve also sent the code and your certificate to <span class="sent-email">maria.koval@gmail.com</span>.</p>
           <a class="linkedin" href="#">Add to LinkedIn →</a>
         </div>
         <!-- CERT:END -->
@@ -305,6 +311,14 @@
       sent.hidden = false;
     });
   }
+</script>
+<script>
+  // Код знижки одразу на сторінці: копіювання в буфер
+  document.querySelectorAll('.code-box .copy').forEach(b => b.addEventListener('click', () => {
+    const code = b.closest('.code-box').querySelector('.code').textContent;
+    try { navigator.clipboard.writeText(code); } catch (e) {}
+    b.textContent = 'Copied ✓'; setTimeout(() => { b.textContent = 'Copy'; }, 2000);
+  }));
 </script>
 <!-- MOTION:START -->
 <style>

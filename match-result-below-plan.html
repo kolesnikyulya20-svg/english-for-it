@@ -168,6 +168,10 @@
   .plan-time { font-size: 15px; font-weight: 500; color: #3f3f4a; }
   .lead { font-size: 17px; line-height: 1.5; color: #3f3f4a; }
   .why .ok-row { display: flex; gap: 10px; font-size: 15px; line-height: 1.5; } .why .ok-row i { font-style: normal; font-weight: 700; color: #1f9d55; }
+  .code-box { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1.5px dashed #3551f0; background: #ebeefe; border-radius: 16px; padding: 10px 10px 10px 20px; }
+  .code-box .code { font-size: 24px; font-weight: 800; letter-spacing: 2px; color: #3551f0; }
+  .code-box .copy { border: 0; border-radius: 100px; background: #3551f0; color: #fff; font: 600 15px 'Rubik', sans-serif; padding: 10px 18px; cursor: pointer; }
+  .code-box .copy:hover { background: #2a43d6; }
 </style>
 </head>
 <body>
@@ -217,7 +221,7 @@
             <div class="pstep then"><span class="lab">STEP 2 · THEN</span><b>Job Interview Crash Course</b><span class="m">2 weeks · from Pre-Intermediate</span><p>Answer interview questions with 6 ready templates</p></div>
           </div>
           <p class="plan-time">About 2.5 months to your interview — at your own pace</p>
-          <p class="discount-hint">Save 25% on Step 1 — get your discount code on the right</p>
+          <p class="discount-hint">Save 25% on English For Work: Starter — get your discount code on the right</p>
           <div class="next">
             <a class="btn btn-blue" href="#">Start with Step 1</a>
             <p>Not ready to decide? Talk to us or try a lesson first:</p>
@@ -263,8 +267,9 @@
             <div class="perk"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></svg></span><b>Certificate</b><span>for your LinkedIn</span></div>
           </div>
           <div class="success-icon"><img src="assets/i-success.svg" alt=""></div>
-          <p class="sent-title">Sent to your email!</p>
-          <p class="sent-text">Check <span class="sent-email">maria.koval@gmail.com</span> — it usually arrives within a couple of minutes.</p>
+          <p class="sent-title">Here’s your 25% discount</p>
+          <div class="code-box"><span class="code">TECH25</span><button type="button" class="copy">Copy</button></div>
+          <p class="sent-text">Use it at checkout. We’ve also sent the code and your certificate to <span class="sent-email">maria.koval@gmail.com</span>.</p>
           <a class="linkedin" href="#">Add to LinkedIn →</a>
         </div>
         <!-- CERT:END -->
@@ -295,6 +300,14 @@
       sent.hidden = false;
     });
   }
+</script>
+<script>
+  // Код знижки одразу на сторінці: копіювання в буфер
+  document.querySelectorAll('.code-box .copy').forEach(b => b.addEventListener('click', () => {
+    const code = b.closest('.code-box').querySelector('.code').textContent;
+    try { navigator.clipboard.writeText(code); } catch (e) {}
+    b.textContent = 'Copied ✓'; setTimeout(() => { b.textContent = 'Copy'; }, 2000);
+  }));
 </script>
 <!-- MOTION:START -->
 <style>
