@@ -399,6 +399,8 @@
   .demo-before.small img { width: min(900px, 90%); margin: 0 auto; }
   .demo-badge { position: fixed; left: 50%; transform: translateX(-50%); bottom: 24px; z-index: 1000; background: #ff5a3c; color: #fff; font: 600 14px/44px 'Rubik', sans-serif; height: 44px; padding: 0 20px; border-radius: 100px; white-space: nowrap; display: none; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
   .demo-before.show + .demo-badge { display: block; }
+  .demo-scn { position: fixed; right: 220px; bottom: 24px; z-index: 1000; height: 44px; display: inline-flex; align-items: center; padding: 0 20px; border-radius: 100px; background: #1c1c1c; color: #fff; font: 600 14px 'Rubik', sans-serif; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,.25); white-space: nowrap; }
+  .demo-scn:hover { background: #3551f0; }
 </style>
 <script>
 // Режим демо для захисту: ?demo у адресі → кнопка «Було | Стало» зі знімком поточного сайту (клавіша B)
@@ -412,6 +414,10 @@
   document.querySelectorAll('a[target="_blank"][href^="course.html"]').forEach(a => a.removeAttribute('target'));
   const shots = { 'home.html': ['assets/before-home.jpg', 'Було: головна english4it.online'], 'course.html': ['assets/before-course.jpg', 'Було: English For Tech на english4it.online'] };
   const shot = shots[file] || (file.startsWith('match-result') ? ['assets/before-test-email.jpg', 'Було: кінець тесту на english4it.online', true] : null);
+  // Перемикач сценаріїв на екрані результату: ціль підходить ↔ ціль «співбесіда», рівень нижчий
+  const scn = { 'match-result-b.html': ['match-result-below-individual.html', 'Сценарій 2: ціль — співбесіда →'],
+                'match-result-below-individual.html': ['match-result-b.html', '← Сценарій 1: курс підходить'] }[file];
+  if (scn) { const a = document.createElement('a'); a.className = 'demo-scn'; a.href = scn[0]; a.textContent = scn[1]; document.body.append(a); }
   if (!shot) return;
   const ov = document.createElement('div'); ov.className = 'demo-before' + (shot[2] ? ' small' : '');
   ov.innerHTML = '<img alt="">'; ov.firstChild.src = shot[0];
