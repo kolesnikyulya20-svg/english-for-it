@@ -86,8 +86,8 @@
   <main class="body">
     <form class="card" action="match-format.html" id="form">
       <div class="progress">
-        <div class="progress-labels"><span class="step">STEP 1 OF 3 · YOUR GOAL</span><span class="count">Question 1 of 2</span></div>
-        <div class="track"><div class="fill" style="width: 100px"></div></div>
+        <div class="progress-labels"><span class="step">STEP 1 OF 3 · YOUR GOAL</span><span class="count">Question 1 of 3</span></div>
+        <div class="track"><div class="fill" style="width: 66px"></div></div>
       </div>
       <h1>What do you need English for?</h1>
       <p class="hint">Choose all that apply.</p>
@@ -140,7 +140,7 @@
   form.addEventListener('submit', e => {
     e.preventDefault();
     try { sessionStorage.setItem('goal', [...form.querySelectorAll('input[name=goal]:checked')].map(i => i.value).join(',')); } catch (e) {}
-    location.href = 'match-format.html';
+    location.href = 'match-role.html';
   });
   const next = document.querySelector('.btn');
   const sync = () => { next.disabled = !document.querySelector('.options input:checked'); };

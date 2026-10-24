@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English For IT™ — Your role</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Roboto:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Rubik', sans-serif; background: #f5f7ff; color: #1c1c1c; }
+  .page { width: 1440px; margin: 0 auto; background: #f5f7ff; min-height: 939px; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 3px solid rgba(53, 81, 240, .45); outline-offset: 3px; }
+
+  /* ---------- Header (match style: px 48) ---------- */
+  .hdr { background: #3551f0; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 75px; }
+  .hdr-logo img { display: block; width: 209.64px; height: 40px; }
+  .hdr-nav { display: flex; align-items: center; }
+  .hdr-link { display: flex; align-items: center; gap: 10px; padding: 30px 20px; font-size: 14.025px; line-height: 15px; color: #ffffe1; transition: opacity .15s; }
+  .hdr-link.dd { padding-right: 15px; font-family: 'Roboto', sans-serif; }
+  .hdr-link img { width: 15px; height: 15px; }
+  .hdr-link:hover { opacity: .75; }
+  .hdr-offer { background: #ffffe1; display: flex; align-items: center; gap: 10px; padding: 10px 20px; color: #3551f0; font-size: 14.025px; line-height: 19.597px; transition: background .15s; }
+  .hdr-offer img { width: 18.713px; height: 18.713px; }
+  .hdr-offer b { font-weight: 500; display: block; }
+  .hdr-offer:hover { background: #fff; }
+
+  /* ---------- Quiz card ---------- */
+  .body { display: flex; flex-direction: column; align-items: center; padding: 56px 0 120px; }
+  .card { width: 760px; background: #fff; border: 1px solid rgba(28,28,28,.08); border-radius: 32px; padding: 48px; display: flex; flex-direction: column; gap: 24px; }
+  .progress { display: flex; flex-direction: column; gap: 10px; }
+  .progress-labels { display: flex; justify-content: space-between; font-size: 13px; line-height: 1.5; }
+  .progress-labels .step { color: #3551f0; font-weight: 600; letter-spacing: .6px; }
+  .progress-labels .count { color: #3f3f4a; font-weight: 500; }
+  .track { width: 664px; height: 8px; border-radius: 8px; background: #ebeefe; overflow: hidden; }
+  .fill { height: 8px; border-radius: 8px; background: #3551f0; }
+  h1 { font-size: 32px; font-weight: 800; line-height: 1.5; }
+  .hint { font-size: 16px; line-height: 1.5; color: #3f3f4a; }
+
+  .options { display: flex; flex-direction: column; gap: 12px; border: 0; }
+  .option input { position: absolute; opacity: 0; pointer-events: none; }
+  .option { position: relative; display: flex; align-items: center; gap: 16px; padding: 16.5px 18.5px; background: #fff; border: 1.5px solid #e2e2ea; border-radius: 20px; cursor: pointer; transition: border-color .15s, background .15s; }
+  .option:hover { border-color: #9aa8f7; background: #fafbff; }
+  .opt-icon { width: 44px; height: 44px; border-radius: 100px; background: #ebeefe; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .opt-icon img { width: 22px; height: 22px; }
+  .opt-icon .w { display: none; }
+  .opt-text { flex: 1 0 0; display: flex; flex-direction: column; gap: 2px; line-height: 1.5; }
+  .opt-text b { font-size: 18px; font-weight: 700; }
+  .opt-text span { font-size: 15px; color: #3f3f4a; }
+  .radio { width: 22px; height: 22px; flex-shrink: 0; background: url(assets/radio-off.svg) center / contain no-repeat; }
+  .option:has(input:checked) { background: #f3f5ff; border: 2px solid #3551f0; padding: 16px 18px; }
+  .option:has(input:checked) .opt-icon { background: #3551f0; }
+  .option:has(input:checked) .opt-icon .b { display: none; }
+  .option:has(input:checked) .opt-icon .w { display: block; }
+  .option:has(input:checked) .radio { background-image: url(assets/radio-on.svg); }
+  .option:has(input:focus-visible) { outline: 3px solid rgba(53, 81, 240, .45); outline-offset: 3px; }
+
+  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .back { font-size: 16px; font-weight: 600; line-height: 1.5; color: #3f3f4a; }
+  .back:hover { color: #3551f0; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 18px 32px; border: 0; border-radius: 100px; font: 600 17px/1.5 'Rubik', sans-serif; white-space: nowrap; background: #3551f0; color: #fff; cursor: pointer; transition: background .15s; }
+  .btn:hover { background: #2a43d6; }
+  .btn:disabled { background: #b4bef8; cursor: not-allowed; }
+  .options.roles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .roles .opt-text b { font-size: 16px; line-height: 1.35; }
+  .roles .opt-text span { font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hdr">
+    <a class="hdr-logo" href="home.html"><img src="assets/logo.svg" alt="English For IT™"></a>
+    <nav class="hdr-nav">
+      <a class="hdr-link dd" href="#">Courses <img src="assets/chev.svg" alt=""></a>
+      <a class="hdr-link dd" href="#">E-books <img src="assets/chev.svg" alt=""></a>
+      <a class="hdr-link" href="#">Individual lessons</a>
+      <a class="hdr-link" href="#">Corporate Training</a>
+    </nav>
+    <a class="hdr-link dd" href="#">English 🇺🇸 <img src="assets/chev.svg" alt=""></a>
+    <a class="hdr-offer" href="#">
+      <img src="assets/stars.svg" alt="">
+      <span><b>Special offer.</b>English For Tech Lite course for $20 →</span>
+    </a>
+  </header>
+
+  <main class="body">
+    <form class="card" action="match-level.html" id="form">
+      <div class="progress">
+        <div class="progress-labels"><span class="step">STEP 1 OF 3 · YOUR GOAL</span><span class="count">Question 2 of 3</span></div>
+        <div class="track"><div class="fill" style="width: 133px"></div></div>
+      </div>
+      <h1>What’s your role?</h1>
+      <p class="hint">We’ll show examples from your work in the result.</p>
+
+      <fieldset class="options roles">
+        <label class="option">
+          <input type="radio" name="role" value="dev">
+          <span class="opt-icon"><img class="b" src="assets/q-code.svg" alt=""><img class="w" src="assets/q-code-w.svg" alt=""></span>
+          <span class="opt-text"><b>Developer</b><span>Frontend, backend, mobile, DevOps</span></span>
+        </label>
+        <label class="option">
+          <input type="radio" name="role" value="qa">
+          <span class="opt-icon"><img class="b" src="assets/q-bug.svg" alt=""><img class="w" src="assets/q-bug-w.svg" alt=""></span>
+          <span class="opt-text"><b>QA</b><span>Manual or automation testing</span></span>
+        </label>
+        <label class="option">
+          <input type="radio" name="role" value="design">
+          <span class="opt-icon"><img class="b" src="assets/q-pen.svg" alt=""><img class="w" src="assets/q-pen-w.svg" alt=""></span>
+          <span class="opt-text"><b>Designer</b><span>UI/UX, product or graphic design</span></span>
+        </label>
+        <label class="option">
+          <input type="radio" name="role" value="pm">
+          <span class="opt-icon"><img class="b" src="assets/q-briefcase.svg" alt=""><img class="w" src="assets/q-briefcase-w.svg" alt=""></span>
+          <span class="opt-text"><b>PM / BA</b><span>Project, product or business analysis</span></span>
+        </label>
+        <label class="option">
+          <input type="radio" name="role" value="other">
+          <span class="opt-icon"><img class="b" src="assets/q-chat.svg" alt=""><img class="w" src="assets/q-chat-w.svg" alt=""></span>
+          <span class="opt-text"><b>Marketing, HR or other role in tech</b><span>Marketing, recruiting, sales, support</span></span>
+        </label>
+        <label class="option">
+          <input type="radio" name="role" value="switch">
+          <span class="opt-icon"><img class="b" src="assets/q-sprout.svg" alt=""><img class="w" src="assets/q-sprout-w.svg" alt=""></span>
+          <span class="opt-text"><b>Not in IT yet / switching</b><span>Planning to move into tech</span></span>
+        </label>
+      </fieldset>
+
+      <div class="nav">
+        <a class="back" href="match-goal.html">← Back</a>
+        <button class="btn" type="submit" disabled>Next</button>
+      </div>
+    </form>
+  </main>
+
+</div>
+<script>
+  const form = document.getElementById('form');
+  try { const saved = sessionStorage.getItem('role'); if (saved) form.role.value = saved; } catch (e) {}
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    try { sessionStorage.setItem('role', form.role.value); } catch (e) {}
+    location.href = 'match-format.html';
+  });
+  const next = document.querySelector('.btn');
+  const sync = () => { next.disabled = !document.querySelector('.options input:checked'); };
+  document.querySelector('.options').addEventListener('change', sync);
+  sync();
+</script>
+<!-- MOTION:START -->
+<style>
+  /* ---------- Motion: 1. переходи між сторінками ---------- */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: vt-out .22s ease-in both; }
+  ::view-transition-new(root) { animation: vt-in .38s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes vt-out { to { opacity: 0; transform: translateY(-8px); } }
+  @keyframes vt-in { from { opacity: 0; transform: translateY(12px); } }
+  /* Фолбек для браузерів без cross-document View Transitions */
+  html.no-vt body { animation: vt-in .38s cubic-bezier(.2,.7,.2,1) both; }
+
+  /* ---------- 2. поява блоків при прокрутці ---------- */
+  .rv.rv { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); transition-delay: var(--rv-d, 0ms); }
+  .rv.rv.in { opacity: 1; transform: none; }
+
+  /* ---------- 3. тест: варіант і прогрес ---------- */
+  .fill { transition: width .7s cubic-bezier(.2,.7,.2,1); }
+  .option:has(input:checked) { animation: opt-pop .28s ease; }
+  @keyframes opt-pop { 50% { transform: scale(1.015); } }
+
+  /* ---------- 4. результат: «підбираємо курс…» ---------- */
+  .matching { position: fixed; inset: 0; z-index: 50; background: #f5f7ff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; font: 600 22px/1.4 'Rubik', sans-serif; color: #1c1c1c; transition: opacity .35s ease; }
+  .matching small { font-size: 15px; font-weight: 400; color: #3f3f4a; }
+  .matching .spin { width: 56px; height: 56px; border-radius: 50%; border: 5px solid #ebeefe; border-top-color: #3551f0; animation: spin .8s linear infinite; }
+  .matching.out { opacity: 0; pointer-events: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---------- 5. мікроінтеракції ---------- */
+  .btn, .hdr-offer { transition: background .15s, color .15s, border-color .15s, transform .2s ease, box-shadow .2s ease; }
+  .btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(53,81,240,.22); }
+  /* Ховер кнопок: контурні → сині заповнені; білі на синьому фоні → білі заповнені */
+  .btn-outline:not(:disabled):hover, .btn-ghost:not(:disabled):hover, .btn-outline-h:not(:disabled):hover { background: #3551f0; color: #fff; border-color: #3551f0; }
+  .btn-white:not(:disabled):hover { background: #fff; color: #3551f0; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+  .goal.orange { border-color: transparent; }
+  /* Меню завжди в полі зору */
+  .hdr { position: sticky; top: 0; z-index: 50; }
+  .btn:not(:disabled):active { transform: translateY(0); box-shadow: none; }
+  .goal, .way, .review, .module, .tile, .speak-tile, .plan, .course-row, .q, .contact, .step, .after-step, .fact, .option, .ns-opt, .point, .learn-col, .wstep, .extra, .pstep, .focus-card { transition: transform .25s ease, box-shadow .25s ease, border-color .15s, background .15s; }
+  .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .fact:hover, .q:hover, .contact:hover, .learn-col.c-cream:hover, .wstep:hover, .extra:hover, .pstep:hover, .focus-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(28,28,28,.08); }
+  .learn-col.c-blue:hover, .learn-col.c-orange:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(53,81,240,.28); }
+  .learn-col.c-orange:hover { box-shadow: 0 16px 36px rgba(254,126,79,.35); }
+  .chip { transition: background .15s, color .15s, transform .2s ease; }
+  .chip:hover { background: #3551f0; color: #fff; transform: translateY(-2px); }
+  .after-step:hover { transform: translateY(-4px); background: rgba(255,255,255,.2); box-shadow: 0 14px 32px rgba(10,20,90,.25); }
+  .option:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(53,81,240,.12); }
+  .ns-opt:hover { transform: translateX(4px); }
+  .point:hover { transform: translateX(4px); }
+  .goal-icon, .opt-icon, .point-icon, .icon-box, .num, .step-icon, .fact-icon, .focus-ico { transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+  .goal:hover .goal-icon, .option:hover .opt-icon, .point:hover .point-icon, .tile:hover .icon-box, .after-step:hover .icon-box, .step:hover .num, .speak-tile:hover .icon-box, .fact:hover .fact-icon, .learn-col:hover .icon-box, .wstep:hover .icon-box, .extra:hover .icon-box, .focus-card:hover .focus-ico { transform: scale(1.12) rotate(-6deg); }
+  .course-row:hover { transform: translateX(3px); }
+  .arrow { transition: background .15s, color .15s, transform .2s ease; }
+  .course-row:hover .arrow, a:hover > .arrow, .ns-opt:hover .arrow { transform: translateX(4px); }
+  .back { display: inline-block; transition: color .15s, transform .2s ease; }
+  .back:hover { transform: translateX(-4px); }
+  .btn.pop { animation: btn-pop .35s cubic-bezier(.3,1.6,.5,1); }
+  @keyframes btn-pop { 50% { transform: scale(1.06); } }
+
+  /* Повага до налаштувань системи: без анімацій */
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root), ::view-transition-new(root), html.no-vt body { animation: none; }
+    .rv.rv { opacity: 1; transform: none; transition: none; }
+    .fill, .option:has(input:checked) { transition: none; animation: none; }
+    .matching { display: none; }
+    .btn:hover, .goal:hover, .way:hover, .review:hover, .module:hover, .tile:hover, .speak-tile:hover, .plan:hover, .step:hover, .after-step:hover, .fact:hover, .q:hover, .contact:hover, .option:hover, .ns-opt:hover, .point:hover, .course-row:hover, .course-row:hover .arrow, .back:hover, [class*=icon], .num, .learn-col:hover, .wstep:hover, .extra:hover, .pstep:hover, .focus-card:hover, .chip:hover, .focus-ico { transform: none !important; }
+    .btn.pop { animation: none; }
+  }
+</style>
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!('onpagereveal' in window)) document.documentElement.classList.add('no-vt');
+  if (reduce) return;
+  const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
+               set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} },
+               del: k => { try { sessionStorage.removeItem(k); } catch (e) {} } };
+  const page = location.pathname.split('/').pop() || 'home.html';
+
+  // 3. Прогрес тесту плавно продовжується з попереднього кроку
+  const fill = document.querySelector('.fill');
+  if (fill) {
+    const target = fill.style.width, prev = ss.get('fillW');
+    if (prev && prev !== target) {
+      fill.style.transition = 'none'; fill.style.width = prev;
+      requestAnimationFrame(() => requestAnimationFrame(() => { fill.style.transition = ''; fill.style.width = target; }));
+    }
+    ss.set('fillW', target);
+  } else if (!page.startsWith('match-')) ss.del('fillW');
+  const nextBtn = document.querySelector('.options') && document.querySelector('form .btn');
+  if (nextBtn) { let was = nextBtn.disabled;
+    document.querySelector('.options').addEventListener('change', () => setTimeout(() => {
+      if (was && !nextBtn.disabled) { nextBtn.classList.remove('pop'); void nextBtn.offsetWidth; nextBtn.classList.add('pop'); }
+      was = nextBtn.disabled; })); }
+  if (page === 'match-level.html') {
+    const f = document.getElementById('form');
+    if (f) f.addEventListener('submit', () => ss.set('justTested', '1'));
+  }
+
+  // 2. Поява блоків: анімуються «листові» картки, сусіди — з невеликою затримкою
+  const sel = 'main > *, .page > section, .section, .box, .goal, .way, .review, .module, .tile, .speak-tile, .plan, .step, .after-step, .point, .fact, .contact, .q, .card, .panel, .learn-col, .wstep, .extra, .pstep, .focus-card';
+  let els = [...document.querySelectorAll(sel)].filter(el => !el.closest('.hdr, .hero, .matching, .ftr'));
+  els = els.filter(el => !els.some(o => o !== el && el.contains(o)));
+  const groups = new Map();
+  els.forEach(el => { const g = groups.get(el.parentElement) || []; g.push(el); groups.set(el.parentElement, g); });
+  groups.forEach(g => g.forEach((el, i) => { el.classList.add('rv'); el.style.setProperty('--rv-d', Math.min(i, 5) * 70 + 'ms'); }));
+  // ponytail: перевірка по scroll замість IntersectionObserver — працює і у фонових вкладках
+  let pending = els, ticking = false;
+  const check = () => { ticking = false; const lim = innerHeight * 0.92;
+    pending = pending.filter(el => { if (el.getBoundingClientRect().top < lim) { el.classList.add('in'); const d = parseInt(el.style.getPropertyValue('--rv-d')) || 0; setTimeout(() => el.classList.remove('rv', 'in'), 700 + d); return false; } return true; });
+    if (!pending.length) removeEventListener('scroll', onScroll); };
+  const onScroll = () => { if (!ticking) { ticking = true; setTimeout(check, 50); } };
+  const start = () => { addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); check(); };
+
+  // 4. Після тесту — коротке «підбираємо курс…», потім результат з'являється по черзі
+  if (page.startsWith('match-result') && ss.get('justTested')) {
+    ss.del('justTested');
+    const m = document.createElement('div');
+    m.className = 'matching'; m.setAttribute('role', 'status');
+    m.innerHTML = '<div class="spin"></div><div>Finding your best course…</div><small>Checking your goal, level and format</small>';
+    document.body.appendChild(m);
+    setTimeout(() => { m.classList.add('out'); start(); setTimeout(() => m.remove(), 400); }, 1100);
+  } else start();
+})();
+</script>
+<script>
+// На весь екран: макет 1440px масштабується під ширину вікна (і більші, і менші екрани)
+(() => {
+  const page = document.querySelector('.page');
+  if (!page) return;
+  const fit = () => { page.style.zoom = document.documentElement.clientWidth / 1440; };
+  fit();
+  addEventListener('resize', fit);
+})();
+</script>
+<style>
+  .demo-toggle { position: fixed; right: 24px; bottom: 24px; z-index: 1000; display: flex; height: 44px; box-sizing: border-box; background: #1c1c1c; border-radius: 100px; padding: 4px; box-shadow: 0 10px 30px rgba(0,0,0,.25); font-family: 'Rubik', sans-serif; }
+  .demo-toggle button { border: 0; background: none; color: #fff; font: 600 14px/36px 'Rubik', sans-serif; height: 36px; padding: 0 18px; border-radius: 100px; cursor: pointer; }
+  .demo-toggle button.on { background: #fff; color: #1c1c1c; }
+  .demo-before { position: fixed; inset: 0; z-index: 999; overflow-y: auto; background: #f4f4f4; display: none; }
+  .demo-before.show { display: block; }
+  .demo-before img { display: block; width: 100%; }
+  .demo-before.small { background: #ffffe1; padding: 6vh 0; }
+  .demo-before.small img { width: min(900px, 90%); margin: 0 auto; }
+  .demo-badge { position: fixed; left: 50%; transform: translateX(-50%); bottom: 24px; z-index: 1000; background: #ff5a3c; color: #fff; font: 600 14px/44px 'Rubik', sans-serif; height: 44px; padding: 0 20px; border-radius: 100px; white-space: nowrap; display: none; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+  .demo-before.show + .demo-badge { display: block; }
+  .demo-scn { position: fixed; right: 220px; bottom: 24px; z-index: 1000; height: 44px; display: inline-flex; align-items: center; padding: 0 20px; border-radius: 100px; background: #1c1c1c; color: #fff; font: 600 14px 'Rubik', sans-serif; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,.25); white-space: nowrap; }
+  .demo-scn:hover { background: #3551f0; }
+</style>
+<script>
+// Режим демо для захисту: ?demo у адресі → кнопка «Було | Стало» зі знімком поточного сайту (клавіша B)
+(() => {
+  try { const q = new URLSearchParams(location.search).get('demo'); if (q === '0') sessionStorage.removeItem('demo'); else if (q !== null) sessionStorage.setItem('demo', '1'); if (q === 'before') { sessionStorage.setItem('demoStart', '1'); ['goal', 'format'].forEach(k => sessionStorage.removeItem(k)); } } catch (e) {}
+  let on = false; try { on = sessionStorage.getItem('demo') === '1'; } catch (e) {}
+  if (!on) return;
+  document.documentElement.classList.add('demo-on');
+  const file = location.pathname.split('/').pop() || 'index.html';
+  // у демо курс відкривається в тій самій вкладці
+  document.querySelectorAll('a[target="_blank"][href^="course.html"]').forEach(a => a.removeAttribute('target'));
+  const shots = { 'home.html': ['assets/before-home.jpg', 'Було: головна english4it.online'], 'course.html': ['assets/before-course.jpg', 'Було: English For Tech на english4it.online'] };
+  const shot = shots[file] || (file.startsWith('match-result') ? ['assets/before-test-email.jpg', 'Було: кінець тесту на english4it.online', true] : null);
+  // Перемикач сценаріїв на екрані результату: ціль підходить ↔ ціль «співбесіда», рівень нижчий
+  const scn = { 'match-result-b.html': ['match-result-below-individual.html', 'Сценарій 2: ціль — співбесіда →'],
+                'match-result-below-individual.html': ['match-result-b.html', '← Сценарій 1: курс підходить'] }[file];
+  if (scn) { const a = document.createElement('a'); a.className = 'demo-scn'; a.href = scn[0]; a.textContent = scn[1]; document.body.append(a); }
+  if (!shot) return;
+  const ov = document.createElement('div'); ov.className = 'demo-before' + (shot[2] ? ' small' : '');
+  ov.innerHTML = '<img alt="">'; ov.firstChild.src = shot[0];
+  const badge = document.createElement('div'); badge.className = 'demo-badge'; badge.textContent = shot[1];
+  const tg = document.createElement('div'); tg.className = 'demo-toggle';
+  tg.innerHTML = '<button type="button" data-v="1">Було</button><button type="button" data-v="0" class="on">Стало</button>';
+  document.body.append(ov, badge, tg);
+  const set = before => { ov.classList.toggle('show', before); ov.scrollTop = 0; tg.children[0].classList.toggle('on', before); tg.children[1].classList.toggle('on', !before); };
+  tg.addEventListener('click', e => { const b = e.target.closest('button'); if (b) set(b.dataset.v === '1'); });
+  // перший екран демо відкривається одразу на «Було»
+  try { if (sessionStorage.getItem('demoStart')) { sessionStorage.removeItem('demoStart'); set(true); } } catch (e) {}
+  addEventListener('keydown', e => { if ((e.key === 'b' || e.key === 'и') && !e.target.closest('input, textarea')) set(!ov.classList.contains('show')); });
+})();
+</script>
+<!-- MOTION:END -->
+</body>
+</html>
