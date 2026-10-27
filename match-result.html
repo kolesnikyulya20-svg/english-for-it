@@ -441,9 +441,14 @@
   const shots = { 'home.html': ['assets/before-home.jpg', 'Було: головна english4it.online'], 'course.html': ['assets/before-course.jpg', 'Було: English For Tech на english4it.online'] };
   const shot = shots[file] || (file.startsWith('match-result') ? ['assets/before-test-email.jpg', 'Було: кінець тесту на english4it.online', true] : null);
   // Перемикач сценаріїв на екрані результату: ціль підходить ↔ ціль «співбесіда», рівень нижчий
-  const scn = { 'match-result-b.html': ['match-result-below-individual.html', 'Сценарій 2: ціль — співбесіда →'],
-                'match-result-below-individual.html': ['match-result-b.html', '← Сценарій 1: курс підходить'] }[file];
-  if (scn) { const a = document.createElement('a'); a.className = 'demo-scn'; a.href = scn[0]; a.textContent = scn[1]; document.body.append(a); }
+  // запам'ятовуємо, з якого сценарію прийшли — на заявці кнопка веде в інший
+  if (file === 'match-result-b.html') { try { sessionStorage.setItem('demoScn', '1'); } catch (e) {} }
+  if (file === 'match-result-below-individual.html') { try { sessionStorage.setItem('demoScn', '2'); } catch (e) {} }
+  let cur = '1'; try { cur = sessionStorage.getItem('demoScn') || '1'; } catch (e) {}
+  const toOther = cur === '2' ? ['match-result-b.html', '← Сценарій 1: курс підходить'] : ['match-result-below-individual.html', 'Сценарій 2: ціль — співбесіда →'];
+  const scn = { 'match-result-b.html': toOther, 'match-result-below-individual.html': toOther,
+                'request.html': toOther, 'request-success.html': toOther }[file];
+  if (scn) { const a = document.createElement('a'); a.className = 'demo-scn'; a.href = scn[0]; a.textContent = scn[1]; if (!shot) a.style.right = '24px'; document.body.append(a); }
   if (!shot) return;
   const ov = document.createElement('div'); ov.className = 'demo-before' + (shot[2] ? ' small' : '');
   ov.innerHTML = '<img alt="">'; // ponytail: знімок «Було» вантажимо лише при першому показі — менше пам'яті у Safari
