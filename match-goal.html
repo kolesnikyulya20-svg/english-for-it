@@ -312,12 +312,12 @@
   if (scn) { const a = document.createElement('a'); a.className = 'demo-scn'; a.href = scn[0]; a.textContent = scn[1]; document.body.append(a); }
   if (!shot) return;
   const ov = document.createElement('div'); ov.className = 'demo-before' + (shot[2] ? ' small' : '');
-  ov.innerHTML = '<img alt="">'; ov.firstChild.src = shot[0];
+  ov.innerHTML = '<img alt="">'; // ponytail: знімок «Було» вантажимо лише при першому показі — менше пам'яті у Safari
   const badge = document.createElement('div'); badge.className = 'demo-badge'; badge.textContent = shot[1];
   const tg = document.createElement('div'); tg.className = 'demo-toggle';
   tg.innerHTML = '<button type="button" data-v="1">Було</button><button type="button" data-v="0" class="on">Стало</button>';
   document.body.append(ov, badge, tg);
-  const set = before => { ov.classList.toggle('show', before); ov.scrollTop = 0; tg.children[0].classList.toggle('on', before); tg.children[1].classList.toggle('on', !before); };
+  const set = before => { if (before && !ov.firstChild.src) ov.firstChild.src = shot[0]; ov.classList.toggle('show', before); ov.scrollTop = 0; tg.children[0].classList.toggle('on', before); tg.children[1].classList.toggle('on', !before); };
   tg.addEventListener('click', e => { const b = e.target.closest('button'); if (b) set(b.dataset.v === '1'); });
   // перший екран демо відкривається одразу на «Було»
   try { if (sessionStorage.getItem('demoStart')) { sessionStorage.removeItem('demoStart'); set(true); } } catch (e) {}
